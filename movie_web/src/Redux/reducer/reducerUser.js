@@ -1,4 +1,4 @@
-import { localServ } from "../../Services/localService";
+import { localServ } from "../../services/localService";
 import { SET_USER } from "../constant/constantUser";
 
 let initialState = {
