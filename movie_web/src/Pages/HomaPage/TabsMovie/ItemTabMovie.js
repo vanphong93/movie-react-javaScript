@@ -6,7 +6,7 @@ import { movieSer } from "../../../Services/movieService";
 import { useDispatch } from "react-redux";
 export default function ItemTabMovie({ data }) {
   let dispatch = useDispatch();
-  console.log("render item movie");
+  console.log("render item tabs movie");
   // let naviga = useNavigate();
   let handleTrailer = (maPhim) => {
     console.log("maPhim: ", maPhim);

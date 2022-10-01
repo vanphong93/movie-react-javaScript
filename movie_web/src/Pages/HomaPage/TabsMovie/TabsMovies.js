@@ -18,7 +18,7 @@ export default function ({}) {
   }, []);
 
   let renderContent = () => {
-    console.log('render tab movie');
+    // console.log('render tab movie');
     return dataMovie.map((item, index) => {
       return (
         <Tabs.TabPane
@@ -48,7 +48,7 @@ export default function ({}) {
                     className="h-45 scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-300 overflow-y-scroll scrollbar-thumb-rounded-full scrollbar-track-rounded-full"
                   >
                     {cumRap.danhSachPhim.map((phim, index) => {
-                      return <ItemTabMovie /* showModal={showModal} */  key={index} data={phim} />;
+                      return <ItemTabMovie /* showModal={showModal}  */ key={index} data={phim} />;
                     })}
                   </div>
                 </Tabs.TabPane>

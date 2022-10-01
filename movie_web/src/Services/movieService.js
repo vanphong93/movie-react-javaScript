@@ -2,11 +2,11 @@ import { https } from "./configURL";
 
 export const movieSer = {
   getListMovie: () => {
-    return https.get("/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP02");
+    return https.get("/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP04");
   },
   getMovieByTheater: () => {
     return https.get(
-      "/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP02"
+      "/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP04"
     );
   },
   getBanerMovie: () => {

@@ -1,19 +1,17 @@
 import { Card, Modal, Rate } from "antd";
 
 import React, { useState } from "react";
-import { InfoCircleOutlined } from "@ant-design/icons";
+
 import { NavLink } from "react-router-dom";
-// import { ModalTrailer } from "../Modal/ModalTrailer";
+
 import { useDispatch } from "react-redux";
-// import { useDispatch } from "react-redux";
+
 const { Meta } = Card;
-// import {openModal} from '../../redux/actions/actionModal'
+
 export default function Movie({ data, showModal }) {
-  // const [isModalOpen, setIsModalOpen] = useState(false);
+
   let dispatch = useDispatch();
-  // const showModal = () => {
-  //   setIsModalOpen(true);
-  // };
+
   let openModal = () => {
     dispatch({
       type: "open_modal",

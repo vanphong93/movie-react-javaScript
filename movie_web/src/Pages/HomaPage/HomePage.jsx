@@ -70,6 +70,8 @@ export default function HomePage() {
   const renderModal = () => {
     return (
       <Modal
+      // destroyOnClose={true}
+      // focusTriggerAfterClose={false}
         // mask={false}
         style={{ top: 20 }}
         width={1000}
@@ -77,10 +79,10 @@ export default function HomePage() {
         title="Trailer"
         open={isModalOpen}
         // onOk={handleOk}
-        onCancel={handleCancel}
+        onCancel={() => { handleCancel(data.maPhim) }}
       >
         {data.baner ? (
-          <iframe
+          <iframe id={data.maPhim}
             allowFullScreen={true}
             title="myFrame"
             className="w-full"
@@ -89,14 +91,17 @@ export default function HomePage() {
           ></iframe>
         ) : (
           <div className="flex">
-            <a href={data.trailer}>ok</a>
-            {/* <iframe
+
+
+            <iframe id={data.maPhim}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen={true}
               title="myFrame"
               className="w-1/2"
               height={450}
+              frameBorder={0}
               src={data.trailer}
-            ></iframe> */}
+            ></iframe>
             <div className="w-1/2 p-3">
               <h1
                 style={{ fontSize: "30px" }}
@@ -125,13 +130,18 @@ export default function HomePage() {
       </Modal>
     );
   };
-  const handleCancel = () => {
+  const handleCancel = (id) => {
     let stopVideo = () => {
-      var iframe = document.querySelectorAll("iframe");
-      iframe.forEach((item) => {
-        var iframeSrc = item.src;
-        item.src = iframeSrc;
-      });
+      // var iframe = document.querySelectorAll("iframe");
+      // iframe.forEach((item) => {
+      //   var iframeSrc = item.src;
+      //   item.src = iframeSrc;
+      // });
+     var iframe= document.getElementById(id);
+    //  iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+    //  console.log('iframe: ', iframe);
+    //  var anyURL=iframe.src;
+     iframe.src=iframe.src
     };
     stopVideo();
     setIsModalOpen(false);
@@ -149,7 +159,7 @@ export default function HomePage() {
             dataMovieCurrent={<CarouselMovies data={renderMovieCurrent} />}
           />
         </section>{" "}
-        <TabsMovies /* showModal={showModal} */ />
+        <TabsMovies showModal={showModal} />
       </div>
     </div>
   );

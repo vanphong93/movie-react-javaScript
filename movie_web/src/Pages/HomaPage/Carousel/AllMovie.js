@@ -6,7 +6,9 @@ import React from 'react';
 // };
 
 export const AllMovie = ({dataMovieCurrent,dataMovieNext}) => (
-  <Tabs centered
+  <Tabs centered 
+  addIcon
+  type='card'
     defaultActiveKey="1"
     // onChange={onChange}
     items={[
