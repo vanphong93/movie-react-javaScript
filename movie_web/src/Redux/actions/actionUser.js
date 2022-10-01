@@ -1,6 +1,6 @@
-import { userServ } from "../../services/userService";
+import { userServ } from "../../Services/userService";
 import { SET_USER } from "../constant/constantUser";
-import { localServ } from "../../services/localService";
+import { localServ } from "../../Services/localService";
 const setUserSuccess = (successValue) => {
   return {
     type: SET_USER,

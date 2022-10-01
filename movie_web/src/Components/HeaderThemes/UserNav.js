@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { localServ } from "../../services/localService";
+import { localServ } from "../../Services/localService";
 export default function UserNav() {
   let newUser = useSelector((state) => {
     return state.userReducer.user;

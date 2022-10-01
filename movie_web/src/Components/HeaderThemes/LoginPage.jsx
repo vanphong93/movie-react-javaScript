@@ -1,9 +1,9 @@
 import { Button, Form, Input, message } from "antd";
 import React from "react";
-import Lottie from "lottie-react";
-import login from "../../assets/login_animate.json";
+// import Lottie from "lottie-react";
+// import login from "../../assets/login_animate.json";
 // import { localServ } from "../../services/localService";
-import { userServ } from "../../services/userService";
+// import { userServ } from "../../services/userService";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "../../redux/actions/actionUser";

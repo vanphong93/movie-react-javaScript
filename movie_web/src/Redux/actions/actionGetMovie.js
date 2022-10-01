@@ -1,5 +1,5 @@
-import { useDispatch } from "react-redux";
-import { movieSer } from "../../services/movieService";
+// import { useDispatch } from "react-redux";
+import { movieSer } from "../../Services/movieService";
 import { setLoadingOff, setLoadingOn } from "./actionsSpiner";
 
 export const getMovie=(setMovies,dispatch) => { 

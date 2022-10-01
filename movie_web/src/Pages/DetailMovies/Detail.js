@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
-import { TOKEN } from "../../services/configURL";
-import { movieSer } from "../../services/movieService";
+// import axios from "axios";
+// import { TOKEN } from "../../services/configURL";
+import { movieSer } from "../../Services/movieService";
 // import TabsMovies from "../HomaPage/TabsMovies";
 // import ItemTabMovie from "../HomaPage/ItemTabMovie";
 import { TabsDetail } from "./TabsDetail";

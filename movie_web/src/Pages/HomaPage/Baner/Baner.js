@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { movieSer } from "../../../services/movieService";
+// import { movieSer } from "../../../services/movieService";
 import Slider from "react-slick";
 import "./Baner.css";
 import { useDispatch } from "react-redux";

@@ -8,7 +8,7 @@ import CarouselMovies from "./Carousel/CarouselMovies";
 import { NavLink } from "react-router-dom";
 import Baner from "./Baner/Baner";
 import { getBaner, getMovie } from "../../redux/actions/actionGetMovie";
-import { movieSer } from "../../services/movieService";
+// import { movieSer } from "../../Services/movieService";
 export default function HomePage() {
   let { dataMovie, dataBaner } = useSelector((state) => {
     return state.movieReducer;
@@ -56,7 +56,7 @@ export default function HomePage() {
       console.log("da co du lieu baner");
       setBanerMovie(dataBaner);
     } else {
-      dispatch(getBaner(setBanerMovie))
+      dispatch(getBaner(setBanerMovie));
     }
   }, []);
   //xử lí modal
@@ -68,28 +68,6 @@ export default function HomePage() {
     return state.modalReducer;
   });
   const renderModal = () => {
-    if (data.baner) {
-      return (
-        <Modal
-          // mask={false}
-          style={{ top: 20 }}
-          width={1000}
-          footer={null}
-          title="Trailer"
-          open={isModalOpen}
-          // onOk={handleOk}
-          onCancel={handleCancel}
-        >
-          <iframe
-            allowFullScreen={true}
-            title="myFrame"
-            className="w-full"
-            height={450}
-            src={data.trailer}
-          ></iframe>
-        </Modal>
-      );
-    }
     return (
       <Modal
         // mask={false}
@@ -101,34 +79,49 @@ export default function HomePage() {
         // onOk={handleOk}
         onCancel={handleCancel}
       >
-        <div className="flex">
+        {data.baner ? (
           <iframe
             allowFullScreen={true}
             title="myFrame"
-            className="w-1/2"
+            className="w-full"
             height={450}
             src={data.trailer}
           ></iframe>
-          <div className="w-1/2 p-3">
-            <h1
-              style={{ fontSize: "30px" }}
-              className="text-center text-indigo-500"
-            >
-              {data.tenPhim}
-            </h1>
-            <p>{data.moTa}</p>
-            <NavLink to={`/detail/${data.maPhim}`}>
-              {" "}
-              <button className="bg-transparent hover:bg-yellow-500 text-yellow-700 font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded">
-                Mua vé
-              </button>
-            </NavLink>
-            <h2>
-              Điểm đánh giá:{" "}
-              <Rate disabled allowHalf defaultValue={data.danhGia / 2} />
-            </h2>
+        ) : (
+          <div className="flex">
+            <a href={data.trailer}>ok</a>
+            {/* <iframe
+              allowFullScreen={true}
+              title="myFrame"
+              className="w-1/2"
+              height={450}
+              src={data.trailer}
+            ></iframe> */}
+            <div className="w-1/2 p-3">
+              <h1
+                style={{ fontSize: "30px" }}
+                className="text-center text-indigo-500"
+              >
+                {data.tenPhim}
+              </h1>
+              <p>{data.moTa}</p>
+              {data.isSearch ? (
+                ""
+              ) : (
+                <NavLink to={`/detail/${data.maPhim}`}>
+                  {" "}
+                  <button className="bg-transparent hover:bg-yellow-500 text-yellow-700 font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded">
+                    Mua vé
+                  </button>
+                </NavLink>
+              )}
+              <h2>
+                Điểm đánh giá:{" "}
+                <Rate disabled allowHalf defaultValue={data.danhGia / 2} />
+              </h2>
+            </div>
           </div>
-        </div>
+        )}
       </Modal>
     );
   };
@@ -156,7 +149,7 @@ export default function HomePage() {
             dataMovieCurrent={<CarouselMovies data={renderMovieCurrent} />}
           />
         </section>{" "}
-        <TabsMovies />
+        <TabsMovies /* showModal={showModal} */ />
       </div>
     </div>
   );
