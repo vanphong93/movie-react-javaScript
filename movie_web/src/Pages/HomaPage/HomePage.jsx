@@ -7,11 +7,11 @@ import { AllMovie } from "./Carousel/AllMovie";
 import CarouselMovies from "./Carousel/CarouselMovies";
 import { NavLink } from "react-router-dom";
 import Baner from "./Baner/Baner";
-import { getBaner, getMovie } from "../../redux/actions/actionGetMovie";
+import { getBaner, getMovie, getMovieTheater } from "../../redux/actions/actionGetMovie";
 
 // import { movieSer } from "../../Services/movieService";
 export default function HomePage() {
-  let { dataMovie, dataBaner } = useSelector((state) => {
+  let { dataMovie, dataBaner,dataTheater} = useSelector((state) => {
     return state.movieReducer;
   });
   const [movies, setMovies] = useState([]);
@@ -60,6 +60,19 @@ export default function HomePage() {
       dispatch(getBaner(setBanerMovie));
     }
   }, []);
+  //lay du lieu theater
+  const [movieTheater, setMovieTheater] = useState([]);
+  useEffect(() => {
+    if (dataTheater) {
+      console.log("da co du lieu movie theater");
+      setMovieTheater(dataTheater)
+    } else {
+      dispatch(getMovieTheater(setMovieTheater))
+    }
+  
+
+  }, [])
+  
   //xử lí modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -160,7 +173,7 @@ export default function HomePage() {
             dataMovieCurrent={<CarouselMovies data={renderMovieCurrent} />}
           />
         </section>{" "}
-        <TabsMovies showModal={showModal} />
+        <TabsMovies showModal={showModal} dataMovie={movieTheater} />
       </div>
     </div>
   );

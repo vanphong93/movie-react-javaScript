@@ -8,7 +8,7 @@ export const getMovieTheater = (setData) => {
       .then((res) => {
         console.log("lich chieu theo he thong", res);
         any({
-          type: "get_data_theater",
+          type: "get_theater",
           payload: res.data.content,
         });
         setData(res.data.content);

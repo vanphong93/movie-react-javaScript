@@ -1,4 +1,4 @@
-const initialState = {dataMovie:"",dataBaner:""}
+const initialState = {dataMovie:"",dataBaner:"",dataTheater:""}
 
 export const movieReducer= (state = initialState, { type, payload }) => {
   switch (type) {
@@ -9,6 +9,9 @@ export const movieReducer= (state = initialState, { type, payload }) => {
   case "get_baner":
 
     return { ...state, dataBaner:payload }
+  case "get_theater":
+
+    return { ...state, dataTheater:payload }
 
   default:
     return state

@@ -3,21 +3,21 @@ import { movieSer } from "../../../Services/movieService";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import ItemTabMovie from "./ItemTabMovie";
-export default function ({ showModal }) {
-    let dispatch=useDispatch()
-  const [dataMovie, setDataMovie] = useState([]);
-//   let{data}=useSelector((state) => { return state.tabsMovieReducer })
-  useEffect(() => {
-    movieSer
-      .getMovieByTheater()
-      .then((res) => {
-        console.log("lich chieu theo he thong", res);
-        setDataMovie(res.data.content);
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
-  }, []);
+export default function ({ showModal,dataMovie }) {
+//     let dispatch=useDispatch()
+//   const [dataMovie, setDataMovie] = useState([]);
+// //   let{data}=useSelector((state) => { return state.tabsMovieReducer })
+//   useEffect(() => {
+//     movieSer
+//       .getMovieByTheater()
+//       .then((res) => {
+//         console.log("lich chieu theo he thong", res);
+//         setDataMovie(res.data.content);
+//       })
+//       .catch((err) => {
+//         console.log("err", err);
+//       });
+//   }, []);
 
   let renderContent = () => {
     // console.log('render tab movie');

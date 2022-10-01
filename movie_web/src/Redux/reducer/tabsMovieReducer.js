@@ -1,14 +1,14 @@
 
 
-const initialState = {data:""}
+// const initialState = {data:""}
 
-export let tabsMovieReducer= (state = initialState, { type, payload }) => {
-  switch (type) {
+// export let tabsMovieReducer= (state = initialState, { type, payload }) => {
+//   switch (type) {
 
-  case "get_data_theater":
-    return { ...state, data:payload }
+//   case "get_data_theater":
+//     return { ...state, data:payload }
 
-  default:
-    return state
-  }
-}
+//   default:
+//     return state
+//   }
+// }
