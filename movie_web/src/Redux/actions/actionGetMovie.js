@@ -1,7 +1,23 @@
 // import { useDispatch } from "react-redux";
 import { movieSer } from "../../Services/movieService";
 import { setLoadingOff, setLoadingOn } from "./actionsSpiner";
-
+export const getMovieTheater = (setData) => {
+  return (any) => {
+    movieSer
+      .getMovieByTheater()
+      .then((res) => {
+        console.log("lich chieu theo he thong", res);
+        any({
+          type: "get_data_theater",
+          payload: res.data.content,
+        });
+        setData(res.data.content);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
 export const getMovie = (setMovies, dispatch) => {
   // let dispatch=useDispatch()
   dispatch(setLoadingOn());
@@ -29,7 +45,7 @@ export const getBaner = (setBanerMovie) => {
       .getBanerMovie()
       .then((res) => {
         let data_new = res.data.content;
-        console.log('kiem tra data baner ', data_new);
+        console.log("kiem tra data baner ", data_new);
         let listMaphim = res.data.content.map((item) => {
           return item.maPhim;
         });

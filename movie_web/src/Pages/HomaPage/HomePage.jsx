@@ -8,6 +8,7 @@ import CarouselMovies from "./Carousel/CarouselMovies";
 import { NavLink } from "react-router-dom";
 import Baner from "./Baner/Baner";
 import { getBaner, getMovie } from "../../redux/actions/actionGetMovie";
+
 // import { movieSer } from "../../Services/movieService";
 export default function HomePage() {
   let { dataMovie, dataBaner } = useSelector((state) => {
@@ -152,7 +153,7 @@ export default function HomePage() {
         <Baner showModal={showModal} banerMovie={banerMovie} />
       </section>
       <div className="container mx-auto">
-        {renderModal()}
+{renderModal()}
         <section className="my-5">
           <AllMovie
             dataMovieNext={<CarouselMovies data={renderMovieNext} />}

@@ -1,11 +1,13 @@
 let initalState = {
   data: "",
+isOpen:"",
 };
 export const modalReducer = (state = initalState, { type, payload }) => {
+  
   switch (type) {
     case "open_modal":
-      console.log('payload: ', payload.trailer);
-
+      // console.log('payload: ', payload.trailer);
+      // console.log('props: ', props);
       //xu li link url trailer
       let clonePayload = { ...payload };
       let index = clonePayload.trailer.lastIndexOf("/");

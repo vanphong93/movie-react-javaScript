@@ -13,9 +13,11 @@ export default function Movie({ data, showModal }) {
   let dispatch = useDispatch();
 
   let openModal = () => {
+    // console.log(123);
     dispatch({
       type: "open_modal",
       payload: data,
+
     });
     showModal();
   };

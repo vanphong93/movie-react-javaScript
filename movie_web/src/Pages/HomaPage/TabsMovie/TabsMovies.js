@@ -1,10 +1,12 @@
 import { Tabs, Button, Popover } from "antd";
 import { movieSer } from "../../../Services/movieService";
+import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import ItemTabMovie from "./ItemTabMovie";
-export default function ({}) {
-
+export default function ({ showModal }) {
+    let dispatch=useDispatch()
   const [dataMovie, setDataMovie] = useState([]);
+//   let{data}=useSelector((state) => { return state.tabsMovieReducer })
   useEffect(() => {
     movieSer
       .getMovieByTheater()
@@ -36,19 +38,21 @@ export default function ({}) {
                       <Popover placement="rightTop" content={content}>
                         {" "}
                         <p className=" truncate">{cumRap.tenCumRap}</p>
-                        <hr/>
+                        <hr />
                       </Popover>
-                      {/* <p className="truncate">{cumRap.diaChi}</p> */}
                     </div>
                   }
                   key={index}
                 >
-                  <div
-                    style={{ height: 500, overflowY: "scroll" }}
-                    className="h-45 scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-300 overflow-y-scroll scrollbar-thumb-rounded-full scrollbar-track-rounded-full"
-                  >
+                  <div style={{ height: 500, overflowY: "scroll" }}>
                     {cumRap.danhSachPhim.map((phim, index) => {
-                      return <ItemTabMovie /* showModal={showModal}  */ key={index} data={phim} />;
+                      return (
+                        <ItemTabMovie
+                          showModal={showModal}
+                          key={index}
+                          data={phim}
+                        />
+                      );
                     })}
                   </div>
                 </Tabs.TabPane>
@@ -62,11 +66,7 @@ export default function ({}) {
   return (
     <div className="p-10">
       {" "}
-      <Tabs
-        className="shadow-xl"
-        tabPosition="left"
-        defaultActiveKey="1"
-      >
+      <Tabs className="shadow-xl" tabPosition="left" defaultActiveKey="1">
         {renderContent()}
       </Tabs>
     </div>

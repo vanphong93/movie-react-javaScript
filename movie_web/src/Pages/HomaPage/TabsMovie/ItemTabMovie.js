@@ -4,7 +4,7 @@ import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { movieSer } from "../../../Services/movieService";
 import { useDispatch } from "react-redux";
-export default function ItemTabMovie({ data }) {
+export default function ItemTabMovie({ data,showModal }) {
   let dispatch = useDispatch();
   console.log("render item tabs movie");
   // let naviga = useNavigate();
@@ -19,7 +19,7 @@ export default function ItemTabMovie({ data }) {
           type: "open_modal",
           payload: newData,
         });
-        // showModal();
+        showModal();
       })
       .catch((err) => {
         console.log(err);
@@ -33,9 +33,9 @@ export default function ItemTabMovie({ data }) {
   return (
     <div className="p-1 flex">
       <img
-        // onClick={() => {
-        //   handleTrailer(data.maPhim);
-        // }}
+        onClick={() => {
+          handleTrailer(data.maPhim);
+        }}
         src={data.hinhAnh}
         className="w-36 h-48 object-fill hover:shadow-md duration-300 transition ease-in-out hover:scale-105 hover:-translate-y-1 hover:cursor-pointer"
       />
