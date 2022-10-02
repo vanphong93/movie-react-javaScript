@@ -18,9 +18,7 @@ export const movieSer = {
   getInfoMovieTheater: (id) => {
     return https.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`);
   },
+  getInfoTicket: (id) => {
+    return https.get(`/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`);
+  },
 };
-
-
-
-
-

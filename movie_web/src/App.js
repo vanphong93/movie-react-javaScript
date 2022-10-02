@@ -24,20 +24,24 @@ function App() {
               </Layout>
             }
           />
-          {/* <Route path="/login" element={<LoginPage />} /> */}
-          {/* <Route path="/register" element={<Register />} /> */}
           <Route
-           exact path="/detail/:id" 
-          //  element={<Detail/>}
-          
+            exact
+            path="/detail/:id"
             element={
               <Layout>
-              <Detail />
-               </Layout>
+                <Detail />
+              </Layout>
             }
           />
           <Route
-           exact path="/book/:id" element={<Layout><BookTicket/></Layout>}/>
+            exact
+            path="/book/:id"
+            element={
+              <Layout>
+                <BookTicket />
+              </Layout>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>
