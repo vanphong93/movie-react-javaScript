@@ -3,41 +3,35 @@ import { movieSer } from "../../../Services/movieService";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import ItemTabMovie from "./ItemTabMovie";
-export default function ({ showModal,dataMovie }) {
-//     let dispatch=useDispatch()
-//   const [dataMovie, setDataMovie] = useState([]);
-// //   let{data}=useSelector((state) => { return state.tabsMovieReducer })
-//   useEffect(() => {
-//     movieSer
-//       .getMovieByTheater()
-//       .then((res) => {
-//         console.log("lich chieu theo he thong", res);
-//         setDataMovie(res.data.content);
-//       })
-//       .catch((err) => {
-//         console.log("err", err);
-//       });
-//   }, []);
+export default function ({ showModal, dataMovie }) {
+
+  const [matches, setMatches] = useState([]);
+
+  useEffect(() => {
+    window
+      .matchMedia("(min-width: 640px)")
+      .addEventListener("change", (e) => setMatches(e.matches));
+  }, []);
 
   let renderContent = () => {
     // console.log('render tab movie');
     return dataMovie.map((item, index) => {
       return (
         <Tabs.TabPane
-          tab={<img className="w-16 h-16" src={item.logo} />}
+          tab={<img className="w-10 h-10 md:w-16 md:h-16" src={item.logo} />}
           key={index}
         >
           {" "}
-          <Tabs style={{ height: 500 }} tabPosition="left">
+          <Tabs defaultActiveKey="1" style={{ height: 500 }} tabPosition="left">
             {item.lstCumRap.map((cumRap, index) => {
               const content = <p>{cumRap.diaChi}</p>;
               return (
                 <Tabs.TabPane
                   tab={
-                    <div className="w-48 text-left">
+                    <div className="w-24 md:w-48 text-left">
                       <Popover placement="rightTop" content={content}>
                         {" "}
-                        <p className=" truncate">{cumRap.tenCumRap}</p>
+                        <p className="truncate">{cumRap.tenCumRap}</p>
                         <hr />
                       </Popover>
                     </div>
@@ -64,11 +58,16 @@ export default function ({ showModal,dataMovie }) {
     });
   };
   return (
-    <div className="p-10">
-      {" "}
-      <Tabs className="shadow-xl" tabPosition="left" defaultActiveKey="1">
+
+
+        <Tabs
+        className="shadow-xl"
+        tabPosition={matches ? "left" : "top"}
+        defaultActiveKey="1"
+      >
         {renderContent()}
       </Tabs>
-    </div>
+
+
   );
 }

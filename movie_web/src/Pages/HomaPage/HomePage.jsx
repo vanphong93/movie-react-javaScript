@@ -32,7 +32,7 @@ export default function HomePage() {
     });
     return newData.map((data, index) => {
       return (
-        <div key={index} className="p-5">
+        <div key={index} className="p-3 xl:p-5">
           <Movie showModal={showModal} data={data} />
         </div>
       );
@@ -44,7 +44,7 @@ export default function HomePage() {
     });
     return newData.map((data, index) => {
       return (
-        <div key={index} className="p-5">
+        <div key={index} className="p-2 lg:p-3 xl:p-5">
           <Movie showModal={showModal} data={data} />
         </div>
       );
@@ -104,19 +104,19 @@ export default function HomePage() {
             src={data.trailer}
           ></iframe>
         ) : (
-          <div className="flex">
+          <div className="container md:flex">
 
 
             <iframe id={data.maPhim}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen={true}
               title="myFrame"
-              className="w-1/2"
+              className="w-full md:w-1/2"
               height={450}
               frameBorder={0}
               src={data.trailer}
             ></iframe>
-            <div className="w-1/2 p-3">
+            <div className="w-full md:w-1/2 p-3">
               <h1
                 style={{ fontSize: "30px" }}
                 className="text-center text-indigo-500"

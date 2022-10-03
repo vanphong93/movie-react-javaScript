@@ -25,16 +25,52 @@ function SamplePrevArrow(props) {
   );
 }
 export default function SimpleSlider({data}) {
-  var settings = {
+  const settings = {
     // swipeToSlide:true,
      // fade: true,
     className: "",
     dots:true,
-    infinite: false,
-    slidesToShow: 5,
+    infinite: true,
+    slidesToShow:5,
     speed: 500,
     rows: 2,
+    initialSlide: 1,
     slidesToScroll: 4,
+    variableWidth: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 3,
+          initialSlide: 1,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          initialSlide: 1,
+        }
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 1,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        }
+      }
+    ],
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />
   };

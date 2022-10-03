@@ -6,7 +6,7 @@ import { movieSer } from "../../../Services/movieService";
 import { useDispatch } from "react-redux";
 export default function ItemTabMovie({ data,showModal }) {
   let dispatch = useDispatch();
-  console.log("render item tabs movie");
+//   console.log("render item tabs movie");
   // let naviga = useNavigate();
   let handleTrailer = (maPhim) => {
     console.log("maPhim: ", maPhim);
@@ -37,13 +37,16 @@ export default function ItemTabMovie({ data,showModal }) {
           handleTrailer(data.maPhim);
         }}
         src={data.hinhAnh}
-        className="w-36 h-48 object-fill hover:shadow-md duration-300 transition ease-in-out hover:scale-105 hover:-translate-y-1 hover:cursor-pointer"
+        className="w-28 h-36 sm:w-40 sm:h-52 object-fill hover:shadow-lg duration-300 transition ease-in-out hover:scale-105 hover:-translate-y-1 hover:cursor-pointer"
       />
 
       <div className="flex-grow">
-        <h1 className="mx-3">{data.tenPhim}</h1>
-        <div className="grid grid-cols-3 gap-5">
-          {data.lstLichChieuTheoPhim.slice(0, 9).map((item, index) => {
+        <h1 className="mx-1 text-sm md:mx-3 md:text-xl">{data.tenPhim}</h1>
+        <div
+        // className="grid grid-cols-1"
+        className="grid grid-cols-1 lg:grid-cols-4 md:gap-3"
+        >
+          {data.lstLichChieuTheoPhim.slice(0, 7).map((item, index) => {
             let vnd = new Intl.NumberFormat("vi-VN", {
               style: "currency",
               currency: "vnd",
@@ -57,10 +60,10 @@ export default function ItemTabMovie({ data,showModal }) {
                     onClick={() => {
                       handleTicket(item);
                     }}
-                    className="ml-3 p-3 rounded bg-red-500 text-white"
+                    className="m-1 p-2 md:ml-3 md:p-3 rounded bg-red-500 text-white"
                   >
                     {moment(item.ngayChieuGioChieu).format(
-                      "DD-MM-YY h:mm:ss a"
+                      "DD-MM-YY h:mm a"
                     )}
                   </button>
                 </Popover>
