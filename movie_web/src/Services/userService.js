@@ -7,4 +7,5 @@ export const userServ = {
   postRegister: (data) => {
     return https.post("/api/QuanLyNguoiDung/DangKy", data);
   },
+ 
 };

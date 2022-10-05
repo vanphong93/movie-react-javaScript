@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import ItemTabMovie from "./ItemTabMovie";
 export default function ({ showModal, dataMovie }) {
-
-  const [matches, setMatches] = useState([]);
+  const [matches, setMatches] = useState(
+    window.matchMedia("(min-width: 640px)").matches
+  );
 
   useEffect(() => {
     window
@@ -22,7 +23,7 @@ export default function ({ showModal, dataMovie }) {
           key={index}
         >
           {" "}
-          <Tabs defaultActiveKey="1" style={{ height: 500 }} tabPosition="left">
+          <Tabs defaultActiveKey="0" style={{ height: 500 }} tabPosition="left">
             {item.lstCumRap.map((cumRap, index) => {
               const content = <p>{cumRap.diaChi}</p>;
               return (
@@ -58,16 +59,12 @@ export default function ({ showModal, dataMovie }) {
     });
   };
   return (
-
-
-        <Tabs
-        className="shadow-xl"
-        tabPosition={matches ? "left" : "top"}
-        defaultActiveKey="1"
-      >
-        {renderContent()}
-      </Tabs>
-
-
+    <Tabs
+      className="shadow-xl"
+      tabPosition={matches ? "left" : "top"}
+      defaultActiveKey="1"
+    >
+      {renderContent()}
+    </Tabs>
   );
 }

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { localServ } from "./localService";
 
 export const BASE_URL = "https://movienew.cybersoft.edu.vn";
 export const TOKEN =
@@ -8,6 +9,7 @@ export let https = axios.create({
   baseURL: BASE_URL,
   headers: {
     TokenCybersoft: TOKEN,
+    Authorization: "Bearer " + localServ.user.get()?.accessToken,
   },
 });
 

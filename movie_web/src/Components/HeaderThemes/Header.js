@@ -52,7 +52,7 @@ export default function Header() {
     window.location.href = "/";
   };
   return (
-    <header className="px-4 fixed z-20 w-full bg-slate-50 dark:text-gray-700 shadow bg-opacity-80 ">
+    <header className="px-4 bg-opacity-10 duration-300 fixed z-20 w-full bg-slate-50 dark:text-gray-700 shadow hover:bg-opacity-80">
       <div className="container flex justify-between h-16 mx-auto">
         {/* <a
           rel="noopener noreferrer"

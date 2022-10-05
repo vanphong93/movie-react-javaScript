@@ -30,15 +30,15 @@ export default function ItemChair({ data }) {
             return (
               <td key={i}>
                 {item.daDat ? (
-                  <button className="bg-red-700 font-semibold text-white m-1  p-1 rounded opacity-50 cursor-not-allowed">
-                    X
+                  <button className="bg-red-700  text-white m-1 p-4 rounded opacity-50 cursor-not-allowed">
+                    
                   </button>
                 ) : item.isSelect ? (
                   <button
                     onClick={() => {
                       handleSelect(item, i);
                     }}
-                    className="bg-blue-500 text-white  p-1 rounded opacity-50"
+                    className="bg-green-500 text-white  p-1 rounded opacity-50"
                   >
                     {item.tenGhe}
                   </button>
@@ -49,8 +49,8 @@ export default function ItemChair({ data }) {
                     }}
                     className={
                       item.loaiGhe == "Vip"
-                        ? "bg-transparent hover:bg-yellow-500 m-1 text-yellow-700 font-semibold hover:text-white p-1 border border-yellow-500 hover:border-transparent rounded"
-                        : "bg-transparent hover:bg-blue-500 m-1 text-blue-700 font-semibold hover:text-white p-1 border border-blue-500 hover:border-transparent rounded"
+                        ? "bg-transparent hover:bg-yellow-500 m-1 text-yellow-700  hover:text-white p-1 border border-yellow-500 hover:border-transparent rounded"
+                        : "bg-transparent hover:bg-blue-500 m-1 text-blue-700  hover:text-white p-1 border border-blue-500 hover:border-transparent rounded"
                     }
                   >
                     {item.tenGhe}

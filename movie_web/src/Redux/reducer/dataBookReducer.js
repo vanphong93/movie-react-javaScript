@@ -19,9 +19,12 @@ export let dataBookReducer = (state = initialState, { type, payload }) => {
         cloneTotal.push(payload);
       } else {
         cloneTotal.splice(index,1);
-    }
-
+      }
+      
+      console.log('cloneTotal: ', cloneTotal);
       return { ...state, total: cloneTotal };
+    case "clear_total":
+      return {...state,total:[]}
     default:
       return state;
   }

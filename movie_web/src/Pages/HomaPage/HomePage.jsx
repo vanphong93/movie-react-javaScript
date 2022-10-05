@@ -7,11 +7,16 @@ import { AllMovie } from "./Carousel/AllMovie";
 import CarouselMovies from "./Carousel/CarouselMovies";
 import { NavLink } from "react-router-dom";
 import Baner from "./Baner/Baner";
-import { getBaner, getMovie, getMovieTheater } from "../../redux/actions/actionGetMovie";
+import {
+  getBaner,
+  getMovie,
+  getMovieTheater,
+} from "../../redux/actions/actionGetMovie";
+import moment from "moment";
 
 // import { movieSer } from "../../Services/movieService";
 export default function HomePage() {
-  let { dataMovie, dataBaner,dataTheater} = useSelector((state) => {
+  let { dataMovie, dataBaner, dataTheater } = useSelector((state) => {
     return state.movieReducer;
   });
   const [movies, setMovies] = useState([]);
@@ -65,14 +70,12 @@ export default function HomePage() {
   useEffect(() => {
     if (dataTheater) {
       console.log("da co du lieu movie theater");
-      setMovieTheater(dataTheater)
+      setMovieTheater(dataTheater);
     } else {
-      dispatch(getMovieTheater(setMovieTheater))
+      dispatch(getMovieTheater(setMovieTheater));
     }
-  
+  }, []);
 
-  }, [])
-  
   //xử lí modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -84,8 +87,8 @@ export default function HomePage() {
   const renderModal = () => {
     return (
       <Modal
-      // destroyOnClose={true}
-      // focusTriggerAfterClose={false}
+        // destroyOnClose={true}
+        // focusTriggerAfterClose={false}
         // mask={false}
         style={{ top: 20 }}
         width={1000}
@@ -93,10 +96,13 @@ export default function HomePage() {
         title="Trailer"
         open={isModalOpen}
         // onOk={handleOk}
-        onCancel={() => { handleCancel(data.maPhim) }}
+        onCancel={() => {
+          handleCancel(data.maPhim);
+        }}
       >
         {data.baner ? (
-          <iframe id={data.maPhim}
+          <iframe
+            id={data.maPhim}
             allowFullScreen={true}
             title="myFrame"
             className="w-full"
@@ -105,10 +111,9 @@ export default function HomePage() {
           ></iframe>
         ) : (
           <div className="container md:flex">
-
-
-            <iframe id={data.maPhim}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            <iframe
+              id={data.maPhim}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen={true}
               title="myFrame"
               className="w-full md:w-1/2"
@@ -124,20 +129,20 @@ export default function HomePage() {
                 {data.tenPhim}
               </h1>
               <p>{data.moTa}</p>
-              {data.isSearch ? (
-                ""
-              ) : (
-                <NavLink to={`/detail/${data.maPhim}`}>
-                  {" "}
-                  <button className="bg-transparent hover:bg-yellow-500 text-yellow-700 font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded">
-                    Mua vé
-                  </button>
-                </NavLink>
-              )}
-              <h2>
-                Điểm đánh giá:{" "}
-                <Rate disabled allowHalf defaultValue={data.danhGia / 2} />
-              </h2>
+              <p className="font-semibold">
+                Ngày chiếu {moment(data.ngayChieuGioChieu).format("DD-MM-YYYY")}
+                <br />
+                Time: {(Math.floor(Math.random() * 5) + 2) * 30} phút
+              </p>
+
+              <Rate disabled allowHalf defaultValue={data.danhGia / 2} />
+
+              <NavLink to={`/detail/${data.maPhim}`}>
+                {" "}
+                <button className="bg-transparent hover:bg-yellow-500 text-yellow-700 font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded">
+                  Mua vé
+                </button>
+              </NavLink>
             </div>
           </div>
         )}
@@ -151,23 +156,23 @@ export default function HomePage() {
       //   var iframeSrc = item.src;
       //   item.src = iframeSrc;
       // });
-     var iframe= document.getElementById(id);
-    //  iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-    //  console.log('iframe: ', iframe);
-    //  var anyURL=iframe.src;
-     iframe.src=iframe.src
+      var iframe = document.getElementById(id);
+      //  iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+      //  console.log('iframe: ', iframe);
+      //  var anyURL=iframe.src;
+      iframe.src = iframe.src;
     };
     stopVideo();
     setIsModalOpen(false);
   };
   return (
     <div className="space-y-10 ">
-      <section className="pt-16">
+      <section className="pt-16 mb-12">
         <Baner showModal={showModal} banerMovie={banerMovie} />
       </section>
       <div className="container mx-auto">
-{renderModal()}
-        <section className="my-5">
+        {renderModal()}
+        <section className="mb-8">
           <AllMovie
             dataMovieNext={<CarouselMovies data={renderMovieNext} />}
             dataMovieCurrent={<CarouselMovies data={renderMovieCurrent} />}

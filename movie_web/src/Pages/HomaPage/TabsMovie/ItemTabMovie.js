@@ -40,8 +40,8 @@ export default function ItemTabMovie({ data,showModal }) {
         className="w-28 h-36 sm:w-40 sm:h-52 object-fill hover:shadow-lg duration-300 transition ease-in-out hover:scale-105 hover:-translate-y-1 hover:cursor-pointer"
       />
 
-      <div className="flex-grow">
-        <h1 className="mx-1 text-sm md:mx-3 md:text-xl">{data.tenPhim}</h1>
+      <div className="flex-grow text-center">
+        <h1 className="text-sm md:mx-3 md:text-xl">{data.tenPhim}</h1>
         <div
         // className="grid grid-cols-1"
         className="grid grid-cols-1 lg:grid-cols-4 md:gap-3"
