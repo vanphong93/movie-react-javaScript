@@ -7,5 +7,13 @@ export const userServ = {
   postRegister: (data) => {
     return https.post("/api/QuanLyNguoiDung/DangKy", data);
   },
- 
+ postUserInfo:() => { return https.post("/api/QuanLyNguoiDung/ThongTinTaiKhoan") }
 };
+
+
+
+
+
+// getInfoTicket: (id) => {
+//   return https.get(`/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`);
+// },

@@ -10,6 +10,7 @@ import Layout from "./Layout/Layout";
 import Spiner from "./Components/Spiner/Spiner";
 import Register from "./Components/HeaderThemes/Register";
 import BookTicket from "./Pages/BuyTicket/BookTicket";
+import UserInfo from "./Pages/UserInfor/UserInfo";
 function App() {
   return (
     <div>
@@ -39,6 +40,15 @@ function App() {
             element={
               <Layout>
                 <BookTicket />
+              </Layout>
+            }
+          />
+          <Route
+            exact
+            path="/user"
+            element={
+              <Layout>
+                <UserInfo/>
               </Layout>
             }
           />

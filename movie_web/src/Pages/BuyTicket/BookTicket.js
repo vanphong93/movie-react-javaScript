@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { message } from "antd";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { movieSer } from "../../Services/movieService";
 import { useDispatch } from "react-redux";
 import { setLoadingOff, setLoadingOn } from "../../redux/actions/actionsSpiner";
 import Table from "./Table";
 
 export default function BookTicket() {
+  let navigate = useNavigate();
 
-  // if (window.history.back) {
-  //   alert(123);
-  // }
-  // let oldLength=history.length;
-  // console.log('oldLength: ', oldLength);
-  // window.history.back(() => {
-  //   console.log("back");
-  //  })
   let dispatch = useDispatch();
   let totalMoney = useSelector((state) => {
     return state.dataBookReducer.total;
@@ -25,24 +18,32 @@ export default function BookTicket() {
     return state.userReducer.user;
   });
   const handleBuy = (dataTicket, idTicket) => {
+    let data = {
+      maLichChieu: idTicket,
+      danhSachVe: dataTicket,
+    };
     if (newUser) {
-      let data = {
-        maLichChieu: idTicket,
-        danhSachVe: dataTicket,
-      };
-      console.log("data: ", data);
-      movieSer
-        .postTicket(data)
-        .then((res) => {
-          console.log(res);
-          message.success("Chúc mừng bạn đặt vé thành công");
-          dispatch({
-            type: "clear_total",
+      if (data.danhSachVe.length == 0) {
+        message.error("Bạn chưa chọn vé, xin kiểm tra");
+      } else {
+        movieSer
+          .postTicket(data)
+          .then((res) => {
+            console.log(res);
+            let text = "Bạn có muốn chuyển sang thông tin";
+            onclose = () => {
+              if (window.confirm(text) == true) {
+                navigate("/user");
+              } else {
+                window.location.reload();
+              }
+            };
+            message.success("Chúc mừng bạn đặt vé thành công", 1, onclose);
+          })
+          .catch((err) => {
+            console.log(err);
           });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      }
     } else {
       message.error("Bạn cần đăng nhập để mua vé");
     }
