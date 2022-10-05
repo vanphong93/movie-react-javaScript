@@ -70,18 +70,22 @@ export default function Header() {
     <Menu
       items={[
         {
-          label: <Link to={"/user"}>Thông tin người dùng</Link>,
+          label: <Link to={"/"}>Trang chủ</Link>,
           key: "0",
         },
         {
-          label: <span>Cập nhật</span>,
+          label: <Link to={"/user#info"}>Thông tin và cập nhật</Link>,
           key: "1",
         },
         {
           type: "divider",
         },
         {
-          label: <span onClick={handleLogout}>Log out</span>,
+          label: (
+            <a className="font-semibold" onClick={handleLogout}>
+              Log out
+            </a>
+          ),
           key: "3",
         },
       ]}
@@ -110,10 +114,17 @@ export default function Header() {
           <li className="flex">
             <a
               rel="noopener noreferrer"
-              href="#"
+              href="/"
               className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400"
             >
-              Link
+              <svg
+                className="w-6 h-6"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+              </svg>
             </a>
           </li>
         </ul>
@@ -121,10 +132,14 @@ export default function Header() {
           {newUser ? (
             <>
               <span className="mx-4">Xin chào {newUser.hoTen}</span>
-              <Dropdown overlay={menu} trigger={["click"]}>
+              <Dropdown overlay={menu}>
                 <a onClick={(e) => e.preventDefault()}>
                   <Space>
-                    Click me
+                    <img
+                      className="w-10 h-12 rounded-xl "
+                      src="https://picsum.photos/200/300?random=1"
+                      alt="avatar"
+                    />
                     <DownOutlined />
                   </Space>
                 </a>

@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import { Button, Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import App from "./FormUser";
-export default function ModalHeader({data}) {
+export default function ModalUpdateUser({data}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
 // console.log('data modal: ', dataModal);

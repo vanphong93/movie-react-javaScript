@@ -16,6 +16,7 @@ import moment from "moment";
 
 // import { movieSer } from "../../Services/movieService";
 export default function HomePage() {
+
   let { dataMovie, dataBaner, dataTheater } = useSelector((state) => {
     return state.movieReducer;
   });

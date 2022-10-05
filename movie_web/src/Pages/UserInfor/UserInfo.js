@@ -2,48 +2,24 @@ import moment from "moment";
 import React, { useEffect, useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 // import { App } from "../../Components/HeaderThemes/Header";
-import ModalHeader from "./ModalUpdateUser";
+import ModalUpdateUser from "./ModalUpdateUser";
 import { userServ } from "../../Services/userService";
 import TabsUser from "./TabsUser";
 
 export default function UserInfo() {
-  // let dispatch=useDispatch()
   const [dataTicket, setDataTicket] = useState();
 
-  // let { user } = useSelector((state) => {
-  //   return state.userReducer;
-  // });
-  // console.log("user: ", user.taiKhoan);
   useEffect(() => {
     userServ
       .postUserInfo()
       .then((res) => {
-        // // dataTicketUser=res.data.content.thongTinDatVE
-        console.log("dataTicketUser: ", res.data.content);
-        // // console.log("lay user",res);
-        // dispatch({
-        //   type:"info_update",
-        //   even:"Update",
-        //   payload:res.data.content,
-        // })
         setDataTicket(res.data.content);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-  // let renderContent = () => {
-  //   if (dataTicket == undefined) {
-  //     return <></>;
-  //   } else {
-  //     console.log("codulieu: ", dataTicket);
-  //     return dataTicket.thongTinDatVe.map((item, i) => {
-  //       return (
-  //         <img className=" w-36 h-44 " key={i} src={item.hinhAnh} alt="iamge" />
-  //       );
-  //     });
-  //   }
-  // };
+
   let renderChairInfo = (item) => {
     return item.danhSachGhe.map((item, i) => {
       return (
@@ -95,9 +71,7 @@ export default function UserInfo() {
           </p>
           <p>Hạng:{maNhom == "GP00" ? "Bạc" : "Đồng"}</p>
 
-          <ModalHeader data={dataTicket} />
-          {/* <Link href="#register">check</Link> */}
-          {/* <button  className="rounded p-2 text-teal-50 bg-green-500">Cập nhật</button> */}
+          <ModalUpdateUser data={dataTicket} />
         </>
       );
     }
