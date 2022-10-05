@@ -1,12 +1,15 @@
 import React,{useState} from "react";
 import { Button, Modal } from "antd";
-export default function ModalHeader() {
+import { useDispatch, useSelector } from "react-redux";
+import App from "./FormUser";
+export default function ModalHeader({data}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+// console.log('data modal: ', dataModal);
+// let dispatch=useDispatch()
   const showModal = () => {
     setIsModalOpen(true);
   };
-
   const handleOk = () => {
     setIsModalOpen(false);
   };
@@ -18,17 +21,16 @@ export default function ModalHeader() {
   return (
     <>
       <Button type="primary" onClick={showModal}>
-        Open Modal
+Update
       </Button>
       <Modal
+      footer={false}
         title="Basic Modal"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <App data={data}/>
       </Modal>
     </>
   );

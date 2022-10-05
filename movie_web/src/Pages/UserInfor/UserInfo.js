@@ -1,12 +1,13 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { App } from "../../Components/HeaderThemes/Header";
-import ModalHeader from "../../Components/HeaderThemes/ModalHeader";
+// import { useDispatch, useSelector } from "react-redux";
+// import { App } from "../../Components/HeaderThemes/Header";
+import ModalHeader from "./ModalUpdateUser";
 import { userServ } from "../../Services/userService";
 import TabsUser from "./TabsUser";
 
 export default function UserInfo() {
+  // let dispatch=useDispatch()
   const [dataTicket, setDataTicket] = useState();
 
   // let { user } = useSelector((state) => {
@@ -20,6 +21,11 @@ export default function UserInfo() {
         // // dataTicketUser=res.data.content.thongTinDatVE
         console.log("dataTicketUser: ", res.data.content);
         // // console.log("lay user",res);
+        // dispatch({
+        //   type:"info_update",
+        //   even:"Update",
+        //   payload:res.data.content,
+        // })
         setDataTicket(res.data.content);
       })
       .catch((err) => {
@@ -74,7 +80,8 @@ export default function UserInfo() {
   };
   let renderUser = () => {
     if (dataTicket) {
-      let { email, hoTen, matKhau, soDT, taiKhoan } = dataTicket;
+      let { email, hoTen, matKhau, soDT, taiKhoan, maLoaiNguoiDung, maNhom } =
+        dataTicket;
       return (
         <>
           <p>Tên: {hoTen}</p>
@@ -82,7 +89,13 @@ export default function UserInfo() {
           <p>Mật khẩu: {matKhau}</p>
           <p>Số điện thoại: {soDT}</p>
           <p>Email: {email}</p>
-<ModalHeader/>
+          <p>
+            Người dùng:
+            {maLoaiNguoiDung == "KhachHang" ? "Khách Hàng" : "Quản Trị"}
+          </p>
+          <p>Hạng:{maNhom == "GP00" ? "Bạc" : "Đồng"}</p>
+
+          <ModalHeader data={dataTicket} />
           {/* <Link href="#register">check</Link> */}
           {/* <button  className="rounded p-2 text-teal-50 bg-green-500">Cập nhật</button> */}
         </>
