@@ -13,10 +13,10 @@ import {
   getMovieTheater,
 } from "../../redux/actions/actionGetMovie";
 import moment from "moment";
+import LoremSplice from "./LoremSplice";
 
 // import { movieSer } from "../../Services/movieService";
 export default function HomePage() {
-
   let { dataMovie, dataBaner, dataTheater } = useSelector((state) => {
     return state.movieReducer;
   });
@@ -82,15 +82,18 @@ export default function HomePage() {
   const showModal = () => {
     setIsModalOpen(true);
   };
+  // const handleOk = () => {
+  //   setIsModalOpen(false);
+  // };
   let { data } = useSelector((state) => {
     return state.modalReducer;
   });
   const renderModal = () => {
     return (
       <Modal
-        // destroyOnClose={true}
-        // focusTriggerAfterClose={false}
-        // mask={false}
+      // closable={true}
+        destroyOnClose={true}
+        mask={false}
         style={{ top: 20 }}
         width={1000}
         footer={null}
@@ -98,7 +101,7 @@ export default function HomePage() {
         open={isModalOpen}
         // onOk={handleOk}
         onCancel={() => {
-          handleCancel(data.maPhim);
+          handleCancel();
         }}
       >
         {data.baner ? (
@@ -129,7 +132,8 @@ export default function HomePage() {
               >
                 {data.tenPhim}
               </h1>
-              <p>{data.moTa}</p>
+              <LoremSplice data={data.moTa} />
+              {/* <p>{data.moTa}</p> */}
               <p className="font-semibold">
                 Ngày chiếu {moment(data.ngayChieuGioChieu).format("DD-MM-YYYY")}
                 <br />
@@ -150,27 +154,29 @@ export default function HomePage() {
       </Modal>
     );
   };
-  const handleCancel = (id) => {
-    let stopVideo = () => {
-      // var iframe = document.querySelectorAll("iframe");
-      // iframe.forEach((item) => {
-      //   var iframeSrc = item.src;
-      //   item.src = iframeSrc;
-      // });
-      var iframe = document.getElementById(id);
-      //  iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-      //  console.log('iframe: ', iframe);
-      //  var anyURL=iframe.src;
-      iframe.src = iframe.src;
-    };
-    stopVideo();
+
+  const handleCancel = () => {
+    // let stopVideo = () => {
+    //   // var iframe = document.querySelectorAll("iframe");
+    //   // iframe.forEach((item) => {
+    //   //   var iframeSrc = item.src;
+    //   //   item.src = iframeSrc;
+    //   // });
+    //   var iframe = document.getElementById(id);
+    //   //  iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+    //   //  console.log('iframe: ', iframe);
+    //   //  var anyURL=iframe.src;
+    //   iframe.src = iframe.src;
+    // };
+    // stopVideo();
     setIsModalOpen(false);
   };
   return (
     <div className="space-y-10 ">
-      <section className="pt-16 mb-12">
+      <section className="mb-12">
         <Baner showModal={showModal} banerMovie={banerMovie} />
       </section>
+
       <div className="container mx-auto">
         {renderModal()}
         <section className="mb-8">
@@ -179,6 +185,12 @@ export default function HomePage() {
             dataMovieCurrent={<CarouselMovies data={renderMovieCurrent} />}
           />
         </section>{" "}
+        {/* <iframe className="mx-auto" src="https://zingnews.vn/phim-anh.html" allowFullScreen scrolling="no" width={1000} height={500} frameborder="0" sandbox></iframe> */}
+        {/* <div>tin tuc</div> */}
+        {/* <iframe
+          src="https://tienphong.vn/nguoi-dep-lao-bi-che-lan-luot-o-hoa-hau-hoa-binh-post1475334.tpo"
+          frameborder="0" width={"1000"}
+        ></iframe> */}
         <TabsMovies showModal={showModal} dataMovie={movieTheater} />
       </div>
     </div>

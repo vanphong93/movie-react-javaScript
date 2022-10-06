@@ -93,7 +93,7 @@ export default function Header() {
   );
   return (
     <header className="px-4 bg-opacity-10 duration-300 fixed z-20 w-full bg-slate-50 dark:text-gray-700 shadow hover:bg-opacity-80">
-      <div className="container flex justify-between h-16 mx-auto">
+      <div className="container flex justify-between h-12 mx-auto">
         {/* <a
           rel="noopener noreferrer"
           href="#"
@@ -131,13 +131,13 @@ export default function Header() {
         <div className="items-center flex-shrink-0 hidden lg:flex">
           {newUser ? (
             <>
-              <span className="mx-4">Xin chào {newUser.hoTen}</span>
+              <span className="font-semibold text-emerald-500">Xin chào {newUser.hoTen}</span>
               <Dropdown overlay={menu}>
                 <a onClick={(e) => e.preventDefault()}>
                   <Space>
                     <img
-                      className="w-10 h-12 rounded-xl "
-                      src="https://picsum.photos/200/300?random=1"
+                      className="w-10 h-12 rounded-full"
+                      src="https://i.pravatar.cc/100"
                       alt="avatar"
                     />
                     <DownOutlined />

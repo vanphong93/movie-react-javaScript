@@ -123,7 +123,7 @@ export default function Baner({ showModal,banerMovie }) {
 
           <img
             className="active:cursor-grabbing"
-            style={{ height: "70vh", width: "100vw" }}
+            style={{ height: "80vh", width: "100vw" }}
             src={item.hinhAnh}
             alt={`baner-${index}`}
           />
@@ -132,7 +132,7 @@ export default function Baner({ showModal,banerMovie }) {
     });
   };
   return (
-    <div className="container mx-auto">
+    <div className="">
       {/* <h2>Append Dots</h2> */}
       <Slider {...settings}>{renderBaner()}</Slider>
     </div>
