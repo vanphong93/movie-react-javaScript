@@ -19,7 +19,7 @@ export default function LoremSplice({ data }) {
       {arrayData.splice(0, lorem)}
       {lorem < data.split("").length ? (
         <span
-          className="text-purple-300 hover:cursor-pointer"
+          className="hover:text-red-300 hover:cursor-pointer"
           onClick={() => {
             addRemoveLorem("add");
           }}
@@ -29,7 +29,7 @@ export default function LoremSplice({ data }) {
         </span>
       ) : data.split("").length > 250 ? (
         <span
-          className="text-purple-300 hover:cursor-pointer"
+          className="hover:text-red-300 hover:cursor-pointer"
           onClick={() => {
             addRemoveLorem("remove");
           }}

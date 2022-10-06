@@ -7,6 +7,7 @@ import { AllMovie } from "./Carousel/AllMovie";
 import CarouselMovies from "./Carousel/CarouselMovies";
 import { NavLink } from "react-router-dom";
 import Baner from "./Baner/Baner";
+import "./modalVideo.css";
 import {
   getBaner,
   getMovie,
@@ -91,9 +92,9 @@ export default function HomePage() {
   const renderModal = () => {
     return (
       <Modal
-      // closable={true}
+        // closable={true}
         destroyOnClose={true}
-        mask={false}
+        // mask={false}
         style={{ top: 20 }}
         width={1000}
         footer={null}
