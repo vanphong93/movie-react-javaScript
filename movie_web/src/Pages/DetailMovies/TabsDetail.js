@@ -2,6 +2,7 @@ import { Popover, Tabs } from "antd";
 import moment from "moment";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import ItemTabMovie from "../HomaPage/TabsMovie/ItemTabMovie";
 
 export const TabsDetail = ({ data }) => {
   let { heThongRapChieu } = data;
@@ -11,26 +12,37 @@ export const TabsDetail = ({ data }) => {
     console.log(data);
     // alert(234)
   };
-  const renderTimeMovie = (data) => (
-    <div className="grid grid-cols-3 gap-5">
-      {data.lichChieuPhim.slice(0,9).map((item, i) => {
-        return (
-          <NavLink to={`/book/${item.maLichChieu}`} key={i}>
-            <button
-              onClick={() => {
-                handleTicket(item);
-              }}
-              className="ml-3 p-3 rounded bg-red-500 text-white"
-            >
-              {moment(item.ngayChieuGioChieu).format("DD-MM-YY h:mm:ss a")}
-            </button>
-          </NavLink>
-        );
-      })}
-    </div>
-  );
+  const renderTimeMovie = (data) => {
+    let vnd = new Intl.NumberFormat("vi-VN", {
+      style: "currency",
+      currency: "vnd",
+    }).format(data.lichChieuPhim[0].giaVe);
+    let content = <span>{vnd}</span>;
 
-  const renderTabChildern = (data) => {
+    // console.log('data: item ', data.lichChieuPhim[0].giaVe);
+    return (
+      <div className="grid grid-cols-3 gap-5">
+        {data.lichChieuPhim.slice(0, 9).map((item, i) => {
+          return (
+            <NavLink to={`/book/${item.maLichChieu}`} key={i}>
+              <Popover placement="rightTop" content={content}>
+                <button
+                  onClick={() => {
+                    handleTicket(item);
+                  }}
+                  className="ml-3 p-3 rounded bg-red-500 text-white"
+                >
+                  {moment(item.ngayChieuGioChieu).format("DD-MM-YY h:mm:ss a")}
+                </button>
+              </Popover>
+            </NavLink>
+          );
+        })}
+      </div>
+    );
+  };
+
+  const renderTabChildren = (data) => {
     return (
       <div>
         <Tabs
@@ -40,7 +52,7 @@ export const TabsDetail = ({ data }) => {
             height: 420,
           }}
           items={data.map((item, i) => {
-            const content = <p>{item.diaChi}</p>;
+            const content = <span>{item.diaChi}</span>;
             return {
               label: (
                 <>
@@ -54,6 +66,7 @@ export const TabsDetail = ({ data }) => {
               ),
               key: i,
               children: renderTimeMovie(item),
+              // children: <ItemTabMovie data={data}/>,
             };
           })}
         />
@@ -84,31 +97,32 @@ export const TabsDetail = ({ data }) => {
       </div>
 
       <div className="p-10 text-blue-700 ">
-       {heThongRapChieu? <Tabs
-          className="shadow-xl"
-          defaultActiveKey="1"
-          tabPosition={"left"}
-          style={{
-            height:"auto",
-          }}
-          items={
-            heThongRapChieu.map((item, i) => {
-                  return {
-                    label: (
-                      <img
-                        className="w-16 h-16"
-                        // style={{ height: "50px" }}
-                        src={item.logo}
-                        alt="image"
-                      />
-                    ),
-                    key: i,
-                    children: <>{renderTabChildern(item.cumRapChieu)}</>,
-                  };
-                })
-              
-          }
-        />:""}
+        {heThongRapChieu && heThongRapChieu.length != 0 ? (
+          <Tabs
+            className="shadow-xl"
+            defaultActiveKey="1"
+            tabPosition={"left"}
+            style={{
+              height: "auto",
+            }}
+            items={heThongRapChieu.map((item, i) => {
+              return {
+                label: (
+                  <img
+                    className="w-16 h-16"
+                    // style={{ height: "50px" }}
+                    src={item.logo}
+                    alt="image"
+                  />
+                ),
+                key: i,
+                children: <>{renderTabChildren(item.cumRapChieu)}</>,
+              };
+            })}
+          />
+        ) : (
+          <h1 className="text-center text-2xl text-red-300">Hệ thống đang cập nhật</h1>
+        )}
       </div>
     </div>
   );

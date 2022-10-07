@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import { Button, Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import App from "./FormUser";
+import FormUpdateUser from "./FormUser";
 export default function ModalUpdateUser({data}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -30,7 +30,7 @@ Update
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <App data={data}/>
+        <FormUpdateUser data={data}/>
       </Modal>
     </>
   );

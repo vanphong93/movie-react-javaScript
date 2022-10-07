@@ -7,7 +7,7 @@ export default function Spiner() {
     return state.spinerReducer;
   });
   return isLoading?
-  <div className="h-screen w-screen fixed left-0 top-0 bg-black flex justify-center items-center z-10">
+  <div className="h-screen w-screen fixed left-0 top-0 bg-black flex justify-center items-center z-30">
   <HashLoader
 size={100} color="#ffb703" />
 </div>

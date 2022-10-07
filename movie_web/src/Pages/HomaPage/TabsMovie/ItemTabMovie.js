@@ -51,7 +51,7 @@ export default function ItemTabMovie({ data,showModal }) {
               style: "currency",
               currency: "vnd",
             }).format(item.giaVe);
-            let content = <p>{vnd} </p>;
+            let content = <span>{vnd} </span>;
             return (
               <NavLink to={`/book/${item.maLichChieu}`} key={index}>
                 <Popover placement="rightTop" content={content}>

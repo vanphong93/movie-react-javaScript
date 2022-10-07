@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Movie from "./CardMovie";
+import Movie from "./Carousel/CardMovie";
 import { Modal, Rate } from "antd";
 import TabsMovies from "./TabsMovie/TabsMovies";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,7 +26,7 @@ export default function HomePage() {
   //Xử lí lấy dữ liệu all film
   useEffect(() => {
     if (dataMovie) {
-      console.log("da co data");
+      
       setMovies(dataMovie);
     } else {
       dispatch(getMovie(setMovies, dispatch));
@@ -61,7 +61,7 @@ export default function HomePage() {
   const [banerMovie, setBanerMovie] = useState([]);
   useEffect(() => {
     if (dataBaner) {
-      console.log("da co du lieu baner");
+      
       setBanerMovie(dataBaner);
     } else {
       dispatch(getBaner(setBanerMovie));
@@ -71,7 +71,7 @@ export default function HomePage() {
   const [movieTheater, setMovieTheater] = useState([]);
   useEffect(() => {
     if (dataTheater) {
-      console.log("da co du lieu movie theater");
+      
       setMovieTheater(dataTheater);
     } else {
       dispatch(getMovieTheater(setMovieTheater));
@@ -90,6 +90,7 @@ export default function HomePage() {
     return state.modalReducer;
   });
   const renderModal = () => {
+    
     return (
       <Modal
         // closable={true}
@@ -157,42 +158,28 @@ export default function HomePage() {
   };
 
   const handleCancel = () => {
-    // let stopVideo = () => {
-    //   // var iframe = document.querySelectorAll("iframe");
-    //   // iframe.forEach((item) => {
-    //   //   var iframeSrc = item.src;
-    //   //   item.src = iframeSrc;
-    //   // });
-    //   var iframe = document.getElementById(id);
-    //   //  iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-    //   //  console.log('iframe: ', iframe);
-    //   //  var anyURL=iframe.src;
-    //   iframe.src = iframe.src;
-    // };
-    // stopVideo();
     setIsModalOpen(false);
   };
   return (
     <div className="space-y-10 ">
-      <section className="mb-12">
+      <section className="mb-15">
         <Baner showModal={showModal} banerMovie={banerMovie} />
       </section>
 
-      <div className="container mx-auto">
+      <div className="container mx-auto" id="filmHot">
         {renderModal()}
-        <section className="mb-8">
+        <section className="mb-14">
           <AllMovie
             dataMovieNext={<CarouselMovies data={renderMovieNext} />}
             dataMovieCurrent={<CarouselMovies data={renderMovieCurrent} />}
           />
         </section>{" "}
-        {/* <iframe className="mx-auto" src="https://zingnews.vn/phim-anh.html" allowFullScreen scrolling="no" width={1000} height={500} frameborder="0" sandbox></iframe> */}
-        {/* <div>tin tuc</div> */}
-        {/* <iframe
-          src="https://tienphong.vn/nguoi-dep-lao-bi-che-lan-luot-o-hoa-hau-hoa-binh-post1475334.tpo"
-          frameborder="0" width={"1000"}
-        ></iframe> */}
-        <TabsMovies showModal={showModal} dataMovie={movieTheater} />
+        <section id="cinemax" className="">
+          <h1 className="text-center text-purple-500 text-6xl mb-12 hover:animate-pulse ">
+            Rạp Cinemax
+          </h1>
+          <TabsMovies showModal={showModal} dataMovie={movieTheater} />
+        </section>
       </div>
     </div>
   );

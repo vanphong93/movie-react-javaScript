@@ -123,7 +123,7 @@ export default function Baner({ showModal,banerMovie }) {
 
           <img
             className="active:cursor-grabbing"
-            style={{ height: "80vh", width: "100vw" }}
+            style={{ height: "75vh", width: "100vw" }}
             src={item.hinhAnh}
             alt={`baner-${index}`}
           />

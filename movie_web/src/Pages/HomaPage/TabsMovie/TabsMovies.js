@@ -25,7 +25,7 @@ export default function ({ showModal, dataMovie }) {
           {" "}
           <Tabs defaultActiveKey="0" style={{ height: 500 }} tabPosition="left">
             {item.lstCumRap.map((cumRap, index) => {
-              const content = <p>{cumRap.diaChi}</p>;
+              const content = <span>{cumRap.diaChi}</span>;
               return (
                 <Tabs.TabPane
                   tab={
@@ -39,7 +39,7 @@ export default function ({ showModal, dataMovie }) {
                   }
                   key={index}
                 >
-                  <div style={{ height: 500, overflowY: "scroll" }}>
+                  <div style={{ height: 530, overflowY: "auto" }}>
                     {cumRap.danhSachPhim.map((phim, index) => {
                       return (
                         <ItemTabMovie

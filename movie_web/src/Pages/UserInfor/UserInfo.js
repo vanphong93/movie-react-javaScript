@@ -7,6 +7,7 @@ import { userServ } from "../../Services/userService";
 import TabsUser from "./TabsUser";
 
 export default function UserInfo() {
+
   const [dataTicket, setDataTicket] = useState();
 
   useEffect(() => {
@@ -16,7 +17,7 @@ export default function UserInfo() {
         setDataTicket(res.data.content);
       })
       .catch((err) => {
-        console.log(err);
+        
       });
   }, []);
 

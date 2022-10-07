@@ -1,36 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-// import axios from "axios";
-// import { TOKEN } from "../../services/configURL";
+import { useParams,useResolvedPath } from "react-router-dom";
+
 import { movieSer } from "../../Services/movieService";
-// import TabsMovies from "../HomaPage/TabsMovies";
-// import ItemTabMovie from "../HomaPage/ItemTabMovie";
+
 import { TabsDetail } from "./TabsDetail";
-import {useDispatch} from 'react-redux'
+import { useDispatch } from "react-redux";
 import { setLoadingOff, setLoadingOn } from "../../redux/actions/actionsSpiner";
 export default function Detail() {
-  let dispatch=useDispatch()
+// let history=useResolvedPath()
+// 
+
+  let dispatch = useDispatch();
   const { id } = useParams();
   const [detail, setDetail] = useState([]);
   useEffect(() => {
-    dispatch(setLoadingOn())
+
+
+    dispatch(setLoadingOn());
     movieSer
       .getInfoMovieTheater(id)
       .then((res) => {
-        console.log("detail film", res.data.content);
+        
         setDetail(res.data.content);
-        dispatch(setLoadingOff())
+        dispatch(setLoadingOff());
       })
       .catch((err) => {
-        console.log("err", err);
-        dispatch(setLoadingOn())
+        
+        dispatch(setLoadingOn());
       });
-  }, []);
+  }, [id]);
 
   return (
     <div className="">
-      {/* <img style={{ height: 200 }} src={detail.hinhAnh} alt="image" /> */}
-    <TabsDetail data={detail}/>
+      <TabsDetail data={detail} />
     </div>
   );
 }
