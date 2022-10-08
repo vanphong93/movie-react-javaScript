@@ -60,8 +60,8 @@ export default function ({ showModal, dataMovie }) {
     });
   };
   return (
-    <Tabs
-      className="shadow-xl"
+    <Tabs 
+      className="shadow-xl font-semibold"
       tabPosition={matches ? "left" : "top"}
       defaultActiveKey="1"
     >

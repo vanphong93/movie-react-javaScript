@@ -1,33 +1,34 @@
 import { Popover, Tabs } from "antd";
 import moment from "moment";
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, NavLink } from "react-router-dom";
 import TextSplice, { MediaCardIcon, moneyFormat } from "../../Utilities/Icon";
-import LoremSplice from "../HomaPage/LoremSplice";
-import ItemTabMovie from "../HomaPage/TabsMovie/ItemTabMovie";
 
 export const TabsDetail = ({ data }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   let { heThongRapChieu } = data;
   console.log("data: ", data);
 
-  let handleTicket = (data) => {
-    // naviga("/login")
-    console.log(data);
-    // alert(234)
-  };
+  // let handleTicket = (data) => {
+  //   // naviga("/login")
+  //   console.log(data);
+  //   // alert(234)
+  // };
   const renderTimeMovie = (data) => {
     let content = <span>{moneyFormat(data.lichChieuPhim[0].giaVe)}</span>;
 
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-4 md:gap-3">
+      <div className="grid grid-cols-1 gap-2 lg:grid-cols-4 md:gap-3">
         {data.lichChieuPhim.slice(0, 9).map((item, i) => {
           return (
             <NavLink to={`/book/${item.maLichChieu}`} key={i}>
               <Popover placement="rightTop" content={content}>
                 <button
-                  onClick={() => {
-                    handleTicket(item);
-                  }}
+                  // onClick={() => {
+                  //   handleTicket(item);
+                  // }}
                   className="ml-3 p-1 md:p-3 rounded bg-red-500 duration-300 hover:bg-red-700 text-white"
                 >
                   {moment(item.ngayChieuGioChieu).format("DD-MM-YY h:mm:ss a")}
@@ -96,7 +97,7 @@ export const TabsDetail = ({ data }) => {
       <div className="p-2 md:p-10 text-blue-700 ">
         {heThongRapChieu && heThongRapChieu.length != 0 ? (
           <Tabs
-            className="shadow-xl"
+            className="shadow-xl font-semibold"
             defaultActiveKey="1"
             tabPosition={"left"}
             style={{
@@ -118,9 +119,13 @@ export const TabsDetail = ({ data }) => {
             })}
           />
         ) : (
-          <h1 className="text-center text-2xl text-red-300">
-            Hệ thống đang cập nhật
-          </h1>
+          <div className="h-72 text-center">
+            <Link to={"/"}>
+              <span className="hover:cursor-pointer duration-300 hover:text-blue-500 text-blue-300 text-3xl ">
+                Hệ thống đang cập nhật
+              </span>
+            </Link>
+          </div>
         )}
       </div>
     </div>

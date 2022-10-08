@@ -25,6 +25,7 @@ import {
   CalendarIcon,
   HomeIcon,
   LoginIcon,
+  LogOutIcon,
   RegisterIcon,
   TheaterIcon,
 } from "../../Utilities/Icon";
@@ -111,7 +112,7 @@ export default function Header() {
         {
           label: (
             <a className="font-semibold" onClick={handleLogout}>
-              Log out
+            <LogOutIcon/>
             </a>
           ),
           key: "4",
@@ -123,9 +124,9 @@ export default function Header() {
   // <header className="px-4 scr bg-opacity-5 duration-300 fixed z-20 w-full bg-slate-50 dark:text-gray-700 shadow hover:bg-opacity-80">
 
   return (
-    <header className="px-4 scr bg-opacity-5 fixed z-20 w-full bg-slate-50 dark:text-gray-700 shadow">
+    <header className="px-4 scr bg-opacity-5 fixed z-20 w-full bg-slate-50  shadow">
       <div className="container opacity-10 duration-300 hover:opacity-100 flex justify-between h-12 mx-auto">
-        <div className="flex opacity-80">
+        <div className="flex">
           <Link
             rel="noopener noreferrer"
             to={"/"}
@@ -187,13 +188,13 @@ export default function Header() {
               {" "}
               <button
                 onClick={handleRegister}
-                className="self-center mx-2 bg-transparent  hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                className="self-center mx-2 bg-transparent  hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded duration-300"
               >
                 <RegisterIcon />
               </button>
               <button
                 onClick={handleLogin}
-                className="self-center  bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                className="self-center duration-300  bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
               >
                 <LoginIcon />
               </button>

@@ -60,7 +60,7 @@ const Register = ({modal}) => {
         }, 2000);
      };
      let onFailed=() => { 
-        message.error("Đăng kí thất bại, tài khoản đã tồn tại")
+        message.error("Đăng kí thất bại, tài khoản hoặc email đã tồn tại")
       }
     console.log("Received values of form: ", values);
     dispatch(setRegister(values,onSuccess,onFailed));
@@ -82,11 +82,11 @@ const Register = ({modal}) => {
           rules={[
             {
               type: "email",
-              message: "The input is not valid E-mail!",
+              message: "Không hợp lệ",
             },
             {
               required: true,
-              message: "Please input your E-mail!",
+              message: "Xin nhập Email",
             },
           ]}
         >
@@ -99,7 +99,7 @@ const Register = ({modal}) => {
           rules={[
             {
               required: true,
-              message: "Please input your password!",
+              message: "Hãy nhập pass",
             },
           ]}
           hasFeedback
@@ -109,13 +109,13 @@ const Register = ({modal}) => {
 
         <Form.Item
           name="confirm"
-          label="Confirm Password"
+          label="Confirm"
           dependencies={["password"]}
           hasFeedback
           rules={[
             {
               required: true,
-              message: "Please confirm your password!",
+              message: "Xin nhập lại pass",
             },
             ({ getFieldValue }) => ({
               validator(_, value) {
@@ -124,7 +124,7 @@ const Register = ({modal}) => {
                 }
 
                 return Promise.reject(
-                  new Error("The two passwords that you entered do not match!")
+                  new Error("Pass nhập lại không giống")
                 );
               },
             }),
@@ -140,7 +140,7 @@ const Register = ({modal}) => {
           rules={[
             {
               required: true,
-              message: "Please input your username!",
+              message: "Không bỏ trống",
               whitespace: true,
             },
           ]}
@@ -153,7 +153,7 @@ const Register = ({modal}) => {
           rules={[
             {
               required: true,
-              message: "Please input your name!",
+              message: "Không bỏ trống",
               whitespace: true,
             },
           ]}
@@ -167,7 +167,7 @@ const Register = ({modal}) => {
           rules={[
             {
               required: true,
-              message: "Please input your phone number!",
+              message: "Không bỏ trống",
             },
           ]}
         >
@@ -186,13 +186,13 @@ const Register = ({modal}) => {
               validator: (_, value) =>
                 value
                   ? Promise.resolve()
-                  : Promise.reject(new Error("Should accept agreement")),
+                  : Promise.reject(new Error("Xin chấp nhận điều khoản")),
             },
           ]}
           {...tailFormItemLayout}
         >
           <Checkbox>
-            I have read the <a href="">agreement</a>
+            Tôi đã đọc và <a href="">chấp nhận các điều khoản</a>
           </Checkbox>
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>

@@ -33,9 +33,9 @@ export default function UserInfo() {
   let renderContent = () => {
     return dataTicket?.thongTinDatVe.map((item, i) => {
       return (
-        <div key={i} className="flex h-60 shadow-lg hover:-translate-y-2 duration-300 rounded">
+        <div key={i} className="flex h-56 shadow-lg hover:-translate-y-2 duration-300 rounded">
           <img
-            className="w-1/4 object-cover rounded"
+            className="w-1/3 rounded"
             src={item.hinhAnh}
             alt="image"
           />

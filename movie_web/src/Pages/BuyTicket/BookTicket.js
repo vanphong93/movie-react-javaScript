@@ -81,7 +81,7 @@ export default function BookTicket() {
     });
 
     return (
-      <div className="p-5 md:w-96">
+      <div className="p-5 text-gray-50 md:w-96">
         <section className="grid grid-cols-2 lg:grid-cols-1 gap-2">
           <p>
             <span className=" mx-2 bg-yellow-300   py-2 px-3 rounded"></span>
@@ -111,7 +111,7 @@ export default function BookTicket() {
             onClick={() => {
               handleBuy(totalMoney, id);
             }}
-            className="bg-white hover:bg-gray-100 mx-2 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+            className="bg-white hover:bg-gray-100 mx-2 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded"
           >
             Thanh toán
           </button>
@@ -129,20 +129,7 @@ export default function BookTicket() {
       return (
         <div className="container mx-auto py-10">
           <div className="flex justify-center mx-auto my-10">
-            {/* <div
-              // style={{ borderBottom: 200, borderLeft: 100, borderRight: 100 }}
-              className="mx-auto"
-            > */}
-            {/* <div className="mx-auto">
-              {" "}
-              <img
-                className="h-52 hidden xl:flex rounded-xl"
-                src="https://www.kibrispdr.org/data/14/background-tirai-hd-0.jpg"
-                alt="image"
-              />
-            </div> */}
-            {/* </div> */}
-            <div className="flex flex-row rounded-lg bg-white shadow-lg">
+            <div className="flex flex-row rounded-lg bg-gray-100 shadow-md shadow-white">
               <img
                 className="w-44 h-52 rounded-t-lg md:rounded-none md:rounded-l-lg"
                 src={hinhAnh}
@@ -167,6 +154,7 @@ export default function BookTicket() {
               </div>
             </div>
           </div>
+
           <section className="lg:flex">
             <table className="mx-auto">
               <tbody>
@@ -180,15 +168,14 @@ export default function BookTicket() {
     }
   };
   return (
-    <>
+    <div
+      style={{
+        backgroundSize: "cover",
+        backgroundImage: `url(https://static.mservice.io/img/momo-upload-api-210701105436-637607336767432408.jpg)`,
+      }}
+    >
+      {" "}
       {renderContent()}
-      {/* <button
-        onClick={handleBuy}
-        type="button"
-        className="text-gray-900 mt-16 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-      >
-        Red to Yellow
-      </button> */}
-    </>
+    </div>
   );
 }

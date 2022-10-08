@@ -159,7 +159,7 @@ export default function HomePage() {
     setIsModalOpen(false);
   };
   return (
-    <div className="space-y-10 ">
+    <div className="space-y-10 mb-10 ">
       <section className="mb-15">
         <Baner showModal={showModal} banerMovie={banerMovie} />
       </section>

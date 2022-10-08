@@ -16,7 +16,7 @@ export default function TabsUser({ renderContent,renderUser }) {
           label: `Lịch sử đặt vé`,
           key: "1",
           children: (
-            <div className="grid grid-cols-2 gap-10 mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mx-auto">
               {renderContent()}
             </div>
           ),
