@@ -23,6 +23,7 @@ export default function Detail() {
         dispatch(setLoadingOff());
       })
       .catch((err) => {
+        console.log('err: ', err);
         dispatch(setLoadingOn());
       });
   }, [id]);

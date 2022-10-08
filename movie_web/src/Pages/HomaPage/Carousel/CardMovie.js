@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { MediaCardIcon } from "../../../Utilities/Icon";
+import { OPEN_MODAL } from "../../../redux/constant/constantModal";
 
 const { Meta } = Card;
 
@@ -15,7 +16,7 @@ export default function Movie({ data, showModal }) {
   let openModal = () => {
     // console.log(123);
     dispatch({
-      type: "open_modal",
+      type: OPEN_MODAL,
       payload: data,
     });
     showModal();

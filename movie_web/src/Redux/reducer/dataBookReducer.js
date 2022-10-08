@@ -1,8 +1,10 @@
+import { CLEAR_TOTAL, FIX_DATA, TOTAL_MONEY } from "../constant/constantTicket";
+
 const initialState = { data: "", total: [] };
 
 export let dataBookReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case "fix_data":
+    case FIX_DATA:
       console.log("payload: ", payload);
       let newData = [];
       for (let i = 0; i < payload.length; i += 16) {
@@ -10,7 +12,7 @@ export let dataBookReducer = (state = initialState, { type, payload }) => {
         newData.push(element);
       }
       return { ...state, data: newData };
-    case "total_money":
+    case TOTAL_MONEY:
       let cloneTotal = [...state.total];
       let index = cloneTotal.findIndex((item) => {
         return item.maGhe == payload.maGhe;
@@ -23,7 +25,7 @@ export let dataBookReducer = (state = initialState, { type, payload }) => {
       
       console.log('cloneTotal: ', cloneTotal);
       return { ...state, total: cloneTotal };
-    case "clear_total":
+    case CLEAR_TOTAL:
       return {...state,total:[]}
     default:
       return state;

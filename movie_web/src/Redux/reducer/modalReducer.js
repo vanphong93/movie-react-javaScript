@@ -1,3 +1,5 @@
+import { OPEN_MODAL } from "../constant/constantModal";
+
 let initalState = {
   data: "",
 isOpen:"",
@@ -5,7 +7,7 @@ isOpen:"",
 export const modalReducer = (state = initalState, { type, payload }) => {
   
   switch (type) {
-    case "open_modal":
+    case OPEN_MODAL:
       // console.log('payload: ', payload.trailer);
       // console.log('props: ', props);
       //xu li link url trailer

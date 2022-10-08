@@ -5,6 +5,7 @@ import "./Baner.css";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { BanerMediaIcon, TicketIcon } from "../../../Utilities/Icon";
+import { OPEN_MODAL } from "../../../redux/constant/constantModal";
 export default function Baner({ showModal, banerMovie }) {
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -83,7 +84,7 @@ export default function Baner({ showModal, banerMovie }) {
   // }, []);
   let openModalBaner = (item) => {
     dispatch({
-      type: "open_modal",
+      type: OPEN_MODAL,
       payload: item,
     });
     showModal();

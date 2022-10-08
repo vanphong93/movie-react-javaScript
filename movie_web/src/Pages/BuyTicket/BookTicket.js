@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { setLoadingOff, setLoadingOn } from "../../redux/actions/actionsSpiner";
 import Table from "./Table";
 import { moneyFormat } from "../../Utilities/Icon";
+import { CLEAR_TOTAL, FIX_DATA } from "../../redux/constant/constantTicket";
+import { getDataTicket } from "../../redux/actions/actionBookTicket";
 
 export default function BookTicket() {
   let navigate = useNavigate();
@@ -52,25 +54,26 @@ export default function BookTicket() {
   const { id } = useParams();
   const [infoTicket, setInfoTicket] = useState([]);
   useEffect(() => {
-    dispatch(setLoadingOn());
-    dispatch({
-      type: "clear_total",
-    });
-    movieSer
-      .getInfoTicket(id)
-      .then((res) => {
-        console.log("ticket info", res.data.content);
-        dispatch({
-          type: "fix_data",
-          payload: res.data.content.danhSachGhe,
-        });
-        setInfoTicket(res.data.content);
-        dispatch(setLoadingOff());
-      })
-      .catch((err) => {
-        dispatch(setLoadingOn());
-        console.log("err: ", err);
-      });
+    // dispatch(setLoadingOn());
+    // dispatch({
+    //   type: CLEAR_TOTAL,
+    // });
+    dispatch(getDataTicket(id,setInfoTicket,dispatch))
+    // movieSer
+    //   .getInfoTicket(id)
+    //   .then((res) => {
+    //     console.log("ticket info", res.data.content);
+    //     dispatch({
+    //       type: FIX_DATA,
+    //       payload: res.data.content.danhSachGhe,
+    //     });
+    //     setInfoTicket(res.data.content);
+    //     dispatch(setLoadingOff());
+    //   })
+    //   .catch((err) => {
+    //     dispatch(setLoadingOn());
+    //     console.log("err: ", err);
+    //   });
   }, []);
   let renderTotal = () => {
     let moneyTotal = 0;

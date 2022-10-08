@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { DownOutlined } from "@ant-design/icons";
 
-import UserNav from "./UserNav";
+
 import {
   Button,
   Modal,
@@ -164,7 +164,7 @@ export default function Header() {
           <SearchMovies />
           {newUser ? (
             <>
-              <Dropdown trigger={["hover"]} overlay={menu}>
+              <Dropdown trigger={["click"]} overlay={menu}>
                 <a onClick={(e) => e.preventDefault()}>
                   <Space>
                     <img

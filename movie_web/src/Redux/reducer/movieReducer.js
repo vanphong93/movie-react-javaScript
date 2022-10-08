@@ -1,19 +1,17 @@
-const initialState = {dataMovie:"",dataBaner:"",dataTheater:""}
+import { GET_BANER, GET_MOVIE, GET_THEATER } from "../constant/constantMovie";
 
-export const movieReducer= (state = initialState, { type, payload }) => {
-  switch (type) {
+const initialState = { dataMovie: "", dataBaner: "", dataTheater: "" };
 
-  case "get_movie":
+export const movieReducer = (state = initialState, { type, payload }) => {
+    switch (type) {
+        case GET_MOVIE:
+            return { ...state, dataMovie: payload };
+        case GET_BANER:
+            return { ...state, dataBaner: payload };
+        case GET_THEATER:
+            return { ...state, dataTheater: payload };
 
-    return { ...state, dataMovie:payload }
-  case "get_baner":
-
-    return { ...state, dataBaner:payload }
-  case "get_theater":
-
-    return { ...state, dataTheater:payload }
-
-  default:
-    return state
-  }
-}
+        default:
+            return state;
+    }
+};
