@@ -1,12 +1,16 @@
-
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginPage from "./Page/LoginPage";
+import Layout from "./HOC/Layout";
 
 function App() {
   return (
     <div className="App">
-  <h1 className="text-3xl font-bold underline text-cyan-600">
-      Hello world!
-    </h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<Layout Component={LoginPage} />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
