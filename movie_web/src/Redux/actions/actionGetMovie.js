@@ -6,7 +6,8 @@ export const getMovieTheater = (setData) => {
     movieSer
       .getMovieByTheater()
       .then((res) => {
-        
+        console.log("res: theater  ", res);
+
         any({
           type: "get_theater",
           payload: res.data.content,
@@ -14,7 +15,7 @@ export const getMovieTheater = (setData) => {
         setData(res.data.content);
       })
       .catch((err) => {
-        
+        console.log("err: ", err);
       });
   };
 };
@@ -25,7 +26,8 @@ export const getMovie = (setMovies, dispatch) => {
     movieSer
       .getListMovie()
       .then((res) => {
-        
+        // console.log('res: list movie ', res);
+
         dispatch(setLoadingOff());
         anyFunction({
           type: "get_movie",
@@ -34,8 +36,8 @@ export const getMovie = (setMovies, dispatch) => {
         setMovies(res.data.content);
       })
       .catch((err) => {
+        console.log("err: ", err);
         dispatch(setLoadingOn());
-        
       });
   };
 };
@@ -45,7 +47,7 @@ export const getBaner = (setBanerMovie) => {
       .getBanerMovie()
       .then((res) => {
         let data_new = res.data.content;
-        
+
         let listMaphim = res.data.content.map((item) => {
           return item.maPhim;
         });
@@ -64,13 +66,13 @@ export const getBaner = (setBanerMovie) => {
               type: "get_baner",
               payload: data_new,
             });
-
+            // console.log('data_new: baner ', data_new);
             setBanerMovie(data_new);
           });
         });
       })
       .catch((err) => {
-        
+        console.log("err: ", err);
       });
   };
 };

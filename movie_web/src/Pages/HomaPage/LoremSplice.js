@@ -15,7 +15,7 @@ export default function LoremSplice({ data }) {
   //   };
   let arrayData = data.split("");
   return (
-    <p>
+    <span>
       {arrayData.splice(0, lorem)}
       {lorem < data.split("").length ? (
         <span
@@ -40,6 +40,6 @@ export default function LoremSplice({ data }) {
       ) : (
         ""
       )}
-    </p>
+    </span>
   );
 }

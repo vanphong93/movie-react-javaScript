@@ -15,6 +15,7 @@ import {
 } from "../../redux/actions/actionGetMovie";
 import moment from "moment";
 import LoremSplice from "./LoremSplice";
+import TextSplice from "../../Utilities/Icon";
 
 // import { movieSer } from "../../Services/movieService";
 export default function HomePage() {
@@ -26,7 +27,6 @@ export default function HomePage() {
   //Xử lí lấy dữ liệu all film
   useEffect(() => {
     if (dataMovie) {
-      
       setMovies(dataMovie);
     } else {
       dispatch(getMovie(setMovies, dispatch));
@@ -61,7 +61,6 @@ export default function HomePage() {
   const [banerMovie, setBanerMovie] = useState([]);
   useEffect(() => {
     if (dataBaner) {
-      
       setBanerMovie(dataBaner);
     } else {
       dispatch(getBaner(setBanerMovie));
@@ -71,7 +70,6 @@ export default function HomePage() {
   const [movieTheater, setMovieTheater] = useState([]);
   useEffect(() => {
     if (dataTheater) {
-      
       setMovieTheater(dataTheater);
     } else {
       dispatch(getMovieTheater(setMovieTheater));
@@ -90,7 +88,6 @@ export default function HomePage() {
     return state.modalReducer;
   });
   const renderModal = () => {
-    
     return (
       <Modal
         // closable={true}
@@ -134,7 +131,8 @@ export default function HomePage() {
               >
                 {data.tenPhim}
               </h1>
-              <LoremSplice data={data.moTa} />
+              <TextSplice data={data.moTa} />
+              {/* <LoremSplice data={data.moTa} /> */}
               {/* <p>{data.moTa}</p> */}
               <p className="font-semibold">
                 Ngày chiếu {moment(data.ngayChieuGioChieu).format("DD-MM-YYYY")}
@@ -176,7 +174,7 @@ export default function HomePage() {
         </section>{" "}
         <section id="cinemax" className="">
           <h1 className="text-center text-purple-500 text-6xl mb-12 hover:animate-pulse ">
-            Rạp Cinemax
+            Rạp Cinema
           </h1>
           <TabsMovies showModal={showModal} dataMovie={movieTheater} />
         </section>

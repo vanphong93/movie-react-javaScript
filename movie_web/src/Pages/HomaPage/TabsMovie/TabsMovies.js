@@ -1,6 +1,7 @@
 import { Tabs, Button, Popover } from "antd";
 import { movieSer } from "../../../Services/movieService";
 import { useDispatch, useSelector } from "react-redux";
+import "./TabsMovies.css"
 import React, { useEffect, useState } from "react";
 import ItemTabMovie from "./ItemTabMovie";
 export default function ({ showModal, dataMovie }) {
@@ -23,7 +24,7 @@ export default function ({ showModal, dataMovie }) {
           key={index}
         >
           {" "}
-          <Tabs defaultActiveKey="0" style={{ height: 500 }} tabPosition="left">
+          <Tabs className="p-0" defaultActiveKey="0" style={{ height: 520 }} tabPosition="left">
             {item.lstCumRap.map((cumRap, index) => {
               const content = <span>{cumRap.diaChi}</span>;
               return (
@@ -33,13 +34,13 @@ export default function ({ showModal, dataMovie }) {
                       <Popover placement="rightTop" content={content}>
                         {" "}
                         <p className="truncate">{cumRap.tenCumRap}</p>
-                        <hr />
+                        <hr className="" />
                       </Popover>
                     </div>
                   }
                   key={index}
                 >
-                  <div style={{ height: 530, overflowY: "auto" }}>
+                  <div style={{ height: 510, overflowY: "auto" }}>
                     {cumRap.danhSachPhim.map((phim, index) => {
                       return (
                         <ItemTabMovie

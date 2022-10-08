@@ -2,26 +2,24 @@ import { Popover, Tabs } from "antd";
 import moment from "moment";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import TextSplice, { MediaCardIcon, moneyFormat } from "../../Utilities/Icon";
+import LoremSplice from "../HomaPage/LoremSplice";
 import ItemTabMovie from "../HomaPage/TabsMovie/ItemTabMovie";
 
 export const TabsDetail = ({ data }) => {
   let { heThongRapChieu } = data;
-  console.log("heThongRapChieu: ", heThongRapChieu);
+  console.log("data: ", data);
+
   let handleTicket = (data) => {
     // naviga("/login")
     console.log(data);
     // alert(234)
   };
   const renderTimeMovie = (data) => {
-    let vnd = new Intl.NumberFormat("vi-VN", {
-      style: "currency",
-      currency: "vnd",
-    }).format(data.lichChieuPhim[0].giaVe);
-    let content = <span>{vnd}</span>;
+    let content = <span>{moneyFormat(data.lichChieuPhim[0].giaVe)}</span>;
 
-    // console.log('data: item ', data.lichChieuPhim[0].giaVe);
     return (
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-4 md:gap-3">
         {data.lichChieuPhim.slice(0, 9).map((item, i) => {
           return (
             <NavLink to={`/book/${item.maLichChieu}`} key={i}>
@@ -30,7 +28,7 @@ export const TabsDetail = ({ data }) => {
                   onClick={() => {
                     handleTicket(item);
                   }}
-                  className="ml-3 p-3 rounded bg-red-500 text-white"
+                  className="ml-3 p-1 md:p-3 rounded bg-red-500 duration-300 hover:bg-red-700 text-white"
                 >
                   {moment(item.ngayChieuGioChieu).format("DD-MM-YY h:mm:ss a")}
                 </button>
@@ -56,7 +54,7 @@ export const TabsDetail = ({ data }) => {
             return {
               label: (
                 <>
-                  <div className="w-48 text-left">
+                  <div className="w-36 md:w-48 text-left">
                     <Popover placement="rightTop" content={content}>
                       <p className=" truncate">{item.tenCumRap}</p>
                     </Popover>
@@ -75,28 +73,27 @@ export const TabsDetail = ({ data }) => {
   };
 
   return (
-    <div className="container mx-auto p-10">
+    <div className="container mx-auto py-10">
       <div
-        className="mx-auto mt-10 flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100
- dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700
+        className="mx-auto mt-10 flex items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl 
  "
       >
         <img
-          className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+          className="w-32 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
           src={data.hinhAnh}
           alt="image"
         />
         <div className="flex flex-col justify-between p-4 leading-normal">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
             {data.tenPhim}
           </h5>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            {data.moTa}
+          <p className="mb-3 font-normal text-gray-500 ">
+            <TextSplice data={data.moTa ? data.moTa : "Đang cập nhật"} />
+            {/* <LoremSplice data={data.moTa ? data.moTa : "Đang cập nhật"} /> */}
           </p>
         </div>
       </div>
-
-      <div className="p-10 text-blue-700 ">
+      <div className="p-2 md:p-10 text-blue-700 ">
         {heThongRapChieu && heThongRapChieu.length != 0 ? (
           <Tabs
             className="shadow-xl"
@@ -109,7 +106,7 @@ export const TabsDetail = ({ data }) => {
               return {
                 label: (
                   <img
-                    className="w-16 h-16"
+                    className="w-10 h-10 md:w-16 md:h-16"
                     // style={{ height: "50px" }}
                     src={item.logo}
                     alt="image"
@@ -121,7 +118,9 @@ export const TabsDetail = ({ data }) => {
             })}
           />
         ) : (
-          <h1 className="text-center text-2xl text-red-300">Hệ thống đang cập nhật</h1>
+          <h1 className="text-center text-2xl text-red-300">
+            Hệ thống đang cập nhật
+          </h1>
         )}
       </div>
     </div>

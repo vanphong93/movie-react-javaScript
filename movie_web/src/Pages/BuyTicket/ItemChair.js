@@ -23,22 +23,20 @@ export default function ItemChair({ data }) {
               }
               setSelectChair(cloneData);
               dispatch({
-                type:"total_money",
-                payload:props
-              })
+                type: "total_money",
+                payload: props,
+              });
             };
             return (
               <td key={i}>
                 {item.daDat ? (
-                  <button className="bg-red-700  text-white m-1 p-4 rounded opacity-50 cursor-not-allowed">
-                    
-                  </button>
+                  <button className="bg-red-700 p-3  text-white md:m-1 md:p-4 rounded opacity-50 cursor-not-allowed"></button>
                 ) : item.isSelect ? (
                   <button
                     onClick={() => {
                       handleSelect(item, i);
                     }}
-                    className="bg-green-500 text-white  p-1 rounded opacity-50"
+                    className="bg-green-500 text-white   sm:p-1 md:p-2 rounded opacity-50"
                   >
                     {item.tenGhe}
                   </button>
@@ -49,8 +47,8 @@ export default function ItemChair({ data }) {
                     }}
                     className={
                       item.loaiGhe == "Vip"
-                        ? "bg-transparent hover:bg-yellow-500 m-1 text-yellow-700  hover:text-white p-1 border border-yellow-500 hover:border-transparent rounded"
-                        : "bg-transparent hover:bg-blue-500 m-1 text-blue-700  hover:text-white p-1 border border-blue-500 hover:border-transparent rounded"
+                        ? " hover:bg-yellow-500 bg-yellow-300 m-0.5 text-gray-700 hover:text-white sm:p-1 md:p-2 md:border border-yellow-500 hover:border-transparent rounded"
+                        : " hover:bg-blue-500 bg-blue-300 m-0.5 text-gray-700  hover:text-white sm:p-1 md:p-2 md:border border-blue-500 hover:border-transparent rounded"
                     }
                   >
                     {item.tenGhe}

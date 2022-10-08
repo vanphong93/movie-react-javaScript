@@ -16,7 +16,7 @@ export default function Table() {
   let renderContent = () => {
     return infoBooking.map((item, i) => {
       return (
-        <tr key={i}><ItemChair data={item}/>
+        <tr  key={i}><ItemChair data={item}/>
         </tr>
       );
     });

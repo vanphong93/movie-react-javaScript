@@ -6,6 +6,7 @@ import { movieSer } from "../../Services/movieService";
 import { useDispatch } from "react-redux";
 import { setLoadingOff, setLoadingOn } from "../../redux/actions/actionsSpiner";
 import Table from "./Table";
+import { moneyFormat } from "../../Utilities/Icon";
 
 export default function BookTicket() {
   let navigate = useNavigate();
@@ -78,19 +79,16 @@ export default function BookTicket() {
       moneyTotal += item.giaVe;
       tenGheChon += " " + item.tenGhe + ",";
     });
-    let vnd = new Intl.NumberFormat("vi-VN", {
-      style: "currency",
-      currency: "vnd",
-    }).format(moneyTotal);
+
     return (
-      <div className="p-5">
-        <section className="grid grid-cols-3 lg:grid-cols-1 gap-2">
+      <div className="p-5 md:w-96">
+        <section className="grid grid-cols-2 lg:grid-cols-1 gap-2">
           <p>
-            <span className="bg-transparent mx-2 hover:bg-yellow-500 text-yellow-700 py-2 px-3 border border-yellow-500 hover:border-transparent rounded"></span>
+            <span className=" mx-2 bg-yellow-300   py-2 px-3 rounded"></span>
             Ghế vip
           </p>
           <p>
-            <span className="bg-transparent mx-2 hover:bg-blue-500 text-blue-700 border border-blue-500 py-2 px-3 hover:border-transparent rounded"></span>
+            <span className="mx-2  bg-blue-300 py-2 px-3  rounded"></span>
             Ghế trống
           </p>
           <p>
@@ -107,7 +105,7 @@ export default function BookTicket() {
             Ghế bạn chọn {tenGheChon}
           </p>
           <p className="text-yellow-500 mx-2 font-bold text-base">
-            Tổng tiền thanh toán {vnd}
+            Tổng tiền thanh toán {moneyFormat(moneyTotal)}
           </p>
           <button
             onClick={() => {
@@ -130,10 +128,23 @@ export default function BookTicket() {
 
       return (
         <div className="container mx-auto py-10">
-          <div className="flex my-10 justify-center">
-            <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
+          <div className="flex justify-center mx-auto my-10">
+            {/* <div
+              // style={{ borderBottom: 200, borderLeft: 100, borderRight: 100 }}
+              className="mx-auto"
+            > */}
+            {/* <div className="mx-auto">
+              {" "}
               <img
-                className="w-48 h-52 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
+                className="h-52 hidden xl:flex rounded-xl"
+                src="https://www.kibrispdr.org/data/14/background-tirai-hd-0.jpg"
+                alt="image"
+              />
+            </div> */}
+            {/* </div> */}
+            <div className="flex flex-row rounded-lg bg-white shadow-lg">
+              <img
+                className="w-44 h-52 rounded-t-lg md:rounded-none md:rounded-l-lg"
                 src={hinhAnh}
                 alt="image"
               />
@@ -157,12 +168,12 @@ export default function BookTicket() {
             </div>
           </div>
           <section className="lg:flex">
-            <table className="">
+            <table className="mx-auto">
               <tbody>
                 <Table />
               </tbody>
             </table>
-            <div>{renderTotal()}</div>
+            {renderTotal()}
           </section>
         </div>
       );

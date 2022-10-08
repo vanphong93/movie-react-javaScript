@@ -47,11 +47,11 @@ const SearchMovies = () => {
   return (
     <>
       <AutoComplete
-        className=""
+        className="w-40 md:w-64"
         // allowClear={true}
-        style={{
-          width: 280,
-        }}
+        // style={{
+        //   width: 280,
+        // }}
         onSelect={onSelect}
         options={fixDataFilm}
         placeholder="Nhập tên phim"
