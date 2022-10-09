@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { DownOutlined } from "@ant-design/icons";
 
-
 import {
   Button,
   Modal,
@@ -33,7 +32,6 @@ export default function Header() {
   const location = useLocation();
   let checkLink = location.pathname;
 
-  // console.log("location",location);
   let newUser = useSelector((state) => {
     return state.userReducer.user;
   });
@@ -73,10 +71,7 @@ export default function Header() {
     setFromLogin(false);
     showModal();
   };
-  // let handleUpdate = () => {
-  //   setFromLogin(false);
-  //   showModal();
-  // };
+
   let handleLogout = () => {
     localServ.user.remove();
     window.location.href = "/";
@@ -94,17 +89,10 @@ export default function Header() {
           ),
           key: "0",
         },
-        // {
-        //   label: checkLink=='/'?<a href="/#filmHot">Phim hot</a>:"",
-        //   key: "1",
-        // },
-        // {
-        //   label: checkLink=='/'?<Link to={"/#cinemax"}>Rạp cinemax </Link>:"",
-        //   key: "2",
-        // },
+
         {
           label: <NavLink to={"/user#info"}>Thông tin</NavLink>,
-          key: "3",
+          key: "1",
         },
         {
           type: "divider",
@@ -112,16 +100,14 @@ export default function Header() {
         {
           label: (
             <a className="font-semibold" onClick={handleLogout}>
-            <LogOutIcon/>
+              <LogOutIcon />
             </a>
           ),
-          key: "4",
+          key: "2",
         },
       ]}
     />
   );
-
-  // <header className="px-4 scr bg-opacity-5 duration-300 fixed z-20 w-full bg-slate-50 dark:text-gray-700 shadow hover:bg-opacity-80">
 
   return (
     <header className="px-4 scr bg-opacity-5 fixed z-20 w-full bg-slate-50  shadow">
@@ -156,10 +142,6 @@ export default function Header() {
           )}
         </div>
 
-        {/* <ul className="items-center hidden space-x-3 lg:flex">
-          <li className="flex">
-          </li>
-        </ul> */}
         <div className="items-center flex-shrink-0 flex">
           <SearchMovies />
           {newUser ? (
@@ -176,12 +158,6 @@ export default function Header() {
                   </Space>
                 </a>
               </Dropdown>
-              {/* <button
-                onClick={handleLogout}
-                className="self-center bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-              >
-                Đăng xuất
-              </button> */}
             </>
           ) : (
             <>
@@ -201,25 +177,9 @@ export default function Header() {
             </>
           )}
         </div>
-
-        {/* <button className="p-2 lg:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className="w-6 h-6 dark:text-gray-100"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </button> */}
       </div>
       <Modal
+      destroyOnClose={true}
         title="Đăng nhập"
         style={{ top: 20 }}
         footer={null}

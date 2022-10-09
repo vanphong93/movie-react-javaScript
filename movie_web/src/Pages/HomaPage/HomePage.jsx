@@ -25,11 +25,7 @@ export default function HomePage() {
   let dispatch = useDispatch();
   //Xử lí lấy dữ liệu all film
   useEffect(() => {
-    if (dataMovie) {
-      setMovies(dataMovie);
-    } else {
-      dispatch(getMovie(setMovies, dispatch));
-    }
+    dataMovie ? setMovies(dataMovie) : dispatch(getMovie(setMovies, dispatch));
   }, []);
 
   const renderMovieCurrent = () => {
@@ -59,20 +55,14 @@ export default function HomePage() {
   // lấy dữ liêu baner
   const [banerMovie, setBanerMovie] = useState([]);
   useEffect(() => {
-    if (dataBaner) {
-      setBanerMovie(dataBaner);
-    } else {
-      dispatch(getBaner(setBanerMovie));
-    }
+    dataBaner ? setBanerMovie(dataBaner) : dispatch(getBaner(setBanerMovie));
   }, []);
   //lay du lieu theater
   const [movieTheater, setMovieTheater] = useState([]);
   useEffect(() => {
-    if (dataTheater) {
-      setMovieTheater(dataTheater);
-    } else {
-      dispatch(getMovieTheater(setMovieTheater));
-    }
+    dataTheater
+      ? setMovieTheater(dataTheater)
+      : dispatch(getMovieTheater(setMovieTheater));
   }, []);
 
   //xử lí modal
@@ -80,19 +70,15 @@ export default function HomePage() {
   const showModal = () => {
     setIsModalOpen(true);
   };
-  // const handleOk = () => {
-  //   setIsModalOpen(false);
-  // };
+
   let { data } = useSelector((state) => {
     return state.modalReducer;
   });
   const renderModal = () => {
     return (
       <Modal
-        // closable={true}
         transitionName=""
         destroyOnClose={true}
-        // mask={false}
         style={{ top: 20 }}
         width={1000}
         footer={null}
@@ -103,7 +89,7 @@ export default function HomePage() {
       >
         {data.baner ? (
           <iframe
-            id={data.maPhim}
+            // id={data.maPhim}
             allowFullScreen={true}
             title="myFrame"
             className="w-full"
@@ -130,8 +116,7 @@ export default function HomePage() {
                 {data.tenPhim}
               </h1>
               <TextSplice data={data.moTa} />
-              {/* <LoremSplice data={data.moTa} /> */}
-              {/* <p>{data.moTa}</p> */}
+
               <p className="font-semibold">
                 Ngày chiếu {moment(data.ngayChieuGioChieu).format("DD-MM-YYYY")}
                 <br />
@@ -153,9 +138,6 @@ export default function HomePage() {
     );
   };
 
-  // const handleCancel = () => {
-  //   setIsModalOpen(false);
-  // };
   return (
     <div className="space-y-10 mb-10 ">
       <section className="mb-15">

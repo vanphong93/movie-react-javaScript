@@ -8,7 +8,8 @@ import {
   Input,
   InputNumber,
   Row,
-  Select,message
+  Select,
+  message,
 } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -45,27 +46,27 @@ const tailFormItemLayout = {
   },
 };
 
-const Register = ({modal}) => {
+const Register = ({ modal }) => {
   let navigate = useNavigate();
   let dispatch = useDispatch();
 
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    let onSuccess=() => { 
-        message.success("Đăng kí thành công");
-        modal(false)
-        setTimeout(() => {
-            navigate("/")
-        }, 2000);
-     };
-     let onFailed=() => { 
-        message.error("Đăng kí thất bại, tài khoản hoặc email đã tồn tại")
-      }
-    console.log("Received values of form: ", values);
-    dispatch(setRegister(values,onSuccess,onFailed));
+    let onSuccess = () => {
+      message.success("Đăng kí thành công");
+      modal(false);
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+    };
+    let onFailed = () => {
+      message.error("Đăng kí thất bại, tài khoản hoặc email đã tồn tại");
+    };
+
+    dispatch(setRegister(values, onSuccess, onFailed));
   };
- 
+
   return (
     <div className="p-9">
       {" "}
@@ -123,9 +124,7 @@ const Register = ({modal}) => {
                   return Promise.resolve();
                 }
 
-                return Promise.reject(
-                  new Error("Pass nhập lại không giống")
-                );
+                return Promise.reject(new Error("Pass nhập lại không giống"));
               },
             }),
           ]}
@@ -197,7 +196,7 @@ const Register = ({modal}) => {
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
-            Register
+            Đăng Kí
           </Button>
         </Form.Item>
       </Form>{" "}

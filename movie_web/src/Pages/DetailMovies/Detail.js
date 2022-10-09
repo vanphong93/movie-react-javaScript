@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useResolvedPath } from "react-router-dom";
+import { useNavigate, useParams, useResolvedPath } from "react-router-dom";
 
 import { movieSer } from "../../Services/movieService";
 import styled from "./Detail.module.css";
@@ -9,11 +9,17 @@ import { setLoadingOff, setLoadingOn } from "../../redux/actions/actionsSpiner";
 export default function Detail() {
   // let history=useResolvedPath()
   //
-
+  let navigate = useNavigate();
   let dispatch = useDispatch();
   const { id } = useParams();
+  // if (id == 1) {
+  //   navigate("/");
+  // }
   const [detail, setDetail] = useState([]);
   useEffect(() => {
+      if (id == 1) {
+    return
+  }
     dispatch(setLoadingOn());
     movieSer
       .getInfoMovieTheater(id)
@@ -23,16 +29,17 @@ export default function Detail() {
         dispatch(setLoadingOff());
       })
       .catch((err) => {
-        console.log('err: ', err);
+        console.log("err: ", err);
         dispatch(setLoadingOn());
       });
   }, [id]);
 
   return (
-    <div className={styled.main}
+    <div
+      className={styled.main}
       style={{
         backgroundImage: `url(${detail.hinhAnh})`,
-        backgroundSize:"cover"
+        backgroundSize: "cover",
       }}
     >
       <TabsDetail data={detail} />

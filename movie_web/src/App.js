@@ -11,6 +11,7 @@ import Spiner from "./Components/Spiner/Spiner";
 import Register from "./Components/HeaderThemes/Register";
 import BookTicket from "./Pages/BuyTicket/BookTicket";
 import UserInfo from "./Pages/UserInfor/UserInfo";
+import PageErr from "./Pages/Page404/PageErr";
 function App() {
   return (
     <div>
@@ -48,10 +49,11 @@ function App() {
             path="/user"
             element={
               <Layout>
-                <UserInfo/>
+                <UserInfo />
               </Layout>
             }
           />
+          {/* <Route path="/err" element={<PageErr />} /> */}
         </Routes>
       </BrowserRouter>
     </div>

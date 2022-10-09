@@ -20,6 +20,7 @@ export default function BookTicket() {
   let newUser = useSelector((state) => {
     return state.userReducer.user;
   });
+
   const handleBuy = (dataTicket, idTicket) => {
     let data = {
       maLichChieu: idTicket,
@@ -33,7 +34,7 @@ export default function BookTicket() {
           .postTicket(data)
           .then((res) => {
             console.log(res);
-            let text = "Bạn có muốn chuyển sang thông tin";
+            let text = "Bạn có muốn chuyển sang trang thông tin";
             onclose = () => {
               if (window.confirm(text) == true) {
                 navigate("/user");
@@ -54,26 +55,7 @@ export default function BookTicket() {
   const { id } = useParams();
   const [infoTicket, setInfoTicket] = useState([]);
   useEffect(() => {
-    // dispatch(setLoadingOn());
-    // dispatch({
-    //   type: CLEAR_TOTAL,
-    // });
-    dispatch(getDataTicket(id,setInfoTicket,dispatch))
-    // movieSer
-    //   .getInfoTicket(id)
-    //   .then((res) => {
-    //     console.log("ticket info", res.data.content);
-    //     dispatch({
-    //       type: FIX_DATA,
-    //       payload: res.data.content.danhSachGhe,
-    //     });
-    //     setInfoTicket(res.data.content);
-    //     dispatch(setLoadingOff());
-    //   })
-    //   .catch((err) => {
-    //     dispatch(setLoadingOn());
-    //     console.log("err: ", err);
-    //   });
+    dispatch(getDataTicket(id, setInfoTicket, dispatch));
   }, []);
   let renderTotal = () => {
     let moneyTotal = 0;
@@ -153,7 +135,7 @@ export default function BookTicket() {
                   {diaChi},{tenCumRap},{tenRap}
                   <br />
                 </p>
-                {/* <p className="text-gray-600 text-xs">Last updated 3 mins ago</p> */}
+
               </div>
             </div>
           </div>

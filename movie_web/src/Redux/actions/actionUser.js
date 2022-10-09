@@ -12,14 +12,13 @@ export const setLogin = (dataLogin, onSuccess, onFailed) => {
     userServ
       .postLogin(dataLogin)
       .then((res) => {
-        console.log("res", res);
         localServ.user.set(res.data.content);
         onSuccess();
         // anyFunction(setUserSuccess(res.data.content));
         anyFunction({
-            type:SET_USER,
-            payload:res.data.content,
-        })
+          type: SET_USER,
+          payload: res.data.content,
+        });
       })
       .catch((err) => {
         onFailed();
@@ -33,7 +32,7 @@ export const setRegister = (dataRegister, onSuccess, onFailed) => {
       .postRegister(dataRegister)
       .then((res) => {
         onSuccess();
-        console.log("res", res);
+
         dispatch(setUserSuccess(res.data.content));
       })
       .catch((err) => {

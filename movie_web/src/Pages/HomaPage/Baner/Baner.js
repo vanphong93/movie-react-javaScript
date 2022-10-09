@@ -50,38 +50,7 @@ export default function Baner({ showModal, banerMovie }) {
       );
     },
   };
-  // const [banerMovie, setBanerMovie] = useState([]);
-  // useEffect(() => {
-  //   movieSer
-  //     .getBanerMovie()
-  //     .then((res) => {
-  //       let data_new = res.data.content;
-  //       let listMaphim = res.data.content.map((item) => {
-  //         return item.maPhim;
-  //       });
-  //       listMaphim.forEach((id, i) => {
-  //         return movieSer.getInfoMovie(id).then((res) => {
-  //           let { trailer, moTa, danhGia, tenPhim } = res.data.content;
-  //           // data_new[i] = { ...data_new[i], trailer, moTa, danhGia, tenPhim };
-  //           data_new[i] = {
-  //             ...data_new[i],
-  //             trailer: "https://www.youtube.com/embed/YOJsKatW-Ts",
-  //             moTa,
-  //             danhGia,
-  //             tenPhim,
-  //             baner: true,
-  //           };
 
-  //           setBanerMovie(data_new);
-
-  //           // console.log("data_new: ", data_new);
-  //         });
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
   let openModalBaner = (item) => {
     dispatch({
       type: OPEN_MODAL,
@@ -89,9 +58,6 @@ export default function Baner({ showModal, banerMovie }) {
     });
     showModal();
   };
-  // let handleTicket = () => {
-  //   alert(23);
-  // };
   let renderBaner = () => {
     return banerMovie.map((item, index) => {
       return (
@@ -118,7 +84,7 @@ export default function Baner({ showModal, banerMovie }) {
   };
   return (
     <div className="">
-      {/* <h2>Append Dots</h2> */}
+
       <Slider {...settings}>{renderBaner()}</Slider>
     </div>
   );
