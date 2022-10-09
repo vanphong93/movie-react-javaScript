@@ -20,6 +20,10 @@ function App() {
             element={<Layout Component={LoginPage} />}
           />
           <Route
+            path="/admin"
+            element={<LayoutAdmin Component={QuanLyUserPage} />}
+          />
+          <Route
             path="/admin/UserManage"
             element={<LayoutAdmin Component={QuanLyUserPage} />}
           />
