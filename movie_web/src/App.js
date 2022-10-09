@@ -4,9 +4,7 @@ import Layout from "./HOC/Layout";
 import "antd/dist/antd.css";
 import LoginPage from "./Page/LoginPage";
 import AdminPage from "./Page/AdminPage";
-import QuanLyPhimPage from "./Page/QuanLyPhimPage";
 import QuanLyUserPage from "./Page/QuanLyUserPage";
-import QuanLyShowTime from "./Page/QuanLyShowTime";
 
 function App() {
   return (
@@ -19,7 +17,7 @@ function App() {
             element={<Layout Component={LoginPage} />}
           />
           <Route path="/admin" element={<Layout Component={AdminPage} />} />
-          {/* <Route
+          <Route
             path="/admin/UserManage"
             element={
               <Layout
@@ -30,7 +28,7 @@ function App() {
                 }
               />
             }
-          /> */}
+          />
         </Routes>
       </BrowserRouter>
     </div>
