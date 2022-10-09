@@ -1,10 +1,18 @@
-.ant-slide-up-appear,
-.ant-slide-up-enter,
-.ant-slide-up-leave {
-  animation-duration: 0s !important;
+ /* .ant-slide-up-appear,
+ .ant-slide-up-enter,
+ .ant-slide-up-leave {
+  animation-duration: 0.1s;
 }
 
-/* .ant-modal-header {
-  background-color: black;
+.ant-modal-header  {
+  background: red;
 } */
-/* .ant-modal-content {background-color: transparent;} */
+/* .ant-modal-content {background-color: red;} */
+
+
+/* [ant-click-animating-without-extra-node]:after {
+  animation: 0s !important;
+
+} */
+
+

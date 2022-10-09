@@ -160,11 +160,11 @@ export default function Header() {
           <li className="flex">
           </li>
         </ul> */}
-        <div className="items-center opacity-20 duration-300 hover:opacity-100 flex-shrink-0 flex">
+        <div className="items-center flex-shrink-0 flex">
           <SearchMovies />
           {newUser ? (
             <>
-              <Dropdown trigger={["click"]} overlay={menu}>
+              <Dropdown trigger={["hover"]} overlay={menu}>
                 <a onClick={(e) => e.preventDefault()}>
                   <Space>
                     <img
