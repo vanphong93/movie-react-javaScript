@@ -2,10 +2,11 @@ import {
   DesktopOutlined,
   FileOutlined,
   PieChartOutlined,
+  HomeOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import QuanLyUserPage from "./QuanLyUserPage";
 const { Content, Sider } = Layout;
 
@@ -70,14 +71,30 @@ const { Content, Sider } = Layout;
 
 // export default LoginPage;
 
-export default function AdminPage({ children }) {
+export default function AdminPage() {
+  const navigate = useNavigate();
   return (
-    <div>
-      <p>Admin Pages</p>
-      <NavLink to="/admin/UserManage">
-        <button className="btn ant-btn-danger">Tới quản lý User</button>
-      </NavLink>
-      {children}
+    <div className="flex row-auto">
+      <div>
+        <Menu
+          onClick={({ key }) => {
+            navigate(key);
+          }}
+          items={[
+            { label: "User", key: "/admin/UserManage", icon: <HomeOutlined /> },
+            {
+              label: "Films",
+              key: "/admin/FilmsManage",
+              icon: <DesktopOutlined />,
+            },
+            {
+              label: "ShowTime",
+              key: "/admin/ShowTimeManage",
+              icon: <FileOutlined />,
+            },
+          ]}
+        ></Menu>
+      </div>
     </div>
   );
 }

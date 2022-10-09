@@ -3,8 +3,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./HOC/Layout";
 import "antd/dist/antd.css";
 import LoginPage from "./Page/LoginPage";
-import AdminPage from "./Page/AdminPage";
+import LayoutAdmin from "./HOC/LayoutAdmin";
 import QuanLyUserPage from "./Page/QuanLyUserPage";
+import QuanLyPhimPage from "./Page/QuanLyPhimPage";
+import QuanLyShowTimePage from "./Page/QuanLyShowTimePage";
+import AdminPage from "./Page/AdminPage";
 
 function App() {
   return (
@@ -16,18 +19,17 @@ function App() {
             exact
             element={<Layout Component={LoginPage} />}
           />
-          <Route path="/admin" element={<Layout Component={AdminPage} />} />
           <Route
             path="/admin/UserManage"
-            element={
-              <Layout
-                Component={
-                  <AdminPage>
-                    <QuanLyUserPage />
-                  </AdminPage>
-                }
-              />
-            }
+            element={<LayoutAdmin Component={QuanLyUserPage} />}
+          />
+          <Route
+            path="/admin/FilmsManage"
+            element={<LayoutAdmin Component={QuanLyPhimPage} />}
+          />
+          <Route
+            path="/admin/ShowTimeManage"
+            element={<LayoutAdmin Component={QuanLyShowTimePage} />}
           />
         </Routes>
       </BrowserRouter>
