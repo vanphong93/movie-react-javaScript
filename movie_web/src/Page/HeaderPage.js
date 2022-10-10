@@ -29,7 +29,12 @@ export default function HeaderPage() {
           </button>
         </div>
 
-        <button className="p-4 lg:hidden">
+        <button
+          onClick={() => {
+            menuSider();
+          }}
+          className="mobile-menu-button p-4 lg:hidden"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -46,6 +51,25 @@ export default function HeaderPage() {
           </svg>
         </button>
       </div>
+      <div className="mobile-menu hidden text-right lg:hidden">
+        <div className="block">
+          <NavLink to="/login">
+            <button className="self-center px-8 py-3 rounded text-white">
+              Đăng Nhập
+            </button>
+          </NavLink>
+        </div>
+        <div className="block">
+          <button className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">
+            Đăng Xuất
+          </button>
+        </div>
+      </div>
     </header>
   );
+}
+
+function menuSider() {
+  const menu = document.querySelector("div.mobile-menu");
+  menu.classList.toggle("hidden");
 }
