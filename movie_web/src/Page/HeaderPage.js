@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function HeaderPage() {
   return (
@@ -18,11 +19,16 @@ export default function HeaderPage() {
         </a>
 
         <div className="items-center flex-shrink-0 hidden lg:flex">
-          <button className="self-center px-8 py-3 rounded">Đăng Nhập</button>
+          <NavLink to="/login">
+            <button className="self-center px-8 py-3 rounded text-white">
+              Đăng Nhập
+            </button>
+          </NavLink>
           <button className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">
             Đăng Xuất
           </button>
         </div>
+
         <button className="p-4 lg:hidden">
           <svg
             xmlns="http://www.w3.org/2000/svg"
