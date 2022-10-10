@@ -13,8 +13,11 @@ const App = ({ data }) => {
       .editUser(newdata)
       .then((res) => {
         console.log(res);
-       message.success(res.message)
+       message.success("Tài khoản đã được cập nhật")
+       setTimeout(() => {
         window.location.reload();
+       }, 2000);
+        
       })
       .catch((err) => {
         console.log('err: ', err);
@@ -83,11 +86,11 @@ const App = ({ data }) => {
           rules={[
             {
               type: "email",
-              message: "The input is not valid E-mail!",
+              message: "Email không hợp lệ",
             },
             {
               required: true,
-              message: "Please input your E-mail!",
+              message: "Nhập mail của bạn",
             },
           ]}
         >
@@ -100,39 +103,13 @@ const App = ({ data }) => {
           rules={[
             {
               required: true,
-              message: "Please input your password!",
+              message: "Không để trống",
             },
           ]}
           hasFeedback
         >
           <Input.Password />
         </Form.Item>
-
-        {/* <Form.Item
-          name="confirm"
-          label="Confirm Password"
-          dependencies={["password"]}
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              message: "Please confirm your password!",
-            },
-            ({ getFieldValue }) => ({
-              validator(_, value) {
-                if (!value || getFieldValue("matKhau") === value) {
-                  return Promise.resolve();
-                }
-
-                return Promise.reject(
-                  new Error("The two passwords that you entered do not match!")
-                );
-              },
-            }),
-          ]}
-        >
-          <Input.Password />
-        </Form.Item> */}
 
         <Form.Item
           name="taiKhoan"
@@ -141,7 +118,7 @@ const App = ({ data }) => {
           rules={[
             {
               required: true,
-              message: "Please input your username!",
+              message: "Không để trống",
               whitespace: true,
             },
           ]}
@@ -154,7 +131,7 @@ const App = ({ data }) => {
           rules={[
             {
               required: true,
-              message: "Please input your name!",
+              message: "Không để trống",
               whitespace: true,
             },
           ]}
@@ -168,7 +145,7 @@ const App = ({ data }) => {
           rules={[
             {
               required: true,
-              message: "Please input your phone number!",
+              message: "Không để trống",
             },
           ]}
         >

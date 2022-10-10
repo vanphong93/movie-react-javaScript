@@ -16,6 +16,7 @@ import {
 import moment from "moment";
 
 import TextSplice from "../../Utilities/Icon";
+import { AddTypeMovie } from "../../Utilities/TypeMovie";
 
 export default function HomePage() {
   let { dataMovie, dataBaner, dataTheater } = useSelector((state) => {
@@ -45,6 +46,7 @@ export default function HomePage() {
       return !item.dangChieu;
     });
     return newData.map((data, index) => {
+     
       return (
         <div key={index} className="p-2 lg:p-3 xl:p-5">
           <Movie showModal={showModal} data={data} />
@@ -159,6 +161,7 @@ export default function HomePage() {
           <TabsMovies showModal={showModal} dataMovie={movieTheater} />
         </section>
       </div>
+
     </div>
   );
 }

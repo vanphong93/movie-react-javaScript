@@ -8,10 +8,12 @@ import { useDispatch } from "react-redux";
 import { MediaCardIcon } from "../../../Utilities/Icon";
 import { OPEN_MODAL } from "../../../redux/constant/constantModal";
 import { FixUrl } from "../../../Utilities/FixUrlEmbed";
+import { typeMovie } from "../../../Utilities/TypeMovie";
 
 const { Meta } = Card;
 
 export default function Movie({ data, showModal }) {
+  console.log("data: ", data);
   let dispatch = useDispatch();
 
   let openModal = () => {
@@ -31,16 +33,18 @@ export default function Movie({ data, showModal }) {
         border: "none",
       }}
       cover={
-        <img
-          className="h-64 object-fill rounded"
-          alt="example"
-          src={data.hinhAnh}
-        />
+        <img className="h-64 object-fill" alt="example" src={data.hinhAnh} />
       }
     >
       <Meta title={<p className="text-red-500 truncate">{data.tenPhim}</p>} />
-      <div className="flex justify-between">
-        <MediaCardIcon openModal={openModal} />
+      <div className="flex  justify-between">
+        <span className="text-purple-700 font-semibold">
+          {`${data.danhGia}/10`}
+        </span>
+        <div className="group">
+          <MediaCardIcon openModal={openModal} />
+        </div>
+
         <NavLink to={`/detail/${data.maPhim}`}>
           {" "}
           <button className="bg-transparent hover:bg-yellow-500 text-yellow-700 font-semibold hover:text-white py-2 px-1 xl:px-2 border border-yellow-500 hover:border-transparent rounded">

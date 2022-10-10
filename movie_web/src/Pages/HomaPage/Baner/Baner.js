@@ -84,7 +84,6 @@ export default function Baner({ showModal, banerMovie }) {
   };
   return (
     <div className="">
-
       <Slider {...settings}>{renderBaner()}</Slider>
     </div>
   );
