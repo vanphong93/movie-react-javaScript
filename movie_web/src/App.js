@@ -1,13 +1,12 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./HOC/Layout";
+import LayoutLogin from "./HOC/LayoutLogin";
+import LayoutAdmin from "./HOC/LayoutAdmin";
 import "antd/dist/antd.css";
 import LoginPage from "./Page/LoginPage";
-import LayoutAdmin from "./HOC/LayoutAdmin";
 import QuanLyUserPage from "./Page/QuanLyUserPage";
 import QuanLyPhimPage from "./Page/QuanLyPhimPage";
 import QuanLyShowTimePage from "./Page/QuanLyShowTimePage";
-import AdminPage from "./Page/AdminPage";
 
 function App() {
   return (
@@ -17,8 +16,9 @@ function App() {
           <Route
             path="/login"
             exact
-            element={<Layout Component={LoginPage} />}
+            element={<LayoutLogin Component={LoginPage} />}
           />
+
           <Route
             path="/admin"
             element={<LayoutAdmin Component={QuanLyUserPage} />}

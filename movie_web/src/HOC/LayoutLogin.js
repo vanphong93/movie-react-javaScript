@@ -1,6 +1,6 @@
 import HeaderPage from "../Page/HeaderPage";
 
-export default function Layout({ Component }) {
+export default function LayoutLogin({ Component }) {
   return (
     <div>
       <HeaderPage />
