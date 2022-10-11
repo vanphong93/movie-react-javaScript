@@ -1,94 +1,102 @@
-import React from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Table } from "antd";
-import { AudioOutlined } from "@ant-design/icons";
-import { Input, Space } from "antd";
-
-const columns = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    filters: [
-      {
-        text: "Joe",
-        value: "Joe",
-      },
-      {
-        text: "Category 1",
-        value: "Category 1",
-      },
-      {
-        text: "Category 2",
-        value: "Category 2",
-      },
-    ],
-    filterMode: "tree",
-    filterSearch: true,
-    onFilter: (value, record) => record.name.startsWith(value),
-    width: "30%",
-  },
-  {
-    title: "Age",
-    dataIndex: "age",
-    sorter: (a, b) => a.age - b.age,
-  },
-  {
-    title: "Address",
-    dataIndex: "address",
-    filters: [
-      {
-        text: "London",
-        value: "London",
-      },
-      {
-        text: "New York",
-        value: "New York",
-      },
-    ],
-    onFilter: (value, record) => record.address.startsWith(value),
-    filterSearch: true,
-    width: "40%",
-  },
-];
-const data = [
-  {
-    key: "1",
-    name: "John Brown",
-    age: 32,
-    address: "New York No. 1 Lake Park",
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    age: 42,
-    address: "London No. 1 Lake Park",
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sidney No. 1 Lake Park",
-  },
-  {
-    key: "4",
-    name: "Jim Red",
-    age: 32,
-    address: "London No. 2 Lake Park",
-  },
-];
-
-const onChange = (pagination, filters, sorter, extra) => {
-  console.log("params", pagination, filters, sorter, extra);
-};
-
-const { Search } = Input;
-const onSearch = (value) => console.log(value);
+import { Input } from "antd";
+import { phimServ } from "../Services/phimService";
 
 export default function QuanLyPhimPage() {
+  const [movie, setMovie] = useState([]);
+  console.log("[movie]: ", movie);
+
+  useEffect(() => {
+    phimServ
+      .getListPhim()
+      .then((res) => {
+        console.log("res", res.data.content);
+        setMovie(res.data.content);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  }, []);
+
+  const { Search } = Input;
+  const onSearch = (value) => console.log(value);
+
+  const columns = [
+    {
+      title: "Mã Phim",
+      dataIndex: "maPhim",
+      sorter: (a, b) => a.maPhim - b.maPhim,
+      width: "10%",
+    },
+    {
+      title: "Hình Ảnh",
+      dataIndex: "hinhAnh",
+      render: (text, film, index) => {
+        return (
+          <Fragment>
+            <img
+              src={film.hinhAnh}
+              alt={film.tenPhim}
+              width={150}
+              height={50}
+              onError={(e) => {
+                e.target.onError = null;
+                e.target.src = `https://picsum.photos/id/${index}/50/50`;
+              }}
+            />
+          </Fragment>
+        );
+      },
+      width: "15%",
+    },
+    {
+      title: "Tên Phim",
+      dataIndex: "tenPhim",
+      sorter: (a, b) => {
+        let tenPhimA = a.tenPhim.toLowerCase().trim();
+        let tenPhimB = b.tenPhim.toLowerCase().trim();
+        if (tenPhimA > tenPhimB) {
+          return 1;
+        }
+        return -1;
+      },
+      width: "15%",
+    },
+    {
+      title: "Mô tả ",
+      dataIndex: "moTa",
+      render: (text, film) => {
+        return (
+          <Fragment>
+            {film.moTa.length > 50
+              ? film.moTa.substr(0, 50) + " ..."
+              : film.moTa}
+          </Fragment>
+        );
+      },
+      width: "35%",
+    },
+    {
+      title: "Thao tác",
+      dataIndex: "biDanh",
+      width: "25%",
+    },
+  ];
+  const data = movie;
+
+  const onChange = (pagination, filters, sorter, extra) => {
+    console.log("params onChange Table", pagination, filters, sorter, extra);
+  };
+
   return (
     <div>
       <h3 className="text-xl mb-5">Quản Lý Fimls</h3>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">
+        Thêm Phim
+      </button>
       <Search
-        className="mb-10"
+        className="mb-5"
         placeholder="input search text"
         allowClear
         enterButton="Search"
