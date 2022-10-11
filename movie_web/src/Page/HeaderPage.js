@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { localServ } from "../Services/localService";
 
 export default function HeaderPage() {
   return (
@@ -24,7 +25,10 @@ export default function HeaderPage() {
               Đăng Nhập
             </button>
           </NavLink>
-          <button className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">
+          <button
+            onClick={handleLogout}
+            className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900"
+          >
             Đăng Xuất
           </button>
         </div>
@@ -60,7 +64,10 @@ export default function HeaderPage() {
           </NavLink>
         </div>
         <div className="block">
-          <button className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">
+          <button
+            onClick={handleLogout}
+            className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900"
+          >
             Đăng Xuất
           </button>
         </div>
@@ -73,3 +80,7 @@ function menuSider() {
   const menu = document.querySelector("div.mobile-menu");
   menu.classList.toggle("hidden");
 }
+let handleLogout = () => {
+  localServ.user.remove();
+  window.location.href = "/login";
+};

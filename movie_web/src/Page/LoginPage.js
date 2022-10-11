@@ -1,6 +1,6 @@
 import { Button, Form, Input, message } from "antd";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import bg_animate from "../assets/bg_Login.json";
