@@ -63,7 +63,7 @@ export const TabsDetail = ({ data }) => {
   const renderCardDetail = () => {
     return (
       <div
-        className="mx-auto mt-10 flex rounded-lg  shadow-md md:flex-row md:max-w-lg
+        className="mx-auto mt-10 flex rounded-lg  shadow-md md:flex-row md:max-w-xl
 "
       >
         <img
@@ -83,7 +83,7 @@ export const TabsDetail = ({ data }) => {
                 label: <span className=" font-semibold ">Nội dung</span>,
                 key: "1",
                 children: (
-                  <p className="mb-3 font-normal text-gray-100 ">
+                  <p className="mb-3 font-normal text-gray-100 hover:text-black duration-500">
                     <TextSplice
                       data={data.moTa ? data.moTa : "Đang cập nhật"}
                     />
@@ -104,12 +104,12 @@ export const TabsDetail = ({ data }) => {
                       />
                     )}
                     <br />
-                    <span className="text-gray-100">
+                    <span className="text-gray-100 hover:text-black duration-500">
                       {" "}
                       Thời gian: {(Math.floor(Math.random() * 5) + 2) * 30} phút
                     </span>
                     <br />
-                    <span className="text-gray-100">
+                    <span className="text-gray-100 hover:text-black duration-500">
                       Ngày khởi chiếu:{" "}
                       {moment(data.ngayKhoiChieu).format("DD-MM-YY h:mm:ss a")}
                     </span>

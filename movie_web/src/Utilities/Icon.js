@@ -287,3 +287,17 @@ export const NewsIcon = () => (
     <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
   </svg>
 );
+export const ToTopIcon = () => (
+  <svg
+    className="w-6 h-6"
+    fill="currentColor"
+    viewBox="0 0 20 20"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fillRule="evenodd"
+      d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"
+      clipRule="evenodd"
+    />
+  </svg>
+);

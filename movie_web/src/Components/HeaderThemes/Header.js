@@ -114,13 +114,6 @@ export default function Header() {
     <header className="px-4 scr bg-opacity-5 fixed z-20 w-full bg-slate-50  shadow">
       <div className="container opacity-10 duration-300 hover:opacity-100 flex justify-between h-12 mx-auto">
         <div className="flex">
-          <Link
-            rel="noopener noreferrer"
-            to={"/"}
-            className="flex items-center p-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400"
-          >
-            <HomeIcon />
-          </Link>
           {checkLink == "/" ? (
             <>
               <HashLink
@@ -149,7 +142,13 @@ export default function Header() {
               </HashLink>
             </>
           ) : (
-            ""
+            <Link
+              rel="noopener noreferrer"
+              to={"/"}
+              className="flex items-center p-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400"
+            >
+              <HomeIcon />
+            </Link>
           )}
         </div>
 
