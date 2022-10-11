@@ -17,17 +17,7 @@ export default function ItemChair({ data }) {
                 <>
                     {selectChair.map((item, i) => {
                         let handleSelect = (props, i) => {
-                            // let cloneData = [...selectChair];
-                            // if (props.isSelect) {
-                            //   cloneData[i] = { ...props, isSelect: false };
-                            // } else {
-                            //   cloneData[i] = { ...props, isSelect: true };
-                            // }
-                            // setSelectChair(cloneData);
-                            // dispatch({
-                            //   type: TOTAL_MONEY,
-                            //   payload: props,
-                            // });
+
                             dispatch(
                                 addOrRemoveChair(
                                     props,
