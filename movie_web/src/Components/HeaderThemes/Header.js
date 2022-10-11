@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { DownOutlined } from "@ant-design/icons";
-
+import { HashLink } from "react-router-hash-link";
 import {
   Button,
   Modal,
@@ -25,6 +25,7 @@ import {
   HomeIcon,
   LoginIcon,
   LogOutIcon,
+  NewsIcon,
   RegisterIcon,
   TheaterIcon,
 } from "../../Utilities/Icon";
@@ -122,20 +123,30 @@ export default function Header() {
           </Link>
           {checkLink == "/" ? (
             <>
-              <a
+              <HashLink
                 rel="noopener noreferrer"
-                href="#filmHot"
+                smooth
+                to={"#filmHot"}
                 className="flex items-center p-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400"
               >
                 <TheaterIcon />
-              </a>
-              <a
+              </HashLink>
+              <HashLink
+                smooth
+                to={"#cinemax"}
                 rel="noopener noreferrer"
-                href="#cinemax"
                 className="flex items-center p-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400"
               >
                 <CalendarIcon />
-              </a>
+              </HashLink>
+              <HashLink
+                rel="noopener noreferrer"
+                smooth
+                to={"#news"}
+                className="flex items-center p-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400"
+              >
+                <NewsIcon />
+              </HashLink>
             </>
           ) : (
             ""
@@ -179,7 +190,7 @@ export default function Header() {
         </div>
       </div>
       <Modal
-      destroyOnClose={true}
+        destroyOnClose={true}
         title="Đăng nhập"
         style={{ top: 20 }}
         footer={null}

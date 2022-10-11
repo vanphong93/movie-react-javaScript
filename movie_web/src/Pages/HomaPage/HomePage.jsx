@@ -17,8 +17,10 @@ import moment from "moment";
 
 import TextSplice from "../../Utilities/Icon";
 import { AddTypeMovie } from "../../Utilities/TypeMovie";
+import News from "./News/News";
 
 export default function HomePage() {
+  console.log("render homa page");
   let { dataMovie, dataBaner, dataTheater } = useSelector((state) => {
     return state.movieReducer;
   });
@@ -159,6 +161,9 @@ export default function HomePage() {
             Rạp Cinema
           </h1>
           <TabsMovies showModal={showModal} dataMovie={movieTheater} />
+        </section>
+        <section id="news">
+          <News/>
         </section>
       </div>
 

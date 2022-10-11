@@ -1,5 +1,6 @@
 import { Tabs } from "antd";
 import React from "react";
+import { DataContainer } from "../../../demo/Ada";
 // import {CarouselMovies} from './CarouselMovies'
 // const onChange = (key) => {
 
@@ -8,7 +9,7 @@ import React from "react";
 export const AllMovie = ({ dataMovieCurrent, dataMovieNext }) => (
   <Tabs
     centered
-    addIcon
+
     type="card"
     defaultActiveKey="1"
     items={[
@@ -24,6 +25,7 @@ export const AllMovie = ({ dataMovieCurrent, dataMovieNext }) => (
         key: "2",
         children: dataMovieNext,
       },
+
     ]}
   />
 );
