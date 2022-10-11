@@ -7,6 +7,7 @@ import LoginPage from "./Page/LoginPage";
 import QuanLyUserPage from "./Page/QuanLyUserPage";
 import QuanLyPhimPage from "./Page/QuanLyPhimPage";
 import QuanLyShowTimePage from "./Page/QuanLyShowTimePage";
+import SecureView from "./HOC/SecureView";
 
 function App() {
   return (
@@ -21,19 +22,35 @@ function App() {
 
           <Route
             path="/admin"
-            element={<LayoutAdmin Component={QuanLyUserPage} />}
+            element={
+              <SecureView>
+                <LayoutAdmin Component={QuanLyUserPage} />
+              </SecureView>
+            }
           />
           <Route
             path="/admin/UserManage"
-            element={<LayoutAdmin Component={QuanLyUserPage} />}
+            element={
+              <SecureView>
+                <LayoutAdmin Component={QuanLyUserPage} />
+              </SecureView>
+            }
           />
           <Route
             path="/admin/FilmsManage"
-            element={<LayoutAdmin Component={QuanLyPhimPage} />}
+            element={
+              <SecureView>
+                <LayoutAdmin Component={QuanLyPhimPage} />
+              </SecureView>
+            }
           />
           <Route
             path="/admin/ShowTimeManage"
-            element={<LayoutAdmin Component={QuanLyShowTimePage} />}
+            element={
+              <SecureView>
+                <LayoutAdmin Component={QuanLyShowTimePage} />
+              </SecureView>
+            }
           />
         </Routes>
       </BrowserRouter>
