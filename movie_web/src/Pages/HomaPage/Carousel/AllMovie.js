@@ -1,28 +1,29 @@
-import { Tabs } from 'antd';
-import React from 'react';
+import { Tabs } from "antd";
+import React from "react";
 // import {CarouselMovies} from './CarouselMovies'
 // const onChange = (key) => {
 
 // };
 
-export const AllMovie = ({dataMovieCurrent,dataMovieNext}) => (
-  <Tabs centered 
-  addIcon
-  type='card'
+export const AllMovie = ({ dataMovieCurrent, dataMovieNext }) => (
+  <Tabs
+    centered
+    addIcon
+    type="card"
     defaultActiveKey="1"
-    // onChange={onChange}
     items={[
       {
-        label: `Phim đang chiếu`,
-        key: '1',
+        label: (
+          <span className="font-semibold text-base ">Phim đang chiếu</span>
+        ),
+        key: "1",
         children: dataMovieCurrent,
       },
       {
-        label: `Phim sắp chiếu`,
-        key: '2',
+        label: <span className="font-semibold text-base ">Phim sắp chiếu</span>,
+        key: "2",
         children: dataMovieNext,
       },
     ]}
   />
 );
-

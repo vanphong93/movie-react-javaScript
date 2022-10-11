@@ -96,7 +96,7 @@ export default function BookTicket() {
             onClick={() => {
               handleBuy(totalMoney, id);
             }}
-            className="bg-white hover:bg-gray-100 mx-2 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded"
+            className="bg-red-500 p-3 rounded hover:bg-red-700 duration-300 "
           >
             Thanh toán
           </button>

@@ -91,7 +91,7 @@ export default function HomePage() {
       >
         {data.baner ? (
           <iframe
-            // id={data.maPhim}
+
             allowFullScreen={true}
             title="myFrame"
             className="w-full"

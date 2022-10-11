@@ -1,4 +1,4 @@
-import { Popover, Tabs } from "antd";
+import { Popover, Rate, Tabs } from "antd";
 import moment from "moment";
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
@@ -10,27 +10,16 @@ export const TabsDetail = ({ data }) => {
   }, []);
   let { heThongRapChieu } = data;
   console.log("data: ", data);
-
-  // let handleTicket = (data) => {
-  //   // naviga("/login")
-  //   console.log(data);
-  //   // alert(234)
-  // };
-  const renderTimeMovie = (data) => {
-    let content = <span>{moneyFormat(data.lichChieuPhim[0].giaVe)}</span>;
+  const renderTimeMovie = (time) => {
+    let content = <span>{moneyFormat(time.lichChieuPhim[0].giaVe)}</span>;
 
     return (
       <div className="grid grid-cols-1 gap-2 lg:grid-cols-4 md:gap-3">
-        {data.lichChieuPhim.slice(0, 9).map((item, i) => {
+        {time.lichChieuPhim.slice(0, 9).map((item, i) => {
           return (
             <NavLink to={`/book/${item.maLichChieu}`} key={i}>
               <Popover placement="rightTop" content={content}>
-                <button
-                  // onClick={() => {
-                  //   handleTicket(item);
-                  // }}
-                  className="ml-3 p-1 md:p-3 rounded bg-red-500 duration-300 hover:bg-red-700 text-white"
-                >
+                <button className="ml-3 p-1 md:p-3 rounded bg-red-500 duration-300 hover:bg-red-700 text-white">
                   {moment(item.ngayChieuGioChieu).format("DD-MM-YY h:mm:ss a")}
                 </button>
               </Popover>
@@ -41,7 +30,7 @@ export const TabsDetail = ({ data }) => {
     );
   };
 
-  const renderTabChildren = (data) => {
+  const renderTabChildren = (cumRapChieu) => {
     return (
       <div>
         <Tabs
@@ -50,7 +39,7 @@ export const TabsDetail = ({ data }) => {
           style={{
             height: 420,
           }}
-          items={data.map((item, i) => {
+          items={cumRapChieu.map((item, i) => {
             const content = <span>{item.diaChi}</span>;
             return {
               label: (
@@ -65,36 +54,78 @@ export const TabsDetail = ({ data }) => {
               ),
               key: i,
               children: renderTimeMovie(item),
-              // children: <ItemTabMovie data={data}/>,
             };
           })}
         />
       </div>
     );
   };
-
-  return (
-    <div className="container mx-auto py-10">
+  const renderCardDetail = () => {
+    return (
       <div
-        className="mx-auto mt-10 flex items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl 
- "
+        className="mx-auto mt-10 flex rounded-lg  shadow-md md:flex-row md:max-w-lg
+"
       >
         <img
-          className="w-32 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
+          className="w-1/3 h-min md:rounded-l-lg"
           src={data.hinhAnh}
-          alt="image"
+          alt={`image_${data.tenPhim}`}
         />
-        <div className="flex flex-col justify-between p-4 leading-normal">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+
+        <div className="flex flex-col  p-4 leading-normal">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-100">
             {data.tenPhim}
           </h5>
-          <p className="mb-3 font-normal text-gray-500 ">
-            <TextSplice data={data.moTa ? data.moTa : "Đang cập nhật"} />
-            {/* <LoremSplice data={data.moTa ? data.moTa : "Đang cập nhật"} /> */}
-          </p>
+          <Tabs
+            defaultActiveKey="1"
+            items={[
+              {
+                label: <span className=" font-semibold ">Nội dung</span>,
+                key: "1",
+                children: (
+                  <p className="mb-3 font-normal text-gray-100 ">
+                    <TextSplice
+                      data={data.moTa ? data.moTa : "Đang cập nhật"}
+                    />
+                  </p>
+                ),
+              },
+              {
+                label: <span className=" font-semibold ">Thông tin</span>,
+                key: "2",
+                children: (
+                  <>
+                    {" "}
+                    {data.danhGia && (
+                      <Rate
+                        disabled
+                        allowHalf
+                        defaultValue={data.danhGia / 2}
+                      />
+                    )}
+                    <br />
+                    <span className="text-gray-100">
+                      {" "}
+                      Thời gian: {(Math.floor(Math.random() * 5) + 2) * 30} phút
+                    </span>
+                    <br />
+                    <span className="text-gray-100">
+                      Ngày khởi chiếu:{" "}
+                      {moment(data.ngayKhoiChieu).format("DD-MM-YY h:mm:ss a")}
+                    </span>
+                  </>
+                ),
+              },
+            ]}
+          />
         </div>
       </div>
-      <div className="p-2 md:p-10 text-blue-700 ">
+    );
+  };
+  return (
+    <div className="container mx-auto py-10">
+      {renderCardDetail()}
+      <div className="p-2 md:p-10 ">
         {heThongRapChieu && heThongRapChieu.length != 0 ? (
           <Tabs
             className="shadow-xl font-semibold"
@@ -121,7 +152,7 @@ export const TabsDetail = ({ data }) => {
         ) : (
           <div className="h-72 text-center">
             <Link to={"/"}>
-              <span className="hover:cursor-pointer duration-300 hover:text-blue-500 text-blue-300 text-3xl ">
+              <span className="hover:cursor-pointer duration-300 hover:text-purple-500 text-purple-300 text-3xl ">
                 Hệ thống đang cập nhật
               </span>
             </Link>
