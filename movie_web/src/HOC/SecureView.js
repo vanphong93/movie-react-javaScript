@@ -11,7 +11,9 @@ export default function SecureView({ children }) {
       let maloaiND = userLocal.maLoaiNguoiDung;
       if (maloaiND == "KhachHang") {
         window.location.href = "/login";
-        alert("Bạn không đủ quyền truy cập. Xin hãy chọn tài khoản khác!!!");
+        alert(
+          "Bạn không đủ quyền truy cập. Xin hãy chọn tài khoản Quản Trị!!!"
+        );
       }
     }
   }, []);
