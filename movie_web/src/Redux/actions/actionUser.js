@@ -1,3 +1,8 @@
-import {userServ} from '../../Services/userService';
-import {SET_USER} from '../constant/constantUser';
-import {localServ} from '../../Services/localService'
+import { SET_USER } from "../constant/constantUser";
+
+export const setUserLogin = (successValue) => {
+  return {
+    type: SET_USER,
+    payload: successValue,
+  };
+};

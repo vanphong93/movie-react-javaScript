@@ -1,34 +1,40 @@
 import { Button, Form, Input, message } from "antd";
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import bg_animate from "../assets/bg_Login.json";
+import { userServ } from "../Services/userService";
+import { setUserLogin } from "../Redux/actions/actionUser";
+import { localServ } from "../Services/localService";
 
 const LoginPage = () => {
-  // let navigate = useNavigate();
+  let dispatch = useDispatch();
+  let navigate = useNavigate();
 
-  // let dispatch = useDispatch();
+  useEffect(() => {
+    console.log("Hello");
+  });
 
   const onFinish = (values) => {
-    // userServ
-    //   .postLogin(values)
-    //   .then((res) => {
-    //     console.log("login", res);
-    //     dispatch(setUserInfor(res.data.content));
-    //     localServ.user.set(res.data.content);
-    //     message.success(res.data.message);
-    //     navigate("/manager");
-    //   })
-    //   .catch((err) => {
-    //     message.error(err.response.data.content);
-    //     console.log("sd", err);
-    //   });
+    userServ
+      .postLogin(values)
+      .then((res) => {
+        console.log("TC Dữ liệu Axios trả về", res);
+        dispatch(setUserLogin(res.data.content));
+        localServ.user.set(res.data.content);
+        message.success(res.data.message);
+        navigate("/admin");
+      })
+      .catch((err) => {
+        message.error(err.response.data.content);
+        console.log("Lỗi", err);
+      });
   };
 
   const onFinishFailed = (errorInfo) => {
-    // message.error(errorInfo.response.data.content)
-    // console.log("Failed:", errorInfo);
+    message.error(errorInfo.response.data.content);
+    console.log("Failed:", errorInfo);
   };
 
   return (
