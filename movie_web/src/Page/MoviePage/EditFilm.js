@@ -23,6 +23,7 @@ export default function EditFilm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const dayFormat = "DD/MM/YYYY";
+  const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY"];
   let { id } = useParams();
 
   let ThongTinFiml = useSelector((state) => {
@@ -42,15 +43,14 @@ export default function EditFilm() {
       });
   }, []);
 
-  console.log("ThongTinFiml redux: ", ThongTinFiml);
-
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
+      maPhim: ThongTinFiml.maPhim,
       tenPhim: ThongTinFiml?.tenPhim,
       trailer: ThongTinFiml?.trailer,
       moTa: ThongTinFiml.moTa,
-      ngayKhoiChieu: ThongTinFiml.ngayKhoiChieu,
+      ngayKhoiChieu: ThongTinFiml?.ngayKhoiChieu,
       dangChieu: ThongTinFiml.dangChieu,
       sapChieu: ThongTinFiml.sapChieu,
       hot: ThongTinFiml.hot,
@@ -64,43 +64,33 @@ export default function EditFilm() {
         .required("không được để trống tên Phim"),
       trailer: Yup.string().required("không được để trống trailer phim"),
       moTa: Yup.string().required("Không được để trống Mô tả phim"),
-      ngayKhoiChieu: Yup.string()
-        .required("Không được để trống Ngày Khởi Chiếu")
-        .matches(
-          /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/,
-          "Ngày không hợp lệ!!!"
-        ),
+      ngayKhoiChieu: Yup.string().required(
+        "Không được để trống Ngày Khởi Chiếu"
+      ),
       danhGia: Yup.string().required("Không được để trống đánh giá"),
     }),
     onSubmit: (values) => {
       console.log("values: ", values);
       // Tạo đối tượng formData
-      //   values.maNhom = localServ.user.get().maNhom;
-      //   let formData = new FormData();
-      //   for (let key in values) {
-      //     if (key !== "hinhAnh") {
-      //       formData.append(key, values[key]);
-      //     } else {
-      //       formData.append("File", values.hinhAnh, values.hinhAnh.name);
-      //     }
-      //   }
-      //   console.log("FormData", formData.get("maNhom"));
-      //   phimServ
-      //     .themPhim(formData)
-      //     .then((res) => {
-      //       console.log("Chờ xử lý", res.data.message);
-      //       alert("Thêm phim thành công!!!");
-      //       navigate("/admin/FilmsManage");
-      //     })
-      //     .catch((err) => {
-      //       console.log(err);
-      //     });
+      values.maNhom = localServ.user.get().maNhom;
+      let formData = new FormData();
+      for (let key in values) {
+        if (key !== "hinhAnh") {
+          formData.append(key, values[key]);
+        } else {
+          if (values.hinhAnh !== null) {
+            formData.append("File", values.hinhAnh, values.hinhAnh.name);
+          }
+        }
+      }
+      console.log("FormData", formData.get("maNhom"));
     },
   });
 
-  const handleChangeDataPicker = (values) => {
-    let ngayKhoiChieu = moment(values).format("DD/MM/YYYY");
+  console.log("Ngay khoi Chieu", formik.values.ngayKhoiChieu);
 
+  const handleChangeDataPicker = (values) => {
+    let ngayKhoiChieu = moment(values);
     formik.setFieldValue("ngayKhoiChieu", ngayKhoiChieu);
   };
 
@@ -201,8 +191,8 @@ export default function EditFilm() {
 
       <Form.Item label="Ngày khởi chiếu">
         <DatePicker
-          defaultValue={moment(formik.values.ngayKhoiChieu)}
           onChange={handleChangeDataPicker}
+          value={moment(formik.values.ngayKhoiChieu)}
           format={dayFormat}
         />
         {formik.errors.ngayKhoiChieu && (
