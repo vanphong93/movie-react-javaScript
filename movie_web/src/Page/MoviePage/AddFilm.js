@@ -11,9 +11,13 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import moment from "moment";
 import * as Yup from "yup";
+import { localServ } from "../../Services/localService";
+import { phimServ } from "../../Services/phimService";
+import { useNavigate } from "react-router-dom";
 
 export default function AddFilm() {
   const [componentSize, setComponentSize] = useState("default");
+  const navigate = useNavigate();
   const [imgSrc, setimgSrc] = useState("");
 
   const formik = useFormik({
@@ -46,12 +50,33 @@ export default function AddFilm() {
     }),
     onSubmit: (values) => {
       console.log("values: ", values);
+      // Tạo đối tượng formData
+      values.maNhom = localServ.user.get().maNhom;
+      let formData = new FormData();
+      for (let key in values) {
+        if (key !== "hinhAnh") {
+          formData.append(key, values[key]);
+        } else {
+          formData.append("File", values.hinhAnh, values.hinhAnh.name);
+        }
+      }
+      console.log("FormData", formData.get("maNhom"));
+      phimServ
+        .themPhim(formData)
+        .then((res) => {
+          console.log("Chờ xử lý", res.data.message);
+          alert(res.data.message);
+          navigate("/admin/FilmsManage");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   });
 
   const handleChangeDataPicker = (values) => {
     let ngayKhoiChieu = moment(values).format("DD/MM/YYYY");
-    console.log("ngayKhoiChieu: ", ngayKhoiChieu);
+
     formik.setFieldValue("ngayKhoiChieu", ngayKhoiChieu);
   };
 

@@ -8,4 +8,8 @@ export const phimServ = {
     }`;
     return https.get(uri);
   },
+  themPhim: (formdata) => {
+    let uri = "/api/QuanLyPhim/ThemPhimUploadHinh";
+    return https.post(uri, formdata);
+  },
 };
