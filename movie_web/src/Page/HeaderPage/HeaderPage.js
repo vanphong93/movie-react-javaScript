@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { localServ } from "../Services/localService";
+import { localServ } from "../../Services/localService";
 
 export default function HeaderPage() {
   let users = useSelector((state) => {

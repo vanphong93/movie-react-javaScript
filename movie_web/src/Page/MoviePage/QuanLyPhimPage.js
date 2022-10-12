@@ -1,9 +1,10 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Table } from "antd";
 import { Input } from "antd";
-import { phimServ } from "../Services/phimService";
-import { useDispatch, useSelector } from "react-redux";
-import { setFilm } from "../Redux/actions/actionFilm";
+import { phimServ } from "../../Services/phimService";
+import { setFilm } from "../../Redux/actions/actionFilm";
 import FilmAction from "./FilmAction";
 
 export default function QuanLyPhimPage() {
@@ -11,6 +12,7 @@ export default function QuanLyPhimPage() {
     return state.filmReducer.arrFilm;
   });
   let dispatch = useDispatch();
+  let navigate = useNavigate();
 
   useEffect(() => {
     phimServ
@@ -105,7 +107,12 @@ export default function QuanLyPhimPage() {
   return (
     <div>
       <h3 className="text-xl mb-5">Quản Lý Fimls</h3>
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">
+      <button
+        onClick={() => {
+          navigate("/admin/FilmsManage/AddFilm");
+        }}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2"
+      >
         Thêm Phim
       </button>
       <Search

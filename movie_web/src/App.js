@@ -2,12 +2,13 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LayoutLogin from "./HOC/LayoutLogin";
 import LayoutAdmin from "./HOC/LayoutAdmin";
-import "antd/dist/antd.css";
-import LoginPage from "./Page/LoginPage";
-import QuanLyUserPage from "./Page/QuanLyUserPage";
-import QuanLyPhimPage from "./Page/QuanLyPhimPage";
-import QuanLyShowTimePage from "./Page/QuanLyShowTimePage";
 import SecureView from "./HOC/SecureView";
+import "antd/dist/antd.css";
+import LoginPage from "./Page/LoginPage/LoginPage";
+import QuanLyUserPage from "./Page/MoviePage/QuanLyUserPage";
+import QuanLyPhimPage from "./Page/MoviePage/QuanLyPhimPage";
+import QuanLyShowTimePage from "./Page/MoviePage/QuanLyShowTimePage";
+import AddFilm from "./Page/MoviePage/AddFilm";
 
 function App() {
   return (
@@ -49,6 +50,15 @@ function App() {
             element={
               <SecureView>
                 <LayoutAdmin Component={QuanLyShowTimePage} />
+              </SecureView>
+            }
+          />
+
+          <Route
+            path="/admin/FilmsManage/AddFilm"
+            element={
+              <SecureView>
+                <LayoutAdmin Component={AddFilm} />
               </SecureView>
             }
           />

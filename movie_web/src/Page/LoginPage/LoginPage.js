@@ -3,10 +3,10 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
-import bg_animate from "../assets/bg_Login.json";
-import { userServ } from "../Services/userService";
-import { setUserLogin } from "../Redux/actions/actionUser";
-import { localServ } from "../Services/localService";
+import bg_animate from "../../assets/bg_Login.json";
+import { userServ } from "../../Services/userService";
+import { setUserLogin } from "../../Redux/actions/actionUser";
+import { localServ } from "../../Services/localService";
 
 const LoginPage = () => {
   let dispatch = useDispatch();

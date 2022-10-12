@@ -2,11 +2,15 @@ import {
   DesktopOutlined,
   UserOutlined,
   ClockCircleOutlined,
+  SettingOutlined,
+  FolderAddOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import HeaderPage from "../Page/HeaderPage";
+
+import HeaderPage from "../Page/HeaderPage/HeaderPage";
+
 const { Content, Sider } = Layout;
 
 function MenuSider({ Children }) {
@@ -30,8 +34,19 @@ function MenuSider({ Children }) {
               },
               {
                 label: "Quản lý Films",
-                key: "/admin/FilmsManage",
-                icon: <DesktopOutlined />,
+                icon: <SettingOutlined />,
+                children: [
+                  {
+                    label: "Films",
+                    key: "/admin/FilmsManage",
+                    icon: <DesktopOutlined />,
+                  },
+                  {
+                    label: "Thêm Films",
+                    key: "/admin/FilmsManage/AddFilm",
+                    icon: <FolderAddOutlined />,
+                  },
+                ],
               },
               {
                 label: "Quản lý ShowTime",
