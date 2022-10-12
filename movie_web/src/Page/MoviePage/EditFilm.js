@@ -23,7 +23,6 @@ export default function EditFilm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const dayFormat = "DD/MM/YYYY";
-  const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY"];
   let { id } = useParams();
 
   let ThongTinFiml = useSelector((state) => {
@@ -84,10 +83,18 @@ export default function EditFilm() {
         }
       }
       console.log("FormData", formData.get("maNhom"));
+      phimServ
+        .capnhatPhim(formData)
+        .then((res) => {
+          console.log("res", res);
+          alert("Cập nhật thành công");
+          navigate("/admin/FilmsManage");
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
     },
   });
-
-  console.log("Ngay khoi Chieu", formik.values.ngayKhoiChieu);
 
   const handleChangeDataPicker = (values) => {
     let ngayKhoiChieu = moment(values);
@@ -105,7 +112,7 @@ export default function EditFilm() {
     };
   };
 
-  const handleChangeFile = (e) => {
+  const handleChangeFile = async (e) => {
     let fileimg = e.target.files[0];
     if (
       fileimg.type === "image/png" ||
@@ -113,12 +120,12 @@ export default function EditFilm() {
       fileimg.type === "image/jpg" ||
       fileimg.type === "image/gif"
     ) {
+      await formik.setFieldValue("hinhAnh", fileimg);
       let reader = new FileReader();
       reader.readAsDataURL(fileimg);
       reader.onload = (e) => {
         setimgSrc(e.target.result);
       };
-      formik.setFieldValue("hinhAnh", fileimg);
     } else {
       alert("Dữ liệu không phù hợp");
     }

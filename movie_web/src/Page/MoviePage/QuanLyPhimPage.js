@@ -12,7 +12,6 @@ export default function QuanLyPhimPage() {
     return state.filmReducer.arrFilm;
   });
   let dispatch = useDispatch();
-  let navigate = useNavigate();
 
   useEffect(() => {
     phimServ
@@ -107,14 +106,6 @@ export default function QuanLyPhimPage() {
   return (
     <div>
       <h3 className="text-xl mb-5">Quản Lý Fimls</h3>
-      <button
-        onClick={() => {
-          navigate("/admin/FilmsManage/AddFilm");
-        }}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2"
-      >
-        Thêm Phim
-      </button>
       <Search
         className="mb-5"
         placeholder="input search text"
@@ -123,7 +114,12 @@ export default function QuanLyPhimPage() {
         size="large"
         onSearch={onSearch}
       />
-      <Table columns={columns} dataSource={data} onChange={onChange} />
+      <Table
+        columns={columns}
+        dataSource={data}
+        onChange={onChange}
+        rowKey={"maPhim"}
+      />
     </div>
   );
 }
