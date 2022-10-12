@@ -9,6 +9,7 @@ import QuanLyUserPage from "./Page/MoviePage/QuanLyUserPage";
 import QuanLyPhimPage from "./Page/MoviePage/QuanLyPhimPage";
 import QuanLyShowTimePage from "./Page/MoviePage/QuanLyShowTimePage";
 import AddFilm from "./Page/MoviePage/AddFilm";
+import EditFilm from "./Page/MoviePage/EditFilm";
 
 function App() {
   return (
@@ -59,6 +60,14 @@ function App() {
             element={
               <SecureView>
                 <LayoutAdmin Component={AddFilm} />
+              </SecureView>
+            }
+          />
+          <Route
+            path="/admin/FilmsManage/EditFilm/:id"
+            element={
+              <SecureView>
+                <LayoutAdmin Component={EditFilm} />
               </SecureView>
             }
           />

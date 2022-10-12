@@ -12,4 +12,8 @@ export const phimServ = {
     let uri = "/api/QuanLyPhim/ThemPhimUploadHinh";
     return https.post(uri, formdata);
   },
+  laythongtinPhim: (maPhim) => {
+    let uri = `/api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`;
+    return https.get(uri);
+  },
 };

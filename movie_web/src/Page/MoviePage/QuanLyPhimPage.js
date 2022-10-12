@@ -18,9 +18,9 @@ export default function QuanLyPhimPage() {
     phimServ
       .getListPhim()
       .then((res) => {
-        console.log("res", res.data.content);
+        // console.log("res", res.data.content);
         let data = res.data.content.map((item) => {
-          return { ...item, action: <FilmAction /> };
+          return { ...item, action: <FilmAction item={item} /> };
         });
         dispatch(setFilm(data));
       })

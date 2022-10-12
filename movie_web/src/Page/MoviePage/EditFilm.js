@@ -7,17 +7,30 @@ import {
   Radio,
   Switch,
 } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import moment from "moment";
 import * as Yup from "yup";
 import { localServ } from "../../Services/localService";
 import { phimServ } from "../../Services/phimService";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function AddFilm() {
-  const [componentSize, setComponentSize] = useState("default");
+export default function EditFilm() {
+  let { id } = useParams();
+
+  useEffect(() => {
+    phimServ
+      .laythongtinPhim(id)
+      .then((res) => {
+        let dataEdit = res.data.content;
+        console.log("thong tin phim eidt vs id", dataEdit);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  });
   const navigate = useNavigate();
+  const [componentSize, setComponentSize] = useState("default");
   const [imgSrc, setimgSrc] = useState("");
 
   const formik = useFormik({
@@ -131,7 +144,7 @@ export default function AddFilm() {
       onValuesChange={onFormLayoutChange}
       size={componentSize}
     >
-      <h3 className="text-xl mb-5">Thêm mới Fimls</h3>
+      <h3 className="text-xl mb-5">Sửa Thông Tin Fimls</h3>
       <Form.Item label="Form Size" name="size">
         <Radio.Group>
           <Radio.Button value="small">Small</Radio.Button>
@@ -210,7 +223,7 @@ export default function AddFilm() {
 
       <Form.Item label="Tác vụ">
         <Button type="primary" htmlType="submit">
-          Thêm Phim
+          Cập Nhật
         </Button>
       </Form.Item>
     </Form>
