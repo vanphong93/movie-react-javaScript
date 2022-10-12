@@ -13,25 +13,35 @@ import moment from "moment";
 import * as Yup from "yup";
 import { localServ } from "../../Services/localService";
 import { phimServ } from "../../Services/phimService";
-import { useNavigate, useParams } from "react-router-dom";
+import { useFetcher, useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setThongTinFilmEdit } from "../../Redux/actions/actionFilm";
 
 export default function EditFilm() {
+  const [componentSize, setComponentSize] = useState("default");
+  const [imgSrc, setimgSrc] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   let { id } = useParams();
+
+  let ThongTinFiml = useSelector((state) => {
+    return state.filmReducer.TTFimlEdit;
+  });
 
   useEffect(() => {
     phimServ
       .laythongtinPhim(id)
       .then((res) => {
-        let dataEdit = res.data.content;
-        console.log("thong tin phim eidt vs id", dataEdit);
+        var dataEdit = res.data.content;
+        console.log("thong tin phim eidt lấy từ id", dataEdit);
+        dispatch(setThongTinFilmEdit(dataEdit));
       })
       .catch((err) => {
         console.log("err", err);
       });
-  });
-  const navigate = useNavigate();
-  const [componentSize, setComponentSize] = useState("default");
-  const [imgSrc, setimgSrc] = useState("");
+  }, []);
+
+  console.log("ThongTinFiml: ", ThongTinFiml);
 
   const formik = useFormik({
     initialValues: {
