@@ -2,17 +2,25 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Table } from "antd";
 import { Input } from "antd";
 import { phimServ } from "../Services/phimService";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilm } from "../Redux/actions/actionFilm";
+import FilmAction from "./FilmAction";
 
 export default function QuanLyPhimPage() {
-  const [movie, setMovie] = useState([]);
-  console.log("[movie]: ", movie);
+  let arrfilms = useSelector((state) => {
+    return state.filmReducer.arrFilm;
+  });
+  let dispatch = useDispatch();
 
   useEffect(() => {
     phimServ
       .getListPhim()
       .then((res) => {
         console.log("res", res.data.content);
-        setMovie(res.data.content);
+        let data = res.data.content.map((item) => {
+          return { ...item, action: <FilmAction /> };
+        });
+        dispatch(setFilm(data));
       })
       .catch((err) => {
         console.log("err", err);
@@ -26,12 +34,14 @@ export default function QuanLyPhimPage() {
     {
       title: "Mã Phim",
       dataIndex: "maPhim",
+      key: "maPhim",
       sorter: (a, b) => a.maPhim - b.maPhim,
-      width: "10%",
+      width: "15%",
     },
     {
       title: "Hình Ảnh",
       dataIndex: "hinhAnh",
+      key: "hinhAnh",
       render: (text, film, index) => {
         return (
           <Fragment>
@@ -53,6 +63,7 @@ export default function QuanLyPhimPage() {
     {
       title: "Tên Phim",
       dataIndex: "tenPhim",
+      key: "tenPhim",
       sorter: (a, b) => {
         let tenPhimA = a.tenPhim.toLowerCase().trim();
         let tenPhimB = b.tenPhim.toLowerCase().trim();
@@ -66,6 +77,7 @@ export default function QuanLyPhimPage() {
     {
       title: "Mô tả ",
       dataIndex: "moTa",
+      key: "moTa",
       render: (text, film) => {
         return (
           <Fragment>
@@ -79,11 +91,12 @@ export default function QuanLyPhimPage() {
     },
     {
       title: "Thao tác",
-      dataIndex: "biDanh",
+      dataIndex: "action",
+      key: "action",
       width: "25%",
     },
   ];
-  const data = movie;
+  const data = arrfilms;
 
   const onChange = (pagination, filters, sorter, extra) => {
     console.log("params onChange Table", pagination, filters, sorter, extra);
