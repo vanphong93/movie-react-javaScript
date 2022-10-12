@@ -23,13 +23,15 @@ export default function UserInfo() {
   }, []);
 
   let renderChairInfo = (item) => {
-    return item.danhSachGhe.map((item, i) => {
-      return (
-        <span className="bg-green-500 p-0.5 mx-1 rounded" key={i}>
-          {item.tenGhe}
-        </span>
-      );
-    });
+    return item.danhSachGhe
+      .splice(item.danhSachGhe.length - 10, item.danhSachGhe.length)
+      .map((item, i) => {
+        return (
+          <span className="bg-green-500 p-0.5 mx-1 rounded" key={i}>
+            {item.tenGhe}
+          </span>
+        );
+      });
   };
   let renderContent = () => {
     return dataTicket?.thongTinDatVe.map((item, i) => {
