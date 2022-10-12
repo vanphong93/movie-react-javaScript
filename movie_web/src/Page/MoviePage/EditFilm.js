@@ -13,7 +13,7 @@ import moment from "moment";
 import * as Yup from "yup";
 import { localServ } from "../../Services/localService";
 import { phimServ } from "../../Services/phimService";
-import { useFetcher, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setThongTinFilmEdit } from "../../Redux/actions/actionFilm";
 
@@ -22,6 +22,7 @@ export default function EditFilm() {
   const [imgSrc, setimgSrc] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const dayFormat = "DD/MM/YYYY";
   let { id } = useParams();
 
   let ThongTinFiml = useSelector((state) => {
@@ -33,7 +34,7 @@ export default function EditFilm() {
       .laythongtinPhim(id)
       .then((res) => {
         var dataEdit = res.data.content;
-        console.log("thong tin phim eidt lấy từ id", dataEdit);
+        console.log("thông tin phim eidt lấy từ id", dataEdit);
         dispatch(setThongTinFilmEdit(dataEdit));
       })
       .catch((err) => {
@@ -41,24 +42,25 @@ export default function EditFilm() {
       });
   }, []);
 
-  console.log("ThongTinFiml: ", ThongTinFiml);
+  console.log("ThongTinFiml redux: ", ThongTinFiml);
 
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
-      tenPhim: "",
-      trailer: "",
-      moTa: "",
-      ngayKhoiChieu: "",
-      dangChieu: false,
-      sapChieu: false,
-      hot: false,
-      danhGia: 0,
-      hinhAnh: {},
+      tenPhim: ThongTinFiml?.tenPhim,
+      trailer: ThongTinFiml?.trailer,
+      moTa: ThongTinFiml.moTa,
+      ngayKhoiChieu: ThongTinFiml.ngayKhoiChieu,
+      dangChieu: ThongTinFiml.dangChieu,
+      sapChieu: ThongTinFiml.sapChieu,
+      hot: ThongTinFiml.hot,
+      danhGia: ThongTinFiml.danhGia,
+      hinhAnh: null,
     },
     validationSchema: Yup.object({
       tenPhim: Yup.string()
         .min(5, "tên không được ít hơn 5 kí tự")
-        .max(25, "Tên không được dài hơn 25 kí tự")
+        .max(50, "Tên không được dài hơn 50 kí tự")
         .required("không được để trống tên Phim"),
       trailer: Yup.string().required("không được để trống trailer phim"),
       moTa: Yup.string().required("Không được để trống Mô tả phim"),
@@ -69,31 +71,30 @@ export default function EditFilm() {
           "Ngày không hợp lệ!!!"
         ),
       danhGia: Yup.string().required("Không được để trống đánh giá"),
-      hinhAnh: Yup.string().required("Không được để trống hình ảnh"),
     }),
     onSubmit: (values) => {
       console.log("values: ", values);
       // Tạo đối tượng formData
-      values.maNhom = localServ.user.get().maNhom;
-      let formData = new FormData();
-      for (let key in values) {
-        if (key !== "hinhAnh") {
-          formData.append(key, values[key]);
-        } else {
-          formData.append("File", values.hinhAnh, values.hinhAnh.name);
-        }
-      }
-      console.log("FormData", formData.get("maNhom"));
-      phimServ
-        .themPhim(formData)
-        .then((res) => {
-          console.log("Chờ xử lý", res.data.message);
-          alert("Thêm phim thành công!!!");
-          navigate("/admin/FilmsManage");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      //   values.maNhom = localServ.user.get().maNhom;
+      //   let formData = new FormData();
+      //   for (let key in values) {
+      //     if (key !== "hinhAnh") {
+      //       formData.append(key, values[key]);
+      //     } else {
+      //       formData.append("File", values.hinhAnh, values.hinhAnh.name);
+      //     }
+      //   }
+      //   console.log("FormData", formData.get("maNhom"));
+      //   phimServ
+      //     .themPhim(formData)
+      //     .then((res) => {
+      //       console.log("Chờ xử lý", res.data.message);
+      //       alert("Thêm phim thành công!!!");
+      //       navigate("/admin/FilmsManage");
+      //     })
+      //     .catch((err) => {
+      //       console.log(err);
+      //     });
     },
   });
 
@@ -131,7 +132,6 @@ export default function EditFilm() {
     } else {
       alert("Dữ liệu không phù hợp");
     }
-    console.log("fileimg: ", fileimg);
   };
 
   const onFormLayoutChange = ({ size }) => {
@@ -167,43 +167,68 @@ export default function EditFilm() {
         label="Tên phim"
         rules={[{ required: true, message: "Please input your username!" }]}
       >
-        <Input name="tenPhim" onChange={formik.handleChange} />
+        <Input
+          name="tenPhim"
+          onChange={formik.handleChange}
+          value={formik.values.tenPhim}
+        />
         {formik.errors.tenPhim && (
           <p className="text-red-500">{formik.errors.tenPhim}</p>
         )}
       </Form.Item>
 
       <Form.Item label="Trailer phim">
-        <Input name="trailer" onChange={formik.handleChange} />
+        <Input
+          name="trailer"
+          onChange={formik.handleChange}
+          value={formik.values.trailer}
+        />
         {formik.errors.trailer && (
           <p className="text-red-500">{formik.errors.trailer}</p>
         )}
       </Form.Item>
 
       <Form.Item label="Mô tả phim">
-        <Input name="moTa" onChange={formik.handleChange} />
+        <Input
+          name="moTa"
+          onChange={formik.handleChange}
+          value={formik.values.moTa}
+        />
         {formik.errors.moTa && (
           <p className="text-red-500">{formik.errors.moTa}</p>
         )}
       </Form.Item>
 
       <Form.Item label="Ngày khởi chiếu">
-        <DatePicker format={"DD/MM/YYYY"} onChange={handleChangeDataPicker} />
+        <DatePicker
+          defaultValue={moment(formik.values.ngayKhoiChieu)}
+          onChange={handleChangeDataPicker}
+          format={dayFormat}
+        />
         {formik.errors.ngayKhoiChieu && (
           <p className="text-red-500">{formik.errors.ngayKhoiChieu}</p>
         )}
       </Form.Item>
 
       <Form.Item label="Đang chiếu" valuePropName="checked">
-        <Switch onChange={handleChangeSwitch("dangChieu")} />
+        <Switch
+          onChange={handleChangeSwitch("dangChieu")}
+          checked={formik.values.dangChieu}
+        />
       </Form.Item>
 
       <Form.Item label="Sắp chiếu" valuePropName="checked">
-        <Switch onChange={handleChangeSwitch("sapChieu")} />
+        <Switch
+          onChange={handleChangeSwitch("sapChieu")}
+          checked={formik.values.sapChieu}
+        />
       </Form.Item>
 
       <Form.Item label="Hot" valuePropName="checked">
-        <Switch onChange={handleChangeSwitch("hot")} />
+        <Switch
+          onChange={handleChangeSwitch("hot")}
+          checked={formik.values.hot}
+        />
       </Form.Item>
 
       <Form.Item label="Đánh giá sao">
@@ -224,11 +249,12 @@ export default function EditFilm() {
           onChange={handleChangeFile}
           accept="image/png, image/jpeg, image/gif"
         />
-        {formik.errors.hinhAnh && (
-          <p className="text-red-500">Không được để trống hình ảnh</p>
-        )}
         <br />
-        <img style={{ width: 200, height: 200 }} src={imgSrc} alt="..." />
+        <img
+          style={{ width: 200, height: 200 }}
+          src={imgSrc === "" ? ThongTinFiml.hinhAnh : imgSrc}
+          alt="..."
+        />
       </Form.Item>
 
       <Form.Item label="Tác vụ">

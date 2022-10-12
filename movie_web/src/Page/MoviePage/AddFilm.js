@@ -35,7 +35,7 @@ export default function AddFilm() {
     validationSchema: Yup.object({
       tenPhim: Yup.string()
         .min(5, "tên không được ít hơn 5 kí tự")
-        .max(25, "Tên không được dài hơn 25 kí tự")
+        .max(50, "Tên không được dài hơn 50 kí tự")
         .required("không được để trống tên Phim"),
       trailer: Yup.string().required("không được để trống trailer phim"),
       moTa: Yup.string().required("Không được để trống Mô tả phim"),
