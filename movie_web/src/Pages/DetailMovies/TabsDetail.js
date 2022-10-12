@@ -73,7 +73,7 @@ export const TabsDetail = ({ data }) => {
         />
 
         <div className="flex flex-col  p-4 leading-normal">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-100">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight hover:text-black duration-500 text-gray-100">
             {data.tenPhim}
           </h5>
           <Tabs
