@@ -25,7 +25,7 @@ export default function Movie({ data, showModal }) {
 
   return (
     <Card
-      className="hover:shadow-md duration-300 transition ease-in-out hover:-translate-y-1 hover:scale-105 "
+      className="hover:shadow-md group duration-300 transition ease-in-out hover:-translate-y-1 hover:scale-105 "
       style={{
         border: "none",
       }}
@@ -34,11 +34,11 @@ export default function Movie({ data, showModal }) {
       }
     >
       <Meta title={<p className="text-red-500 truncate">{data.tenPhim}</p>} />
-      <div className="flex items-center  justify-between">
+      <div className="flex  items-center  justify-between">
         <span className="text-purple-700 font-semibold">
           {`${data.danhGia}/10`}
         </span>
-        <div className="group">
+        <div className="">
           <MediaCardIcon openModal={openModal} />
         </div>
         <NavLink to={`/detail/${data.maPhim}`}>
