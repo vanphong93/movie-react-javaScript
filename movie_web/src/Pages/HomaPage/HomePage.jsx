@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import Movie from "./Carousel/CardMovie";
 import { Modal, Rate } from "antd";
 import TabsMovies from "./TabsMovie/TabsMovies";
@@ -14,13 +14,12 @@ import {
   getMovieTheater,
 } from "../../redux/actions/actionGetMovie";
 import moment from "moment";
-
 import TextSplice from "../../Utilities/Icon";
 
 import News from "./News/News";
 
 export default function HomePage() {
-  // console.log("render homa page");
+
   let { dataMovie, dataBaner, dataTheater } = useSelector((state) => {
     return state.movieReducer;
   });
@@ -48,7 +47,6 @@ export default function HomePage() {
       return !item.dangChieu;
     });
     return newData.map((data, index) => {
-     
       return (
         <div key={index} className="p-2 lg:p-3 xl:p-5">
           <Movie showModal={showModal} data={data} />
@@ -74,6 +72,7 @@ export default function HomePage() {
   const showModal = () => {
     setIsModalOpen(true);
   };
+  // let callBack = useCallback(showModal, []);
 
   let { data } = useSelector((state) => {
     return state.modalReducer;
@@ -93,7 +92,6 @@ export default function HomePage() {
       >
         {data.baner ? (
           <iframe
-
             allowFullScreen={true}
             title="myFrame"
             className="w-full"
@@ -103,7 +101,6 @@ export default function HomePage() {
         ) : (
           <div className="container md:flex">
             <iframe
-
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen={true}
               title="myFrame"
@@ -163,10 +160,9 @@ export default function HomePage() {
           <TabsMovies showModal={showModal} dataMovie={movieTheater} />
         </section>
         <section id="news">
-          <News/>
+          <News />
         </section>
       </div>
-
     </div>
   );
 }

@@ -5,6 +5,8 @@ import "./TabsMovies.css"
 import React, { useEffect, useState } from "react";
 import ItemTabMovie from "./ItemTabMovie";
 export default function ({ showModal, dataMovie }) {
+
+  //Chỉnh tab reponsive của ant dùng event
   const [matches, setMatches] = useState(
     window.matchMedia("(min-width: 640px)").matches
   );

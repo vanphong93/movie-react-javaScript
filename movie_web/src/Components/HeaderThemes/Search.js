@@ -1,14 +1,13 @@
 import { AutoComplete } from "antd";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 
 const SearchMovies = () => {
-  console.log("render search movie");
   let dispatch = useDispatch();
   let navigate = useNavigate();
+
   let allFilm = [];
   let { dataTheater, dataMovie, dataBaner } = useSelector((state) => {
     return state.movieReducer;
@@ -28,6 +27,10 @@ const SearchMovies = () => {
       allFilm.push({ value: item.tenPhim, maPhim: item.maPhim });
     });
   }
+
+  let onSelect = (value, options) => {
+    navigate(`/detail/${options.maPhim}`);
+  };
   let fixDataFilm = _.unionBy(allFilm, "value");
   useEffect(() => {
     dispatch({
@@ -35,9 +38,6 @@ const SearchMovies = () => {
       payload: fixDataFilm,
     });
   }, [dataBaner]);
-  let onSelect = (value, options) => {
-    navigate(`/detail/${options.maPhim}`);
-  };
   return (
     <>
       <AutoComplete

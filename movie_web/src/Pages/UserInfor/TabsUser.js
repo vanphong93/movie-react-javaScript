@@ -1,15 +1,12 @@
 import React from "react";
 import { Tabs } from "antd";
-import { useLocation } from "react-router-dom";
-export default function TabsUser({ renderContent, renderUser }) {
-  let location = useLocation();
 
+export default function TabsUser({ renderContent, renderUser }) {
   return (
     <div className="card-container m-3">
       <Tabs
         centered
         type="card"
-        defaultActiveKey={location.hash == "#info" ? "2" : "1"}
         items={[
           {
             label: `Lịch sử đặt vé`,
@@ -23,7 +20,7 @@ export default function TabsUser({ renderContent, renderUser }) {
           {
             label: `Thông tin người dùng`,
             key: "2",
-            children: <div >{renderUser()}</div>,
+            children: <div>{renderUser()}</div>,
           },
         ]}
       />

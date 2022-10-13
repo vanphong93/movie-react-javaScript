@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 
 import { dataZing } from "../../../assets/dataZing";
 import { BackIcon, NextIcon } from "../../../Utilities/Icon";
 
-export default function News() {
+function News() {
   const [item, setItem] = useState(0);
 
   let newData = dataZing.slice(item, item + 4);
@@ -14,12 +14,6 @@ export default function News() {
   let handleBack = () => {
     let newNumber = item - 4;
     setItem(newNumber);
-    // if (item <= 2) {
-    //   return;
-    // } else {
-    //   let newItem = item - 4;
-    //   setItem(newItem);
-    // }
   };
   let renderContent = () => {
     return newData.map((item, i) => {
@@ -83,3 +77,4 @@ export default function News() {
     </div>
   );
 }
+export default memo(News);

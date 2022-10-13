@@ -32,9 +32,9 @@ export default function Baner({ showModal, banerMovie }) {
   const settings = {
     fade: true,
     dots: true,
-    // infinite: true,
+
     autoplay: true,
-    // speed: 2000,
+
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,

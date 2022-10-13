@@ -4,12 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import ModalUpdateUser from "./ModalUpdateUser";
 import { userServ } from "../../Services/userService";
 import TabsUser from "./TabsUser";
-import { moneyFormat } from "../../Utilities/Icon";
+import { moneyFormat, TicketIconInfo } from "../../Utilities/Icon";
 import { useNavigate } from "react-router-dom";
 import { setLoadingOff, setLoadingOn } from "../../redux/actions/actionsSpiner";
-
-import { Input, Space } from "antd";
-import { message } from "antd";
+import { Input, Space ,message} from "antd";
 export default function UserInfo() {
   let dispatch = useDispatch();
   let navigate = useNavigate();
@@ -29,8 +27,8 @@ export default function UserInfo() {
         console.log("err: ", err);
         setTimeout(() => {
           dispatch(setLoadingOff());
-          alert("kiem tra ket noi");
-        }, 6000);
+          message.error("Kiểm tra lại kết nối");
+        }, 2000);
       });
   }, []);
   let addTicket = (data) => {
@@ -38,7 +36,7 @@ export default function UserInfo() {
       return item.value == data;
     });
     if (index == -1) {
-      message.error("Bạn cần quay lại trang chủ để cập nhật dữ liệu");
+      message.error("Không tìm thấy phim, quay lại trang chủ và reset")
     } else {
       let result = dataSearch[index].maPhim;
       navigate(`/detail/${result}`);
@@ -56,23 +54,23 @@ export default function UserInfo() {
   };
   let renderContent = () => {
     return dataTicket?.thongTinDatVe.map((item, i) => {
-      console.log("dataTicket: ", dataTicket);
-
       return (
         <div
           key={i}
-          className="flex h-56 shadow-lg hover:-translate-y-2 duration-300 rounded"
+          className="flex h-56 shadow-lg group hover:-translate-y-2 duration-300 rounded"
         >
           <img
-            onClick={() => {
+            className="w-1/3 rounded"
+            src={item.hinhAnh}
+            alt={item.tenPhim}
+          />
+          <TicketIconInfo
+            addTicket={() => {
               addTicket(item.tenPhim);
             }}
-            className="w-1/3 rounded hover:cursor-pointer"
-            src={item.hinhAnh}
-            alt="image"
           />
           <div className="mx-2">
-            <h5 className="text-purple-900 text-center text-2xl font-bold">
+            <h5 className="text-purple-900 text-center text-base lg:text-2xl font-bold">
               {item.tenPhim}
             </h5>
             <p className="font-medium text-rose-400">
@@ -97,13 +95,13 @@ export default function UserInfo() {
       return (
         <>
           <p>Tên: {hoTen}</p>
-          <p>Tài khoản: {taiKhoan}</p>
-          {/* <input type="password" /> */}
+          <p>
+            Tài khoản: <span className="text-red-500">{taiKhoan}</span>
+          </p>
           <Space direction="vertical">
             <Input.Password value={matKhau} placeholder="input password" />
           </Space>
-          {/* <p>Mật khẩu: {matKhau}</p> */}
-          <p>Số điện thoại: {soDT}</p>
+          <p className="mt-2">Số điện thoại: {soDT}</p>
           <p>Email: {email}</p>
           <p>
             Người dùng:

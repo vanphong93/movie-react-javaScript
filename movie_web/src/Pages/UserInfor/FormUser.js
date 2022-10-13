@@ -1,45 +1,28 @@
-import { Button, Checkbox, Form, Input,message } from "antd";
+import { Button, Form, Input, message } from "antd";
 import React from "react";
 import { userServ } from "../../Services/userService";
-
-const App = ({ data }) => {
-  // console.log('data: ', data);
-  // let { email, hoTen, matKhau, soDT, taiKhoan } = data;
-
+import { useNavigate } from "react-router-dom";
+const App = () => {
+  let navigate = useNavigate();
   const onFinish = (values) => {
     let newdata = { ...values, maLoaiNguoiDung: "KhachHang", maNhom: "GP00" };
-    console.log('newdata: ', newdata);
     userServ
       .editUser(newdata)
       .then((res) => {
         console.log(res);
-       message.success("Tài khoản đã được cập nhật")
-       setTimeout(() => {
-        window.location.reload();
-       }, 2000);
-        
+        message.success("Tài khoản đã được cập nhật");
+        setTimeout(() => {
+          navigate("/");
+          window.location.reload();
+        }, 2000);
       })
       .catch((err) => {
-        console.log('err: ', err);
-        message.error(err.message)
+        console.log("err: ", err);
+        message.error(err.message);
       });
   };
   const [form] = Form.useForm();
-  if (data != undefined) {
-    form.setFieldsValue({
-      taiKhoan: data.taiKhoan,
-      matKhau: data.matKhau,
-      email: data.email,
-      hoTen: data.hoTen,
-      maLoaiNguoiDung: data.maLoaiNguoiDung,
-      maNhom: "GP00",
-      soDt: data.soDT,
-    });
-  }
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
   const formItemLayout = {
     labelCol: {
       xs: {

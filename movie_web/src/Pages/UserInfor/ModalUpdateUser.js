@@ -1,12 +1,9 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Button, Modal } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import FormUpdateUser from "./FormUser";
-export default function ModalUpdateUser({data}) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
-// console.log('data modal: ', dataModal);
-// let dispatch=useDispatch()
+import FormUpdateUser from "./FormUser";
+export default function ModalUpdateUser({ data }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -21,16 +18,16 @@ export default function ModalUpdateUser({data}) {
   return (
     <>
       <Button type="primary" onClick={showModal}>
-Update
+        Update
       </Button>
       <Modal
-      footer={false}
+        footer={false}
         title="Basic Modal"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <FormUpdateUser data={data}/>
+        <FormUpdateUser />
       </Modal>
     </>
   );

@@ -26,6 +26,7 @@ function SamplePrevArrow(props) {
   );
 }
 export default function SimpleSlider({ data }) {
+
   const settings = {
     dots: true,
     slidesToShow: 5,
