@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
 import { Table } from "antd";
 import { Input } from "antd";
 import { phimServ } from "../../Services/phimService";
@@ -29,7 +28,35 @@ export default function QuanLyPhimPage() {
   }, []);
 
   const { Search } = Input;
-  const onSearch = (value) => console.log(value);
+
+  const onSearch = (value) => {
+    console.log(value);
+    if (value != "") {
+      phimServ
+        .getListPhimSreach(value)
+        .then((res) => {
+          let dataSreach = res.data.content;
+          console.log("thong tin sreach", dataSreach);
+          dispatch(setFilm(dataSreach));
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
+    } else {
+      phimServ
+        .getListPhim()
+        .then((res) => {
+          // console.log("res", res.data.content);
+          let data = res.data.content.map((item) => {
+            return { ...item, action: <FilmAction item={item} /> };
+          });
+          dispatch(setFilm(data));
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
+    }
+  };
 
   const columns = [
     {

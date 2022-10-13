@@ -7,7 +7,6 @@ import "antd/dist/antd.css";
 import LoginPage from "./Page/LoginPage/LoginPage";
 import QuanLyUserPage from "./Page/MoviePage/QuanLyUserPage";
 import QuanLyPhimPage from "./Page/MoviePage/QuanLyPhimPage";
-import QuanLyShowTimePage from "./Page/MoviePage/QuanLyShowTimePage";
 import AddFilm from "./Page/MoviePage/AddFilm";
 import EditFilm from "./Page/MoviePage/EditFilm";
 
@@ -43,14 +42,6 @@ function App() {
             element={
               <SecureView>
                 <LayoutAdmin Component={QuanLyPhimPage} />
-              </SecureView>
-            }
-          />
-          <Route
-            path="/admin/ShowTimeManage"
-            element={
-              <SecureView>
-                <LayoutAdmin Component={QuanLyShowTimePage} />
               </SecureView>
             }
           />

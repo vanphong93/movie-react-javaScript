@@ -48,11 +48,6 @@ function MenuSider({ Children }) {
                   },
                 ],
               },
-              {
-                label: "Quản lý ShowTime",
-                key: "/admin/ShowTimeManage",
-                icon: <ClockCircleOutlined />,
-              },
             ]}
           ></Menu>
         </Sider>

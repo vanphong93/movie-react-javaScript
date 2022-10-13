@@ -8,6 +8,12 @@ export const phimServ = {
     }`;
     return https.get(uri);
   },
+  getListPhimSreach: (tenPhim) => {
+    let uri = `/api/QuanLyPhim/LayDanhSachPhim?maNhom=${
+      localServ.user.get().maNhom
+    }&tenPhim=${tenPhim}`;
+    return https.get(uri);
+  },
   themPhim: (formdata) => {
     let uri = "/api/QuanLyPhim/ThemPhimUploadHinh";
     return https.post(uri, formdata);
