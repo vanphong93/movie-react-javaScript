@@ -151,7 +151,7 @@ export default function EditFilm() {
       onValuesChange={onFormLayoutChange}
       size={componentSize}
     >
-      <h3 className="text-xl mb-5">Sửa Thông Tin Fimls</h3>
+      <h3 className="text-xl mb-5">Sửa Thông Tin Film</h3>
       <Form.Item label="Form Size" name="size">
         <Radio.Group>
           <Radio.Button value="small">Small</Radio.Button>

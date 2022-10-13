@@ -30,4 +30,16 @@ export const phimServ = {
     let uri = `/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`;
     return https.delete(uri);
   },
+  laythongtinHeThongRap: () => {
+    let uri = `/api/QuanLyRap/LayThongTinHeThongRap`;
+    return https.get(uri);
+  },
+  laythongtinCumRap: (mahtr) => {
+    let uri = `/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${mahtr}`;
+    return https.get(uri);
+  },
+  TaoLichChieuPhim: (formdata) => {
+    let uri = "/api/QuanLyDatVe/TaoLichChieu";
+    return https.post(uri, formdata);
+  },
 };

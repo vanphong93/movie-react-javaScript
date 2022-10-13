@@ -9,7 +9,7 @@ export default function FilmAction({ item }) {
   return (
     <div>
       <NavLink to={`/admin/FilmsManage/EditFilm/${item.maPhim}`}>
-        <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-2 mr-4">
+        <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-2 mr-2">
           Sửa
         </button>
       </NavLink>
@@ -39,10 +39,17 @@ export default function FilmAction({ item }) {
               });
           }
         }}
-        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-2"
+        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-2 mr-2"
       >
         Xoá
       </button>
+      <NavLink
+        to={`/admin/FilmsManage/ShowTimeFilm/${item.maPhim}/${item.tenPhim}`}
+      >
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 ">
+          Tạo Lịch
+        </button>
+      </NavLink>
     </div>
   );
 }

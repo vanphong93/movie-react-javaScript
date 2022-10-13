@@ -132,7 +132,7 @@ export default function QuanLyPhimPage() {
 
   return (
     <div>
-      <h3 className="text-xl mb-5">Quản Lý Fimls</h3>
+      <h3 className="text-xl mb-5">Quản Lý Film</h3>
       <Search
         className="mb-5"
         placeholder="input search text"

@@ -131,7 +131,7 @@ export default function AddFilm() {
       onValuesChange={onFormLayoutChange}
       size={componentSize}
     >
-      <h3 className="text-xl mb-5">Thêm mới Fimls</h3>
+      <h3 className="text-xl mb-5">Thêm mới Film</h3>
       <Form.Item label="Form Size" name="size">
         <Radio.Group>
           <Radio.Button value="small">Small</Radio.Button>
@@ -208,7 +208,7 @@ export default function AddFilm() {
         <img style={{ width: 200, height: 200 }} src={imgSrc} alt="..." />
       </Form.Item>
 
-      <Form.Item label="Tác vụ">
+      <Form.Item label="Chức năng">
         <Button type="primary" htmlType="submit">
           Thêm Phim
         </Button>
