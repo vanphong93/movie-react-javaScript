@@ -1,22 +1,143 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { userServ } from "../../Services/userService";
+import { Table, Tag } from "antd";
+import { Input } from "antd";
+import UserAction from "./UserAction";
 
 export default function QuanLyUserPage() {
+  const { Search } = Input;
   const [arrUser, setarrUser] = useState([]);
   useEffect(() => {
     userServ
       .getListUser()
       .then((res) => {
-        let data = res.data.content.map((item) => {
-          return { ...item, action: "hello" };
+        let dataUser = res.data.content.map((item) => {
+          return { ...item, action: <UserAction /> };
         });
-        console.log("data", data);
-        console.log("thành công");
+        console.log("data", dataUser);
+        setarrUser(dataUser);
       })
       .catch((err) => {
         console.log("err", err);
       });
   }, []);
 
-  return <div>QuanLyUserPage</div>;
+  const columns = [
+    {
+      title: "Tài Khoản",
+      dataIndex: "taiKhoan",
+      key: "taiKhoan",
+      sorter: (a, b) => a.taiKhoan - b.taiKhoan,
+      width: "10%",
+    },
+    {
+      title: "Mật Khẩu",
+      dataIndex: "matKhau",
+      key: "matKhau",
+      width: "10%",
+    },
+    {
+      title: "Họ Tên",
+      dataIndex: "hoTen",
+      key: "hoTen",
+      sorter: (a, b) => {
+        let hoTenA = a.hoTen.toLowerCase().trim();
+        let hoTenB = b.hoTen.toLowerCase().trim();
+        if (hoTenA > hoTenB) {
+          return 1;
+        }
+        return -1;
+      },
+      width: "15%",
+    },
+    {
+      title: "Số điện thoại",
+      dataIndex: "soDT",
+      key: "soDT",
+      width: "10%",
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+      width: "20%",
+    },
+    {
+      title: "Loại Người dùng",
+      dataIndex: "maLoaiNguoiDung",
+      key: "maLoaiNguoiDung",
+      width: "12%",
+      render: (text) => {
+        if (text == "QuanTri") {
+          return <Tag color="red">Quản trị</Tag>;
+        } else {
+          return <Tag color="blue">Khách hàng</Tag>;
+        }
+      },
+    },
+    {
+      title: "Thao tác",
+      dataIndex: "action",
+      key: "action",
+      width: "25%",
+    },
+  ];
+
+  const onSearch = (value) => {
+    console.log(value);
+    if (value != "") {
+      userServ
+        .UserSreach(value)
+        .then((res) => {
+          console.log("Thanh cong", res.data.content);
+          let dataSreach = res.data.content.map((item) => {
+            return { ...item, action: <UserAction /> };
+          });
+          console.log("data", dataSreach);
+          setarrUser(dataSreach);
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
+    } else {
+      userServ
+        .getListUser()
+        .then((res) => {
+          let dataUser = res.data.content.map((item) => {
+            return { ...item, action: <UserAction /> };
+          });
+          console.log("data", dataUser);
+          setarrUser(dataUser);
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
+    }
+  };
+
+  const data = arrUser;
+
+  const onChange = (pagination, filters, sorter, extra) => {
+    console.log("params onChange Table", pagination, filters, sorter, extra);
+  };
+
+  return (
+    <div>
+      <h3 className="text-xl mb-5">Quản Lý User</h3>
+      <Search
+        className="mb-5"
+        placeholder="input search text"
+        allowClear
+        enterButton="Search"
+        size="large"
+        onSearch={onSearch}
+      />
+      <Table
+        columns={columns}
+        dataSource={data}
+        onChange={onChange}
+        rowKey={"taiKhoan"}
+      />
+    </div>
+  );
 }

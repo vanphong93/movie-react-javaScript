@@ -35,9 +35,10 @@ export default function QuanLyPhimPage() {
       phimServ
         .getListPhimSreach(value)
         .then((res) => {
-          let dataSreach = res.data.content;
-          console.log("thong tin sreach", dataSreach);
-          dispatch(setFilm(dataSreach));
+          let data = res.data.content.map((item) => {
+            return { ...item, action: <FilmAction item={item} /> };
+          });
+          dispatch(setFilm(data));
         })
         .catch((err) => {
           console.log("err", err);

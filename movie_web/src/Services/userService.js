@@ -14,4 +14,10 @@ export const userServ = {
     }`;
     return https.get(uri);
   },
+  UserSreach: (tukhoa) => {
+    let uri = `/api/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=${
+      localServ.user.get()?.maNhom
+    }&tuKhoa=${tukhoa}`;
+    return https.get(uri);
+  },
 };
