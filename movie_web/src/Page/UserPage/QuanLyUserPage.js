@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { userServ } from "../../Services/userService";
 import { Table, Tag } from "antd";
 import { Input } from "antd";
@@ -20,11 +20,11 @@ export default function QuanLyUserPage() {
         let dataUser = res.data.content.map((item) => {
           return { ...item, action: <UserAction item={item} /> };
         });
-        console.log("data", dataUser);
+        // console.log("data", dataUser);
         dispatch(setListUser(dataUser));
       })
       .catch((err) => {
-        console.log("err", err);
+        // console.log("err", err);
       });
   }, []);
 
@@ -90,20 +90,20 @@ export default function QuanLyUserPage() {
   ];
 
   const onSearch = (value) => {
-    console.log(value);
+    // console.log(value);
     if (value != "") {
       userServ
         .UserSreach(value)
         .then((res) => {
-          console.log("Thanh cong", res.data.content);
+          // console.log("Thanh cong", res.data.content);
           let dataUser = res.data.content.map((item) => {
             return { ...item, action: <UserAction item={item} /> };
           });
-          console.log("data", dataUser);
+          // console.log("data", dataUser);
           dispatch(setListUser(dataUser));
         })
         .catch((err) => {
-          console.log("err", err);
+          // console.log("err", err);
         });
     } else {
       userServ
@@ -112,11 +112,11 @@ export default function QuanLyUserPage() {
           let dataUser = res.data.content.map((item) => {
             return { ...item, action: <UserAction item={item} /> };
           });
-          console.log("data", dataUser);
+          // console.log("data", dataUser);
           dispatch(setListUser(dataUser));
         })
         .catch((err) => {
-          console.log("err", err);
+          // console.log("err", err);
         });
     }
   };

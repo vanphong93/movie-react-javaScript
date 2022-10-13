@@ -24,23 +24,23 @@ export default function UserAction({ item }) {
             userServ
               .UserDelate(item.taiKhoan)
               .then((res) => {
-                console.log("res", res);
-                alert("Xoá User thành Công !!!(^-^)!!!");
+                // console.log("res", res);
+                alert("Xoá User thành Công!!!");
                 userServ
                   .getListUser()
                   .then((res) => {
                     let dataUser = res.data.content.map((item) => {
                       return { ...item, action: <UserAction item={item} /> };
                     });
-                    console.log("data", dataUser);
+                    // console.log("data", dataUser);
                     dispatch(setListUser(dataUser));
                   })
                   .catch((err) => {
-                    console.log("err", err);
+                    // console.log("err", err);
                   });
               })
               .catch((err) => {
-                console.log("err", err);
+                // console.log("err", err);
                 alert(err.response.data.content);
               });
           }

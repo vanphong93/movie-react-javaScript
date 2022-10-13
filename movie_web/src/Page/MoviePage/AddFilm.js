@@ -49,7 +49,7 @@ export default function AddFilm() {
       hinhAnh: Yup.string().required("Không được để trống hình ảnh"),
     }),
     onSubmit: (values) => {
-      console.log("values: ", values);
+      // console.log("values: ", values);
       // Tạo đối tượng formData
       values.maNhom = localServ.user.get().maNhom;
       let formData = new FormData();
@@ -60,16 +60,16 @@ export default function AddFilm() {
           formData.append("File", values.hinhAnh, values.hinhAnh.name);
         }
       }
-      console.log("FormData", formData.get("maNhom"));
+      // console.log("FormData", formData.get("maNhom"));
       phimServ
         .themPhim(formData)
         .then((res) => {
-          console.log("Chờ xử lý", res.data.message);
+          // console.log("Chờ xử lý", res.data.message);
           alert("Thêm phim thành công!!!");
           navigate("/admin/FilmsManage");
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
         });
     },
   });
@@ -108,7 +108,7 @@ export default function AddFilm() {
     } else {
       alert("Dữ liệu không phù hợp");
     }
-    console.log("fileimg: ", fileimg);
+    // console.log("fileimg: ", fileimg);
   };
 
   const onFormLayoutChange = ({ size }) => {

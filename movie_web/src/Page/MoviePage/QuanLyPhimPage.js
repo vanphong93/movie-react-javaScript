@@ -23,14 +23,14 @@ export default function QuanLyPhimPage() {
         dispatch(setFilm(data));
       })
       .catch((err) => {
-        console.log("err", err);
+        // console.log("err", err);
       });
   }, []);
 
   const { Search } = Input;
 
   const onSearch = (value) => {
-    console.log(value);
+    // console.log(value);
     if (value != "") {
       phimServ
         .getListPhimSreach(value)
@@ -41,7 +41,7 @@ export default function QuanLyPhimPage() {
           dispatch(setFilm(data));
         })
         .catch((err) => {
-          console.log("err", err);
+          // console.log("err", err);
         });
     } else {
       phimServ
@@ -54,7 +54,7 @@ export default function QuanLyPhimPage() {
           dispatch(setFilm(data));
         })
         .catch((err) => {
-          console.log("err", err);
+          // console.log("err", err);
         });
     }
   };
@@ -134,7 +134,7 @@ export default function QuanLyPhimPage() {
   const data = arrfilms;
 
   const onChange = (pagination, filters, sorter, extra) => {
-    console.log("params onChange Table", pagination, filters, sorter, extra);
+    // console.log("params onChange Table", pagination, filters, sorter, extra);
   };
 
   return (

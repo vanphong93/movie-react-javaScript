@@ -25,11 +25,11 @@ export default function EditUser() {
       .layThongTinNguoiDungEdit(ten)
       .then((res) => {
         let dataEditUser = res.data.content;
-        console.log("dataEditUser: ", dataEditUser);
+        // console.log("dataEditUser: ", dataEditUser);
         dispatch(setThongTinListUserEdit(dataEditUser));
       })
       .catch((err) => {
-        console.log("err", err);
+        // console.log("err", err);
       });
   }, []);
 
@@ -59,16 +59,16 @@ export default function EditUser() {
       ),
     }),
     onSubmit: (values) => {
-      console.log("values: ", values);
+      // console.log("values: ", values);
       userServ
         .CapNhatUser(values)
         .then((res) => {
-          console.log("res", res);
+          // console.log("res", res);
           alert("Cập nhật thành công");
           navigate("/admin/UserManage");
         })
         .catch((err) => {
-          console.log("err", err);
+          // console.log("err", err);
           alert(err.response.data.content);
         });
     },

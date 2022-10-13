@@ -34,11 +34,11 @@ export default function EditFilm() {
       .laythongtinPhim(id)
       .then((res) => {
         var dataEdit = res.data.content;
-        console.log("thông tin phim eidt lấy từ id", dataEdit);
+        // console.log("thông tin phim eidt lấy từ id", dataEdit);
         dispatch(setThongTinFilmEdit(dataEdit));
       })
       .catch((err) => {
-        console.log("err", err);
+        // console.log("err", err);
       });
   }, []);
 
@@ -69,7 +69,7 @@ export default function EditFilm() {
       danhGia: Yup.string().required("Không được để trống đánh giá"),
     }),
     onSubmit: (values) => {
-      console.log("values: ", values);
+      // console.log("values: ", values);
       // Tạo đối tượng formData
       values.maNhom = localServ.user.get().maNhom;
       let formData = new FormData();
@@ -82,16 +82,16 @@ export default function EditFilm() {
           }
         }
       }
-      console.log("FormData", formData.get("maNhom"));
+      // console.log("FormData", formData.get("maNhom"));
       phimServ
         .capnhatPhim(formData)
         .then((res) => {
-          console.log("res", res);
+          // console.log("res", res);
           alert("Cập nhật thành công");
           navigate("/admin/FilmsManage");
         })
         .catch((err) => {
-          console.log("err", err);
+          // console.log("err", err);
         });
     },
   });

@@ -35,16 +35,16 @@ export default function AddUser() {
       ),
     }),
     onSubmit: (values) => {
-      console.log("values: ", values);
+      // console.log("values: ", values);
       userServ
         .UserAdd(values)
         .then((res) => {
-          console.log("Chờ Xử lý", res);
+          // console.log("Chờ Xử lý", res);
           alert("Thêm User thành công");
           navigate("/admin/UserManage");
         })
         .catch((err) => {
-          console.log("err", err);
+          // console.log("err", err);
           alert(err.response.data.content);
         });
     },

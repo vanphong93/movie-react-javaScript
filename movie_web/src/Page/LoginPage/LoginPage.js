@@ -16,7 +16,6 @@ const LoginPage = () => {
     userServ
       .postLogin(values)
       .then((res) => {
-        console.log("TC Dữ liệu Axios trả về", res);
         dispatch(setUserLogin(res.data.content));
         localServ.user.set(res.data.content);
         message.success(res.data.message);
@@ -24,13 +23,11 @@ const LoginPage = () => {
       })
       .catch((err) => {
         message.error(err.response.data.content);
-        console.log("Lỗi", err);
       });
   };
 
   const onFinishFailed = (errorInfo) => {
     message.error(errorInfo.response.data.content);
-    console.log("Failed:", errorInfo);
   };
 
   return (

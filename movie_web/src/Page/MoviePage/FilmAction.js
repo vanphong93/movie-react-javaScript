@@ -20,7 +20,7 @@ export default function FilmAction({ item }) {
             phimServ
               .xoaPhim(item.maPhim)
               .then((res) => {
-                console.log("res", res);
+                // console.log("res", res);
                 alert("Xoá thành công");
                 phimServ
                   .getListPhim()
@@ -32,11 +32,11 @@ export default function FilmAction({ item }) {
                     dispatch(setFilm(data));
                   })
                   .catch((err) => {
-                    console.log("err", err);
+                    // console.log("err", err);
                   });
               })
               .catch((err) => {
-                console.log("err", err);
+                // console.log("err", err);
               });
           }
         }}

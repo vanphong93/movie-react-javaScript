@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Button, Checkbox, Form, Input, InputNumber, Cascader } from "antd";
-import { DatePicker, Space, Select } from "antd";
+import { Button, Form, InputNumber } from "antd";
+import { DatePicker, Select } from "antd";
 import { useFormik } from "formik";
 import { phimServ } from "../../Services/phimService";
 import { useNavigate, useParams } from "react-router-dom";
@@ -26,16 +26,16 @@ export default function ShowTimeFilm() {
       giaVe: Yup.string().required("Không được để trống giá vé"),
     }),
     onSubmit: (value) => {
-      console.log("value", value);
+      // console.log("value", value);
       phimServ
         .TaoLichChieuPhim(value)
         .then((res) => {
-          console.log("res", res);
+          // console.log("res", res);
           alert("Thêm lịch chiếu thành công");
           navigate("/admin/FilmsManage");
         })
         .catch((err) => {
-          console.log("err", err);
+          // console.log("err", err);
         });
     },
   });
@@ -48,25 +48,25 @@ export default function ShowTimeFilm() {
       .laythongtinHeThongRap()
       .then((res) => {
         let datahtr = res.data.content;
-        console.log("htr", datahtr);
+        // console.log("htr", datahtr);
         setheThongRap(datahtr);
       })
       .catch((err) => {
-        console.log("err", err);
+        // console.log("err", err);
       });
   }, []);
 
   const handleChangeHeThongRap = (value) => {
-    console.log("value", value);
+    // console.log("value", value);
     phimServ
       .laythongtinCumRap(value)
       .then((res) => {
         let datacumrap = res.data.content;
-        console.log("Cum rap", datacumrap);
+        // console.log("Cum rap", datacumrap);
         setCumRap(datacumrap);
       })
       .catch((err) => {
-        console.log("err", err);
+        // console.log("err", err);
         alert(err.response.data.message);
       });
   };
@@ -74,10 +74,10 @@ export default function ShowTimeFilm() {
     formik.setFieldValue("maRap", value);
   };
   const handleChangeDate = (value) => {
-    console.log("value", value);
+    // console.log("value", value);
   };
   const onOk = (value) => {
-    console.log("value: ", moment(value).format("DD/MM/YYYY hh:mm:ss"));
+    // console.log("value: ", moment(value).format("DD/MM/YYYY hh:mm:ss"));
     formik.setFieldValue(
       "ngayChieuGioChieu",
       moment(value).format("DD/MM/YYYY hh:mm:ss")

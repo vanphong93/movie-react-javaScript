@@ -9,9 +9,7 @@ import {
 import { Layout, Menu } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
 import HeaderPage from "../Page/HeaderPage/HeaderPage";
-
 const { Content, Sider } = Layout;
 
 function MenuSider({ Children }) {
