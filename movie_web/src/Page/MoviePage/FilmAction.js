@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { setFilm } from "../../Redux/actions/actionFilm";
+import { localServ } from "../../Services/localService";
 import { phimServ } from "../../Services/phimService";
 
 export default function FilmAction({ item }) {
@@ -45,6 +46,9 @@ export default function FilmAction({ item }) {
       </button>
       <NavLink
         to={`/admin/FilmsManage/ShowTimeFilm/${item.maPhim}/${item.tenPhim}`}
+        onClick={() => {
+          localServ.film.set(item);
+        }}
       >
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 ">
           Tạo Lịch
