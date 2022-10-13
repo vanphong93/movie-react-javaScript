@@ -11,11 +11,12 @@ import { localServ } from "../../Services/localService";
 
 export default function EditUser() {
   const [componentSize, setComponentSize] = useState("default");
-  const [arredituser, setarredituser] = useState([]);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   let { ten } = useParams();
-  let TTEditUser = useSelector((state) => {
+
+  let ThongTinEditUser = useSelector((state) => {
     return state.userReducer.ThongTinEditUser;
   });
 
@@ -23,8 +24,8 @@ export default function EditUser() {
     userServ
       .layThongTinNguoiDungEdit(ten)
       .then((res) => {
-        let dataEditUser = res.data.content[0];
-        console.log("dataEditUser: ", res);
+        let dataEditUser = res.data.content;
+        console.log("dataEditUser: ", dataEditUser);
         dispatch(setThongTinListUserEdit(dataEditUser));
       })
       .catch((err) => {
@@ -33,14 +34,15 @@ export default function EditUser() {
   }, []);
 
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
       maNhom: localServ.user.get()?.maNhom,
-      taiKhoan: TTEditUser?.taiKhoan,
-      matKhau: TTEditUser?.matKhau,
-      hoTen: TTEditUser?.hoTen,
-      email: TTEditUser?.email,
-      soDT: TTEditUser?.soDT,
-      maLoaiNguoiDung: TTEditUser?.maLoaiNguoiDung,
+      taiKhoan: ThongTinEditUser.taiKhoan,
+      matKhau: ThongTinEditUser?.matKhau,
+      hoTen: ThongTinEditUser?.hoTen,
+      email: ThongTinEditUser?.email,
+      soDT: ThongTinEditUser?.soDT,
+      maLoaiNguoiDung: ThongTinEditUser?.maLoaiNguoiDung,
     },
     validationSchema: Yup.object({
       taiKhoan: Yup.string().required("không được để trống Tài Khoản"),
@@ -58,11 +60,19 @@ export default function EditUser() {
     }),
     onSubmit: (values) => {
       console.log("values: ", values);
+      userServ
+        .CapNhatUser(values)
+        .then((res) => {
+          console.log("res", res);
+          alert("Cập nhật thành công");
+          navigate("/admin/UserManage");
+        })
+        .catch((err) => {
+          console.log("err", err);
+          alert(err.response.data.content);
+        });
     },
   });
-
-  console.log("TTEditUser tai khoan: ", TTEditUser.taiKhoan);
-  console.log("TTEditUser redux: ", TTEditUser);
 
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
@@ -102,6 +112,7 @@ export default function EditUser() {
           name="taiKhoan"
           onChange={formik.handleChange}
           value={formik.values.taiKhoan}
+          disabled
         />
         {formik.errors.taiKhoan && (
           <p className="text-red-500">{formik.errors.taiKhoan}</p>

@@ -29,10 +29,12 @@ export const userServ = {
     return https.delete(uri);
   },
   // chưa
-  layThongTinNguoiDungEdit: (tukhoa) => {
-    let uri = `/api/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=${
-      localServ.user.get()?.maNhom
-    }&tuKhoa=${tukhoa}`;
-    return https.get(uri);
+  layThongTinNguoiDungEdit: (taikhoan) => {
+    let uri = `/api/QuanLyNguoiDung/LayThongTinNguoiDung?taiKhoan=${taikhoan}`;
+    return https.post(uri);
+  },
+  CapNhatUser: (data) => {
+    let uri = `/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`;
+    return https.post(uri, data);
   },
 };
