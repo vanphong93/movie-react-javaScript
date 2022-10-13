@@ -1,11 +1,8 @@
-import { Tabs, Button, Popover } from "antd";
-import { movieSer } from "../../../Services/movieService";
-import { useDispatch, useSelector } from "react-redux";
-import "./TabsMovies.css"
+import { Tabs, Popover } from "antd";
+import "./TabsMovies.css";
 import React, { useEffect, useState } from "react";
 import ItemTabMovie from "./ItemTabMovie";
 export default function ({ showModal, dataMovie }) {
-
   //Chỉnh tab reponsive của ant dùng event
   const [matches, setMatches] = useState(
     window.matchMedia("(min-width: 640px)").matches
@@ -18,7 +15,6 @@ export default function ({ showModal, dataMovie }) {
   }, []);
 
   let renderContent = () => {
-    // console.log('render tab movie');
     return dataMovie.map((item, index) => {
       return (
         <Tabs.TabPane
@@ -26,7 +22,12 @@ export default function ({ showModal, dataMovie }) {
           key={index}
         >
           {" "}
-          <Tabs className="p-0" defaultActiveKey="0" style={{ height: 520 }} tabPosition="left">
+          <Tabs
+            className="p-0"
+            defaultActiveKey="0"
+            style={{ height: 520 }}
+            tabPosition="left"
+          >
             {item.lstCumRap.map((cumRap, index) => {
               const content = <span>{cumRap.diaChi}</span>;
               return (
@@ -62,7 +63,7 @@ export default function ({ showModal, dataMovie }) {
     });
   };
   return (
-    <Tabs 
+    <Tabs
       className="shadow-xl font-semibold"
       tabPosition={matches ? "left" : "top"}
       defaultActiveKey="1"

@@ -27,7 +27,7 @@ export default function ModalUpdateUser({ data }) {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <FormUpdateUser />
+ <FormUpdateUser data={data}/>
       </Modal>
     </>
   );

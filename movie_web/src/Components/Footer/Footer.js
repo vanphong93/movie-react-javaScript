@@ -10,7 +10,6 @@ import {
   InstagramIcon,
   TwitterIcon,
 } from "../../Utilities/Icon";
-
 export default function Footer() {
 
   return (

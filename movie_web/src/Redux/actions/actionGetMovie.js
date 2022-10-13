@@ -1,13 +1,14 @@
+import { message } from "antd";
 import { movieSer } from "../../Services/movieService";
 import { dataBaner } from "../../Utilities/FixDetailBaner";
 import { GET_BANER, GET_MOVIE, GET_THEATER } from "../constant/constantMovie";
 import { setLoadingOff, setLoadingOn } from "./actionsSpiner";
 export const getMovieTheater = (setData) => {
-  return (any) => {
+  return (dispatch) => {
     movieSer
       .getMovieByTheater()
       .then((res) => {
-        any({
+        dispatch({
           type: GET_THEATER,
           payload: res.data.content,
         });
@@ -20,12 +21,12 @@ export const getMovieTheater = (setData) => {
 };
 export const getMovie = (setMovies, dispatch) => {
   dispatch(setLoadingOn());
-  return (anyFunction) => {
+  return (dispatch) => {
     movieSer
       .getListMovie()
       .then((res) => {
         dispatch(setLoadingOff());
-        anyFunction({
+        dispatch({
           type: GET_MOVIE,
           payload: res.data.content,
         });
@@ -33,17 +34,13 @@ export const getMovie = (setMovies, dispatch) => {
       })
       .catch((err) => {
         console.log("err: ", err);
-        dispatch(setLoadingOn());
-        setTimeout(() => {
-          dispatch(setLoadingOff());
-          alert("Kiểm tra kết nối mạng");
-          // window.location.href("/err");
-        }, 3000);
+        dispatch(setLoadingOff());
+        message.error("Kiểm tra kết nối mạng");
       });
   };
 };
 export const getBaner = (setBanerMovie) => {
-  return (anyFunction) => {
+  return (dispatch) => {
     movieSer
       .getBanerMovie()
       .then((res) => {
@@ -63,7 +60,7 @@ export const getBaner = (setBanerMovie) => {
               baner: true,
             };
             ///data banner cũ, lỗi nên fix trực tiếp
-            anyFunction({
+            dispatch({
               type: GET_BANER,
               payload: dataBaner,
               // payload: data_new,

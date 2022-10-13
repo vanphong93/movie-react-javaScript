@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-// import { movieSer } from "../../../services/movieService";
+import React from "react";
+
 import Slider from "react-slick";
 import "./Baner.css";
 import { useDispatch } from "react-redux";
@@ -32,9 +32,7 @@ export default function Baner({ showModal, banerMovie }) {
   const settings = {
     fade: true,
     dots: true,
-
     autoplay: true,
-
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,

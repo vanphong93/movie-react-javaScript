@@ -1,17 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "antd/dist/antd.css";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Detail from "./Pages/DetailMovies/Detail";
 import HomePage from "./Pages/HomaPage/HomePage";
-// import LoginPage from "./Pages/LoginPage/LoginPage";
 import Layout from "./Layout/Layout";
 import Spiner from "./Components/Spiner/Spiner";
-import Register from "./Components/HeaderThemes/Register";
 import BookTicket from "./Pages/BuyTicket/BookTicket";
 import UserInfo from "./Pages/UserInfor/UserInfo";
-import PageErr from "./Pages/Page404/PageErr";
+
 function App() {
   return (
     <div>
@@ -53,7 +50,6 @@ function App() {
               </Layout>
             }
           />
-          {/* <Route path="/err" element={<PageErr />} /> */}
         </Routes>
       </BrowserRouter>
     </div>

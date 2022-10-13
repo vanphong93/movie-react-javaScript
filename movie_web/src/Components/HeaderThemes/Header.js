@@ -1,23 +1,13 @@
 import React, { useState } from "react";
 import { DownOutlined } from "@ant-design/icons";
 import { HashLink } from "react-router-hash-link";
-import {
-  Button,
-  Modal,
-  Form,
-  message,
-  Input,
-  Dropdown,
-  Menu,
-  Space,
-} from "antd";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Modal, message, Dropdown, Menu, Space } from "antd";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "../../redux/actions/actionUser";
 import LoginPage from "./Login";
 import Register from "./Register";
 import { localServ } from "../../Services/localService";
-import Search from "antd/lib/transfer/search";
 import SearchMovies from "./Search";
 import { useLocation } from "react-router-dom";
 import {
@@ -61,9 +51,7 @@ export default function Header() {
     dispatch(setLogin(values, onSuccess, onFailed));
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+
   let handleLogin = () => {
     setFromLogin(true);
     showModal();

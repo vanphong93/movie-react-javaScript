@@ -7,12 +7,12 @@ export const getDataTicket = (id, setData, dispatch) => {
     dispatch({
         type: CLEAR_TOTAL,
     });
-    return (any) => {
+    return (dispatch) => {
         movieSer
             .getInfoTicket(id)
             .then((res) => {
                 console.log("ticket info", res.data.content);
-                any({
+                dispatch({
                     type: FIX_DATA,
                     payload: res.data.content.danhSachGhe,
                 });
@@ -20,7 +20,7 @@ export const getDataTicket = (id, setData, dispatch) => {
                 dispatch(setLoadingOff());
             })
             .catch((err) => {
-                dispatch(setLoadingOn());
+                dispatch(setLoadingOff());
                 console.log("err: ", err);
             });
     };
@@ -33,8 +33,8 @@ export const addOrRemoveChair = (props, i, selectChair, setSelectChair) => {
         cloneData[i] = { ...props, isSelect: true };
     }
     setSelectChair(cloneData);
-    return (any) => {
-        any({
+    return (dispatch) => {
+        dispatch({
             type: TOTAL_MONEY,
             payload: props,
         });

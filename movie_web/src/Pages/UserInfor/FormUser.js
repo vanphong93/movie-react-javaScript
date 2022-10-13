@@ -1,9 +1,8 @@
 import { Button, Form, Input, message } from "antd";
 import React from "react";
 import { userServ } from "../../Services/userService";
-import { useNavigate } from "react-router-dom";
-const App = () => {
-  let navigate = useNavigate();
+
+const App = ({ data }) => {
   const onFinish = (values) => {
     let newdata = { ...values, maLoaiNguoiDung: "KhachHang", maNhom: "GP00" };
     userServ
@@ -12,7 +11,6 @@ const App = () => {
         console.log(res);
         message.success("Tài khoản đã được cập nhật");
         setTimeout(() => {
-          navigate("/");
           window.location.reload();
         }, 2000);
       })
@@ -22,6 +20,17 @@ const App = () => {
       });
   };
   const [form] = Form.useForm();
+  if (data != undefined) {
+    form.setFieldsValue({
+      taiKhoan: data.taiKhoan,
+      matKhau: data.matKhau,
+      email: data.email,
+      hoTen: data.hoTen,
+      maLoaiNguoiDung: data.maLoaiNguoiDung,
+      maNhom: "GP00",
+      soDt: data.soDT,
+    });
+  }
 
   const formItemLayout = {
     labelCol: {

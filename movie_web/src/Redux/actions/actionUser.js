@@ -8,17 +8,13 @@ const setUserSuccess = (successValue) => {
   };
 };
 export const setLogin = (dataLogin, onSuccess, onFailed) => {
-  return (anyFunction) => {
+  return (dispatch) => {
     userServ
       .postLogin(dataLogin)
       .then((res) => {
         localServ.user.set(res.data.content);
         onSuccess();
-        // anyFunction(setUserSuccess(res.data.content));
-        anyFunction({
-          type: SET_USER,
-          payload: res.data.content,
-        });
+        dispatch(setUserSuccess(res.data.content));
       })
       .catch((err) => {
         onFailed();
@@ -32,7 +28,6 @@ export const setRegister = (dataRegister, onSuccess, onFailed) => {
       .postRegister(dataRegister)
       .then((res) => {
         onSuccess();
-
         dispatch(setUserSuccess(res.data.content));
       })
       .catch((err) => {

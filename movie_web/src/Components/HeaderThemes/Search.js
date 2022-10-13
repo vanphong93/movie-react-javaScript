@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { GET_DATA_SEARCH } from "../../redux/constant/constantSearch";
 
 const SearchMovies = () => {
   let dispatch = useDispatch();
@@ -34,7 +35,7 @@ const SearchMovies = () => {
   let fixDataFilm = _.unionBy(allFilm, "value");
   useEffect(() => {
     dispatch({
-      type: "get_data_search",
+      type: GET_DATA_SEARCH,
       payload: fixDataFilm,
     });
   }, [dataBaner]);

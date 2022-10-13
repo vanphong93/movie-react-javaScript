@@ -1,32 +1,16 @@
 import React from "react";
 import Slider from "react-slick";
-import { useEffect } from "react";
-// import Movie from "./Movie";
 
-// import styleChange from "./CarouselMovies.module.css";
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
-  return (
-    <div
-      // className={`${className} ${styleChange["slick-prev"]}`}
-      style={{ ...style, display: "none" }}
-      onClick={onClick}
-    />
-  );
+  return <div style={{ ...style, display: "none" }} onClick={onClick} />;
 }
 
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
-  return (
-    <div
-      // className={`${className} ${styleChange["slick-next"]}`}
-      style={{ ...style, display: "none" }}
-      onClick={onClick}
-    />
-  );
+  return <div style={{ ...style, display: "none" }} onClick={onClick} />;
 }
 export default function SimpleSlider({ data }) {
-
   const settings = {
     dots: true,
     slidesToShow: 5,

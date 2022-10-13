@@ -2,7 +2,7 @@ import { Tabs } from "antd";
 import React from "react";
 
 export const AllMovie = ({ dataMovieCurrent, dataMovieNext }) => {
-  // console.log('AllMovie: ', AllMovie);
+
   return (
     <Tabs
       centered

@@ -14,7 +14,4 @@ export const userServ = {
     return https.put(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, data);
   },
 };
-//put or post
-// getInfoTicket: (id) => {
-//   return https.get(`/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`);
-// },
+

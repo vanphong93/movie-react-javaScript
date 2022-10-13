@@ -1,18 +1,13 @@
 import { Popover, Rate, Tabs } from "antd";
 import moment from "moment";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import TextSplice, { MediaCardIcon, moneyFormat } from "../../Utilities/Icon";
+import TextSplice, { moneyFormat } from "../../Utilities/Icon";
 
 export const TabsDetail = ({ data }) => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   let { heThongRapChieu } = data;
-  console.log("data: ", data);
   const renderTimeMovie = (time) => {
     let content = <span>{moneyFormat(time.lichChieuPhim[0].giaVe)}</span>;
-
     return (
       <div className="grid grid-cols-1 gap-2 lg:grid-cols-4 md:gap-3">
         {time.lichChieuPhim.slice(0, 9).map((item, i) => {
@@ -139,7 +134,7 @@ export const TabsDetail = ({ data }) => {
                 label: (
                   <img
                     className="w-10 h-10 md:w-16 md:h-16"
-                    // style={{ height: "50px" }}
+
                     src={item.logo}
                     alt="image"
                   />

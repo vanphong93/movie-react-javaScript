@@ -1,17 +1,5 @@
-import {
-  AutoComplete,
-  Button,
-  Cascader,
-  Checkbox,
-  Col,
-  Form,
-  Input,
-  InputNumber,
-  Row,
-  Select,
-  message,
-} from "antd";
-import React, { useState } from "react";
+import { Button, Checkbox, Form, Input, message } from "antd";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setRegister } from "../../redux/actions/actionUser";
@@ -49,7 +37,6 @@ const tailFormItemLayout = {
 const Register = ({ modal }) => {
   let navigate = useNavigate();
   let dispatch = useDispatch();
-
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
@@ -58,12 +45,12 @@ const Register = ({ modal }) => {
       modal(false);
       setTimeout(() => {
         navigate("/");
+        window.location.reload();
       }, 2000);
     };
     let onFailed = () => {
       message.error("Đăng kí thất bại, tài khoản hoặc email đã tồn tại");
     };
-
     dispatch(setRegister(values, onSuccess, onFailed));
   };
 

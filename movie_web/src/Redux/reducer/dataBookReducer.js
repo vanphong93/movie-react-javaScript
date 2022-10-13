@@ -5,7 +5,6 @@ const initialState = { data: "", total: [] };
 export let dataBookReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case FIX_DATA:
-      console.log("payload: ", payload);
       //chia so luong ghe thanh hang 16
       let newData = [];
       for (let i = 0; i < payload.length; i += 16) {
@@ -21,13 +20,12 @@ export let dataBookReducer = (state = initialState, { type, payload }) => {
       if (index == -1) {
         cloneTotal.push(payload);
       } else {
-        cloneTotal.splice(index,1);
+        cloneTotal.splice(index, 1);
       }
-      
-      console.log('cloneTotal: ', cloneTotal);
+
       return { ...state, total: cloneTotal };
     case CLEAR_TOTAL:
-      return {...state,total:[]}
+      return { ...state, total: [] };
     default:
       return state;
   }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams, useResolvedPath } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { movieSer } from "../../Services/movieService";
 import styled from "./Detail.module.css";
@@ -8,7 +8,9 @@ import { useDispatch } from "react-redux";
 import { setLoadingOff, setLoadingOn } from "../../redux/actions/actionsSpiner";
 import { message } from "antd";
 export default function Detail() {
-  let navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
   let dispatch = useDispatch();
   const { id } = useParams();
 
@@ -22,13 +24,12 @@ export default function Detail() {
       .getInfoMovieTheater(id)
       .then((res) => {
         setDetail(res.data.content);
-        // console.log("detail", res.data.content);
         dispatch(setLoadingOff());
       })
       .catch((err) => {
         console.log("err: ", err);
-        dispatch(setLoadingOff()); 
-        message.error("Lỗi kết nối, xin bạn quay lại sau")
+        dispatch(setLoadingOff());
+        message.error("Lỗi kết nối, xin bạn quay lại sau");
       });
   }, [id]);
 

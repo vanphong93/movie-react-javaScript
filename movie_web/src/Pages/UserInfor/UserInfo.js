@@ -7,7 +7,7 @@ import TabsUser from "./TabsUser";
 import { moneyFormat, TicketIconInfo } from "../../Utilities/Icon";
 import { useNavigate } from "react-router-dom";
 import { setLoadingOff, setLoadingOn } from "../../redux/actions/actionsSpiner";
-import { Input, Space ,message} from "antd";
+import { Input, Space, message } from "antd";
 export default function UserInfo() {
   let dispatch = useDispatch();
   let navigate = useNavigate();
@@ -25,10 +25,8 @@ export default function UserInfo() {
       })
       .catch((err) => {
         console.log("err: ", err);
-        setTimeout(() => {
-          dispatch(setLoadingOff());
-          message.error("Kiểm tra lại kết nối");
-        }, 2000);
+        dispatch(setLoadingOff());
+        message.error("Kiểm tra lại kết nối");
       });
   }, []);
   let addTicket = (data) => {
@@ -36,7 +34,7 @@ export default function UserInfo() {
       return item.value == data;
     });
     if (index == -1) {
-      message.error("Không tìm thấy phim, quay lại trang chủ và reset")
+      message.error("Phim đã cũ không có trong hệ thống");
     } else {
       let result = dataSearch[index].maPhim;
       navigate(`/detail/${result}`);
@@ -64,11 +62,16 @@ export default function UserInfo() {
             src={item.hinhAnh}
             alt={item.tenPhim}
           />
-          <TicketIconInfo
-            addTicket={() => {
-              addTicket(item.tenPhim);
-            }}
-          />
+          {dataSearch.length ? (
+            <TicketIconInfo
+              addTicket={() => {
+                addTicket(item.tenPhim);
+              }}
+            />
+          ) : (
+            ""
+          )}
+
           <div className="mx-2">
             <h5 className="text-purple-900 text-center text-base lg:text-2xl font-bold">
               {item.tenPhim}

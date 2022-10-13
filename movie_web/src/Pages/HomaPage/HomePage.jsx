@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Movie from "./Carousel/CardMovie";
 import { Modal, Rate } from "antd";
 import TabsMovies from "./TabsMovie/TabsMovies";
@@ -7,7 +7,7 @@ import { AllMovie } from "./Carousel/AllMovie";
 import CarouselMovies from "./Carousel/CarouselMovies";
 import { NavLink } from "react-router-dom";
 import Baner from "./Baner/Baner";
-import "./modalVideo.css";
+
 import {
   getBaner,
   getMovie,
@@ -19,64 +19,35 @@ import TextSplice from "../../Utilities/Icon";
 import News from "./News/News";
 
 export default function HomePage() {
-
   let { dataMovie, dataBaner, dataTheater } = useSelector((state) => {
     return state.movieReducer;
   });
   const [movies, setMovies] = useState([]);
   let dispatch = useDispatch();
-  //Xử lí lấy dữ liệu all film
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
   useEffect(() => {
     dataMovie ? setMovies(dataMovie) : dispatch(getMovie(setMovies, dispatch));
   }, []);
-
-  const renderMovieCurrent = () => {
-    let newData = movies.filter((item) => {
-      return item.dangChieu;
-    });
-    return newData.map((data, index) => {
-      return (
-        <div key={index} className="p-3 xl:p-5">
-          <Movie showModal={showModal} data={data} />
-        </div>
-      );
-    });
-  };
-  const renderMovieNext = () => {
-    let newData = movies.filter((item) => {
-      return !item.dangChieu;
-    });
-    return newData.map((data, index) => {
-      return (
-        <div key={index} className="p-2 lg:p-3 xl:p-5">
-          <Movie showModal={showModal} data={data} />
-        </div>
-      );
-    });
-  };
-  // lấy dữ liêu baner
   const [banerMovie, setBanerMovie] = useState([]);
-  useEffect(() => {
+  useEffect(() => {console.log("baner");
     dataBaner ? setBanerMovie(dataBaner) : dispatch(getBaner(setBanerMovie));
   }, []);
-  //lay du lieu theater
   const [movieTheater, setMovieTheater] = useState([]);
   useEffect(() => {
     dataTheater
       ? setMovieTheater(dataTheater)
       : dispatch(getMovieTheater(setMovieTheater));
   }, []);
+  let { data } = useSelector((state) => {
+    return state.modalReducer;
+  });
 
-  //xử lí modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
   };
-  // let callBack = useCallback(showModal, []);
-
-  let { data } = useSelector((state) => {
-    return state.modalReducer;
-  });
   const renderModal = () => {
     return (
       <Modal
@@ -138,7 +109,30 @@ export default function HomePage() {
       </Modal>
     );
   };
-
+  const renderMovieCurrent = () => {
+    let newData = movies.filter((item) => {
+      return item.dangChieu;
+    });
+    return newData.map((data, index) => {
+      return (
+        <div key={index} className="p-3 xl:p-5">
+          <Movie showModal={showModal} data={data} />
+        </div>
+      );
+    });
+  };
+  const renderMovieNext = () => {
+    let newData = movies.filter((item) => {
+      return !item.dangChieu;
+    });
+    return newData.map((data, index) => {
+      return (
+        <div key={index} className="p-2 lg:p-3 xl:p-5">
+          <Movie showModal={showModal} data={data} />
+        </div>
+      );
+    });
+  };
   return (
     <div className="space-y-10 mb-10 ">
       <section className="mb-15">
