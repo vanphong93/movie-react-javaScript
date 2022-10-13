@@ -20,7 +20,7 @@ import TextSplice from "../../Utilities/Icon";
 import News from "./News/News";
 
 export default function HomePage() {
-  console.log("render homa page");
+  // console.log("render homa page");
   let { dataMovie, dataBaner, dataTheater } = useSelector((state) => {
     return state.movieReducer;
   });

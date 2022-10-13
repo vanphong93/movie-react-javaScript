@@ -1,6 +1,6 @@
-import { Card, Modal, Rate } from "antd";
+import { Card } from "antd";
 
-import React, { useState } from "react";
+import React from "react";
 
 import { NavLink } from "react-router-dom";
 
@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { MediaCardIcon } from "../../../Utilities/Icon";
 import { OPEN_MODAL } from "../../../redux/constant/constantModal";
 import { FixUrl } from "../../../Utilities/FixUrlEmbed";
-import { typeMovie } from "../../../Utilities/TypeMovie";
+
 
 const { Meta } = Card;
 

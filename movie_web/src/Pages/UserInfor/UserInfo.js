@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import ModalUpdateUser from "./ModalUpdateUser";
 import { userServ } from "../../Services/userService";
 import TabsUser from "./TabsUser";
-import { moneyFormat } from "../../Utilities/Icon";
+import { moneyFormat, TicketIcon, TicketIconInfo } from "../../Utilities/Icon";
 import { useNavigate } from "react-router-dom";
 import { setLoadingOff, setLoadingOn } from "../../redux/actions/actionsSpiner";
-
+import { message } from "antd";
 export default function UserInfo() {
   let dispatch = useDispatch();
   let navigate = useNavigate();
@@ -15,7 +15,6 @@ export default function UserInfo() {
   let { dataSearch } = useSelector((state) => {
     return state.searchData;
   });
-
   useEffect(() => {
     dispatch(setLoadingOn());
     userServ
@@ -36,9 +35,12 @@ export default function UserInfo() {
     let index = dataSearch.findIndex((item) => {
       return item.value == data;
     });
-    let result = dataSearch[index].maPhim;
-    console.log('result: ', result);
-    navigate(`/detail/${result}`);
+    if (index == -1) {
+      message.error("Bạn cần quay lại trang chủ để cập nhật dữ liệu");
+    } else {
+      let result = dataSearch[index].maPhim;
+      navigate(`/detail/${result}`);
+    }
   };
   let renderChairInfo = (item) => {
     let newItem = [...item.danhSachGhe];
@@ -59,7 +61,14 @@ export default function UserInfo() {
           key={i}
           className="flex h-56 shadow-lg hover:-translate-y-2 duration-300 rounded"
         >
-          <img className="w-1/3 rounded" src={item.hinhAnh} alt="image" />
+          <img
+            onClick={() => {
+              addTicket(item.tenPhim);
+            }}
+            className="w-1/3 rounded hover:cursor-pointer"
+            src={item.hinhAnh}
+            alt="image"
+          />
           <div className="mx-2">
             <h5 className="text-purple-900 text-center text-2xl font-bold">
               {item.tenPhim}
@@ -74,14 +83,6 @@ export default function UserInfo() {
 
             <span>Hệ thống {item.danhSachGhe[0].tenHeThongRap}</span>
             <p className="font-medium">Tên ghế: {renderChairInfo(item)}</p>
-            <button
-              onClick={() => {
-                addTicket(item.tenPhim);
-              }}
-              className="bg-yellow-500 p-1 rounded"
-            >
-              Add
-            </button>
           </div>
         </div>
       );
