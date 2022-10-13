@@ -28,4 +28,11 @@ export const userServ = {
     let uri = `/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`;
     return https.delete(uri);
   },
+  // chưa
+  layThongTinNguoiDungEdit: (tukhoa) => {
+    let uri = `/api/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=${
+      localServ.user.get()?.maNhom
+    }&tuKhoa=${tukhoa}`;
+    return https.get(uri);
+  },
 };

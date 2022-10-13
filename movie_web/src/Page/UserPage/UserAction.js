@@ -11,7 +11,7 @@ export default function UserAction({ item }) {
     <div>
       <NavLink
         to={`/admin/UserManage/EditUser/${localServ.user.get()?.maNhom}/${
-          item.hoTen
+          item.taiKhoan
         }`}
       >
         <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-2 mr-2">
@@ -41,6 +41,7 @@ export default function UserAction({ item }) {
               })
               .catch((err) => {
                 console.log("err", err);
+                alert(err.response.data.content);
               });
           }
         }}

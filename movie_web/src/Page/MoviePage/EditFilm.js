@@ -160,10 +160,7 @@ export default function EditFilm() {
         </Radio.Group>
       </Form.Item>
 
-      <Form.Item
-        label="Tên phim"
-        rules={[{ required: true, message: "Please input your username!" }]}
-      >
+      <Form.Item label="Tên phim">
         <Input
           name="tenPhim"
           onChange={formik.handleChange}
