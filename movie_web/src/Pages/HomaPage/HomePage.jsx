@@ -16,7 +16,7 @@ import {
 import moment from "moment";
 
 import TextSplice from "../../Utilities/Icon";
-import { AddTypeMovie } from "../../Utilities/TypeMovie";
+
 import News from "./News/News";
 
 export default function HomePage() {
@@ -103,7 +103,7 @@ export default function HomePage() {
         ) : (
           <div className="container md:flex">
             <iframe
-              id={data.maPhim}
+
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen={true}
               title="myFrame"

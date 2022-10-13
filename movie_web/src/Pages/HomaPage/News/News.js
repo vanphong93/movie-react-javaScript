@@ -8,20 +8,18 @@ export default function News() {
 
   let newData = dataZing.slice(item, item + 4);
   let handleNext = () => {
-    if (item + 4 >= dataZing.length) {
-      return;
-    } else {
-      let newData = item + 4;
-      setItem(newData);
-    }
+    let newNumber = item + 4;
+    setItem(newNumber);
   };
   let handleBack = () => {
-    if (item <= 2) {
-      return;
-    } else {
-      let newItem = item - 4;
-      setItem(newItem);
-    }
+    let newNumber = item - 4;
+    setItem(newNumber);
+    // if (item <= 2) {
+    //   return;
+    // } else {
+    //   let newItem = item - 4;
+    //   setItem(newItem);
+    // }
   };
   let renderContent = () => {
     return newData.map((item, i) => {
@@ -56,18 +54,30 @@ export default function News() {
       </h1>
       <div className="grid lg:grid-cols-2 gap-10">{renderContent()}</div>
       <section className="text-right">
-        <button
-          onClick={handleBack}
-          className="bg-white hover:bg-gray-100  text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-        >
-          <BackIcon />
-        </button>
-        <button
-          onClick={handleNext}
-          className="bg-white  hover:bg-gray-100 ml-1 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-        >
-          <NextIcon />
-        </button>
+        {item < 4 ? (
+          <button className="bg-white  opacity-50 cursor-not-allowed  text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+            <BackIcon />
+          </button>
+        ) : (
+          <button
+            onClick={handleBack}
+            className="bg-white hover:bg-gray-100  text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+          >
+            <BackIcon />
+          </button>
+        )}
+        {item + 4 >= dataZing.length ? (
+          <button className="bg-white opacity-50 cursor-not-allowed ml-1 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+            <NextIcon />
+          </button>
+        ) : (
+          <button
+            onClick={handleNext}
+            className="bg-white  hover:bg-gray-100 ml-1 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+          >
+            <NextIcon />
+          </button>
+        )}
       </section>
       <hr />
     </div>

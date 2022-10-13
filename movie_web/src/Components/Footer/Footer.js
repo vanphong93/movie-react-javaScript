@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import movieLogo from "../../assets/movieLogo.png";
 import {
@@ -17,7 +18,6 @@ export default function Footer() {
         <div className="lg:w-1/3">
           <img
             width={180}
-            // className="motion-safe:animate-pulse "
             src={movieLogo}
             alt="cinema, popcorn, ticket, movie, theatre png"
           />
@@ -27,31 +27,31 @@ export default function Footer() {
             <h3 className="tracking-wide uppercase text-gray-900">Liên hệ</h3>
             <ul className="space-y-1">
               <li>
-                <a
+                <Link
                   className="hover:text-purple-500 duration-300"
                   rel="noopener noreferrer"
-                  href=""
+                  href="#"
                 >
                   Phone 09333742
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   rel="noopener noreferrer"
                   className="hover:text-purple-500 duration-300"
-                  href=""
+                  href="#"
                 >
                   Địa chỉ 123 Nguyễn Hữu Trang,quận 1 tp.Hồ Chí Minh
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   rel="noopener noreferrer"
                   className="hover:text-purple-500 duration-300"
-                  href=""
+                  href="#"
                 >
                   Gmail movieSevirce@mgail.com
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -59,34 +59,34 @@ export default function Footer() {
             <h3 className="tracking-wide uppercase text-gray-900">Dịch vụ</h3>
             <ul className="space-y-1">
               <li>
-                <a
+                <Link
                   rel="noopener noreferrer"
                   className="hover:text-purple-500 duration-300"
                   href="#"
                 >
                   Khách hàng
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   rel="noopener noreferrer"
                   className="hover:text-purple-500 duration-300"
-                  href=""
+                  href="#"
                 >
                   Doanh nghiệp
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
           <div className="space-y-3">
             <h3 className="uppercase text-gray-900">Ứng dụng</h3>
             <div className="flex space-x-3 ">
-              <a rel="noopener noreferrer" href="#">
+              <Link rel="noopener noreferrer" href="#">
                 <GooglePlayIcon />
-              </a>
-              <a rel="noopener noreferrer" href="#">
+              </Link>
+              <Link rel="noopener noreferrer" href="#">
                 <AppleIcon />
-              </a>
+              </Link>
             </div>
           </div>
           <div className="space-y-3">
@@ -94,30 +94,30 @@ export default function Footer() {
               Social media
             </div>
             <div className="flex justify-start space-x-3">
-              <a
+              <Link
                 rel="noopener noreferrer"
-                href=""
+                href="#"
                 title="Facebook"
                 className="flex items-center p-1 hover:text-purple-500 duration-300"
               >
                 <FacebookIcon />
-              </a>
-              <a
+              </Link>
+              <Link
                 rel="noopener noreferrer"
-                href=""
+                href="#"
                 title="Twitter"
                 className="flex items-center p-1 hover:text-purple-500 duration-300"
               >
                 <TwitterIcon />
-              </a>
-              <a
+              </Link>
+              <Link
                 rel="noopener noreferrer"
-                href=""
+                href="#"
                 title="Instagram"
                 className="flex items-center p-1 hover:text-purple-500 duration-300"
               >
                 <InstagramIcon />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

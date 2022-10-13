@@ -28,7 +28,7 @@ export default function ItemTabMovie({ data, showModal }) {
       <div className="flex-grow text-center">
         <h1 className="text-sm md:mx-3 md:text-xl">{data.tenPhim}</h1>
         <div className="grid grid-cols-1 lg:grid-cols-4 md:gap-3">
-          {data.lstLichChieuTheoPhim.slice(0, 7).map((item, index) => {
+          {data.lstLichChieuTheoPhim.slice(0,7).map((item, index) => {
             let content = <span>{moneyFormat(item.giaVe)} </span>;
             return (
               <NavLink to={`/book/${item.maLichChieu}`} key={index}>

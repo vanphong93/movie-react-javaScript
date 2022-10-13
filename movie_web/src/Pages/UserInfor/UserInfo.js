@@ -1,40 +1,59 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { App } from "../../Components/HeaderThemes/Header";
+import { useDispatch, useSelector } from "react-redux";
 import ModalUpdateUser from "./ModalUpdateUser";
 import { userServ } from "../../Services/userService";
 import TabsUser from "./TabsUser";
 import { moneyFormat } from "../../Utilities/Icon";
+import { useNavigate } from "react-router-dom";
+import { setLoadingOff, setLoadingOn } from "../../redux/actions/actionsSpiner";
 
 export default function UserInfo() {
+  let dispatch = useDispatch();
+  let navigate = useNavigate();
   const [dataTicket, setDataTicket] = useState();
+  let { dataSearch } = useSelector((state) => {
+    return state.searchData;
+  });
 
   useEffect(() => {
+    dispatch(setLoadingOn());
     userServ
       .postUserInfo()
       .then((res) => {
+        dispatch(setLoadingOff());
         setDataTicket(res.data.content);
-        console.log("res.data.content: ", res.data.content);
       })
       .catch((err) => {
         console.log("err: ", err);
+        setTimeout(() => {
+          dispatch(setLoadingOff());
+          alert("kiem tra ket noi");
+        }, 6000);
       });
   }, []);
-
+  let addTicket = (data) => {
+    let index = dataSearch.findIndex((item) => {
+      return item.value == data;
+    });
+    let result = dataSearch[index].maPhim;
+    console.log('result: ', result);
+    navigate(`/detail/${result}`);
+  };
   let renderChairInfo = (item) => {
-    return item.danhSachGhe
-      .splice(item.danhSachGhe.length - 10, item.danhSachGhe.length)
-      .map((item, i) => {
-        return (
-          <span className="bg-green-500 p-0.5 mx-1 rounded" key={i}>
-            {item.tenGhe}
-          </span>
-        );
-      });
+    let newItem = [...item.danhSachGhe];
+    return newItem.splice(-10).map((item, i) => {
+      return (
+        <span className="bg-green-500 p-0.5 mx-1 rounded" key={i}>
+          {item.tenGhe}
+        </span>
+      );
+    });
   };
   let renderContent = () => {
     return dataTicket?.thongTinDatVe.map((item, i) => {
+      console.log("dataTicket: ", dataTicket);
+
       return (
         <div
           key={i}
@@ -55,6 +74,14 @@ export default function UserInfo() {
 
             <span>Hệ thống {item.danhSachGhe[0].tenHeThongRap}</span>
             <p className="font-medium">Tên ghế: {renderChairInfo(item)}</p>
+            <button
+              onClick={() => {
+                addTicket(item.tenPhim);
+              }}
+              className="bg-yellow-500 p-1 rounded"
+            >
+              Add
+            </button>
           </div>
         </div>
       );

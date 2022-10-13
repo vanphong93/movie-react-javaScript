@@ -92,7 +92,7 @@ export default function Header() {
         },
 
         {
-          label: <NavLink to={"/user#info"}>Thông tin</NavLink>,
+          label: <Link to={"/user#info"}>Thông tin</Link>,
           key: "1",
         },
         {

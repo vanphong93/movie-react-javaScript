@@ -6,6 +6,7 @@ export let dataBookReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case FIX_DATA:
       console.log("payload: ", payload);
+      //chia so luong ghe thanh hang 16
       let newData = [];
       for (let i = 0; i < payload.length; i += 16) {
         const element = payload.slice(i, i + 16);
