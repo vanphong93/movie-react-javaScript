@@ -13,7 +13,9 @@ export const LoginPage = ({ modal }) => {
       message.success("Đăng nhập thành công");
       modal(false);
       setTimeout(() => {
+        navigate("/");
         window.location.reload();
+
       }, 2000);
     };
 

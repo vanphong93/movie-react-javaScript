@@ -4,7 +4,7 @@ const initialState = {
   dataMovie: "",
   dataBaner: "",
   dataTheater: "",
-  dataSearch: "",
+
 };
 
 export const movieReducer = (state = initialState, { type, payload }) => {

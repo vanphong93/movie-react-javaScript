@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import ModalUpdateUser from "./ModalUpdateUser";
 import { userServ } from "../../Services/userService";
 import TabsUser from "./TabsUser";
-import { moneyFormat, TicketIcon, TicketIconInfo } from "../../Utilities/Icon";
+import { moneyFormat } from "../../Utilities/Icon";
 import { useNavigate } from "react-router-dom";
 import { setLoadingOff, setLoadingOn } from "../../redux/actions/actionsSpiner";
+
+import { Input, Space } from "antd";
 import { message } from "antd";
 export default function UserInfo() {
   let dispatch = useDispatch();
@@ -96,7 +98,11 @@ export default function UserInfo() {
         <>
           <p>Tên: {hoTen}</p>
           <p>Tài khoản: {taiKhoan}</p>
-          <p>Mật khẩu: {matKhau}</p>
+          {/* <input type="password" /> */}
+          <Space direction="vertical">
+            <Input.Password value={matKhau} placeholder="input password" />
+          </Space>
+          {/* <p>Mật khẩu: {matKhau}</p> */}
           <p>Số điện thoại: {soDT}</p>
           <p>Email: {email}</p>
           <p>
