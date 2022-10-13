@@ -64,7 +64,7 @@ export default function QuanLyPhimPage() {
       dataIndex: "maPhim",
       key: "maPhim",
       sorter: (a, b) => a.maPhim - b.maPhim,
-      width: "15%",
+      width: "10%",
     },
     {
       title: "Hình Ảnh",
@@ -86,7 +86,7 @@ export default function QuanLyPhimPage() {
           </Fragment>
         );
       },
-      width: "15%",
+      width: "20%",
     },
     {
       title: "Tên Phim",
@@ -100,7 +100,7 @@ export default function QuanLyPhimPage() {
         }
         return -1;
       },
-      width: "15%",
+      width: "10%",
     },
     {
       title: "Mô tả ",
@@ -115,7 +115,13 @@ export default function QuanLyPhimPage() {
           </Fragment>
         );
       },
-      width: "35%",
+      width: "20%",
+    },
+    {
+      title: "Đánh giá",
+      dataIndex: "danhGia",
+      key: "danhGia",
+      width: "15%",
     },
     {
       title: "Thao tác",

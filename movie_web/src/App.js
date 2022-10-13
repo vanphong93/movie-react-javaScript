@@ -5,11 +5,12 @@ import LayoutAdmin from "./HOC/LayoutAdmin";
 import SecureView from "./HOC/SecureView";
 import "antd/dist/antd.css";
 import LoginPage from "./Page/LoginPage/LoginPage";
-import QuanLyUserPage from "./Page/MoviePage/QuanLyUserPage";
 import QuanLyPhimPage from "./Page/MoviePage/QuanLyPhimPage";
 import AddFilm from "./Page/MoviePage/AddFilm";
 import EditFilm from "./Page/MoviePage/EditFilm";
 import ShowTimeFilm from "./Page/MoviePage/ShowTimeFilm";
+import QuanLyUserPage from "./Page/UserPage/QuanLyUserPage";
+import AddUser from "./Page/UserPage/AddUser";
 
 function App() {
   return (
@@ -39,6 +40,15 @@ function App() {
             }
           />
           <Route
+            path="/admin/UserManage/AddUser"
+            element={
+              <SecureView>
+                <LayoutAdmin Component={AddUser} />
+              </SecureView>
+            }
+          />
+
+          <Route
             path="/admin/FilmsManage"
             element={
               <SecureView>
@@ -46,7 +56,6 @@ function App() {
               </SecureView>
             }
           />
-
           <Route
             path="/admin/FilmsManage/AddFilm"
             element={

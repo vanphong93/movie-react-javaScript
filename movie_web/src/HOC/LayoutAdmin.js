@@ -1,9 +1,10 @@
 import {
   DesktopOutlined,
   UserOutlined,
-  ClockCircleOutlined,
   SettingOutlined,
   FolderAddOutlined,
+  UserAddOutlined,
+  UserSwitchOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import React from "react";
@@ -29,8 +30,19 @@ function MenuSider({ Children }) {
             items={[
               {
                 label: "Quản lý User",
-                key: "/admin/UserManage",
                 icon: <UserOutlined />,
+                children: [
+                  {
+                    label: "Users",
+                    key: "/admin/UserManage",
+                    icon: <UserSwitchOutlined />,
+                  },
+                  {
+                    label: "Thêm User",
+                    key: "/admin/UserManage/AddUser",
+                    icon: <UserAddOutlined />,
+                  },
+                ],
               },
               {
                 label: "Quản lý Films",
