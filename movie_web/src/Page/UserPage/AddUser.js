@@ -20,6 +20,20 @@ export default function AddUser() {
       soDT: "",
       maLoaiNguoiDung: "",
     },
+    validationSchema: Yup.object({
+      taiKhoan: Yup.string().required("không được để trống Tài Khoản"),
+      matKhau: Yup.string().required("không được để trống Mật Khẩu"),
+      hoTen: Yup.string().required("Không được để trống Họ tên"),
+      email: Yup.string().required("Không được để trống Email"),
+      soDT: Yup.string()
+        .required("Không được để trống số điện thoại")
+        .min(10, "Số điện thoại không được ít hơn 10 số")
+        .max(11, "Số điện thoại không được nhiều hơn 11 số")
+        .matches(/^[0-9]+$/, "Số điện thoại không được nhập chữ, hay ký tự "),
+      maLoaiNguoiDung: Yup.string().required(
+        "Không được để trống loại người dùng"
+      ),
+    }),
     onSubmit: (values) => {
       console.log("values: ", values);
       userServ
@@ -31,6 +45,7 @@ export default function AddUser() {
         })
         .catch((err) => {
           console.log("err", err);
+          alert(err.response.data.content);
         });
     },
   });
@@ -70,33 +85,51 @@ export default function AddUser() {
 
       <Form.Item label="Tài Khoản">
         <Input name="taiKhoan" onChange={formik.handleChange} />
+        {formik.errors.taiKhoan && (
+          <p className="text-red-500">{formik.errors.taiKhoan}</p>
+        )}
       </Form.Item>
 
       <Form.Item label="Mật Khẩu">
         <Input name="matKhau" onChange={formik.handleChange} />
+        {formik.errors.matKhau && (
+          <p className="text-red-500">{formik.errors.matKhau}</p>
+        )}
       </Form.Item>
 
       <Form.Item label="Họ và Tên">
         <Input name="hoTen" onChange={formik.handleChange} />
+        {formik.errors.hoTen && (
+          <p className="text-red-500">{formik.errors.hoTen}</p>
+        )}
       </Form.Item>
 
       <Form.Item label="Email">
         <Input type="email" name="email" onChange={formik.handleChange} />
+        {formik.errors.email && (
+          <p className="text-red-500">{formik.errors.email}</p>
+        )}
       </Form.Item>
 
       <Form.Item label="Số điện thoại">
         <Input name="soDT" onChange={formik.handleChange} />
+        {formik.errors.soDT && (
+          <p className="text-red-500">{formik.errors.soDT}</p>
+        )}
       </Form.Item>
 
       <Form.Item label="Loại người dùng">
         <Select
           options={[
             { label: "Khách hàng", value: "KhachHang" },
-            { label: "Quản trị", value: "quanTri" },
+            { label: "Quản trị", value: "QuanTri" },
           ]}
           onChange={handleChangeLoaiNguoiDung}
           placeholder="Xin vui lòng chọn Loại người dùng"
         />
+        {formik.errors.maLoaiNguoiDung && (
+          <p className="text-red-500">{formik.errors.maLoaiNguoiDung}</p>
+        )}
       </Form.Item>
 
       <Form.Item label="Chức năng">
