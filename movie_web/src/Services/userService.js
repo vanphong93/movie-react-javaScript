@@ -20,4 +20,8 @@ export const userServ = {
     }&tuKhoa=${tukhoa}`;
     return https.get(uri);
   },
+  UserAdd: (dataUser) => {
+    let uri = `/api/QuanLyNguoiDung/ThemNguoiDung`;
+    return https.post(uri, dataUser);
+  },
 };

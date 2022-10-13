@@ -51,16 +51,16 @@ export default function QuanLyUserPage() {
       width: "15%",
     },
     {
-      title: "Số điện thoại",
-      dataIndex: "soDT",
-      key: "soDT",
-      width: "10%",
-    },
-    {
       title: "Email",
       dataIndex: "email",
       key: "email",
       width: "20%",
+    },
+    {
+      title: "Số điện thoại",
+      dataIndex: "soDT",
+      key: "soDT",
+      width: "10%",
     },
     {
       title: "Loại Người dùng",
