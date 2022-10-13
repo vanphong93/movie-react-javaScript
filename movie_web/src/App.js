@@ -11,6 +11,7 @@ import EditFilm from "./Page/MoviePage/EditFilm";
 import ShowTimeFilm from "./Page/MoviePage/ShowTimeFilm";
 import QuanLyUserPage from "./Page/UserPage/QuanLyUserPage";
 import AddUser from "./Page/UserPage/AddUser";
+import EditUser from "./Page/UserPage/EditUser";
 
 function App() {
   return (
@@ -44,6 +45,14 @@ function App() {
             element={
               <SecureView>
                 <LayoutAdmin Component={AddUser} />
+              </SecureView>
+            }
+          />
+          <Route
+            path="/admin/UserManage/EditUser/:id/:ten"
+            element={
+              <SecureView>
+                <LayoutAdmin Component={EditUser} />
               </SecureView>
             }
           />

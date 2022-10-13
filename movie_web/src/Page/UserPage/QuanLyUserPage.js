@@ -3,19 +3,25 @@ import { userServ } from "../../Services/userService";
 import { Table, Tag } from "antd";
 import { Input } from "antd";
 import UserAction from "./UserAction";
+import { useDispatch, useSelector } from "react-redux";
+import { setListUser } from "../../Redux/actions/actionUser";
 
 export default function QuanLyUserPage() {
   const { Search } = Input;
-  const [arrUser, setarrUser] = useState([]);
+  let dispatch = useDispatch();
+  const arrUsers = useSelector((state) => {
+    return state.userReducer.arrUsers;
+  });
+
   useEffect(() => {
     userServ
       .getListUser()
       .then((res) => {
         let dataUser = res.data.content.map((item) => {
-          return { ...item, action: <UserAction /> };
+          return { ...item, action: <UserAction item={item} /> };
         });
         console.log("data", dataUser);
-        setarrUser(dataUser);
+        dispatch(setListUser(dataUser));
       })
       .catch((err) => {
         console.log("err", err);
@@ -90,11 +96,11 @@ export default function QuanLyUserPage() {
         .UserSreach(value)
         .then((res) => {
           console.log("Thanh cong", res.data.content);
-          let dataSreach = res.data.content.map((item) => {
-            return { ...item, action: <UserAction /> };
+          let dataUser = res.data.content.map((item) => {
+            return { ...item, action: <UserAction item={item} /> };
           });
-          console.log("data", dataSreach);
-          setarrUser(dataSreach);
+          console.log("data", dataUser);
+          dispatch(setListUser(dataUser));
         })
         .catch((err) => {
           console.log("err", err);
@@ -104,10 +110,10 @@ export default function QuanLyUserPage() {
         .getListUser()
         .then((res) => {
           let dataUser = res.data.content.map((item) => {
-            return { ...item, action: <UserAction /> };
+            return { ...item, action: <UserAction item={item} /> };
           });
           console.log("data", dataUser);
-          setarrUser(dataUser);
+          dispatch(setListUser(dataUser));
         })
         .catch((err) => {
           console.log("err", err);
@@ -115,7 +121,7 @@ export default function QuanLyUserPage() {
     }
   };
 
-  const data = arrUser;
+  const data = arrUsers;
 
   const onChange = (pagination, filters, sorter, extra) => {
     console.log("params onChange Table", pagination, filters, sorter, extra);

@@ -24,4 +24,8 @@ export const userServ = {
     let uri = `/api/QuanLyNguoiDung/ThemNguoiDung`;
     return https.post(uri, dataUser);
   },
+  UserDelate: (taiKhoan) => {
+    let uri = `/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`;
+    return https.delete(uri);
+  },
 };
