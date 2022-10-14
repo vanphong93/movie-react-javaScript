@@ -1,1 +1,0 @@
-export const GET_DATA_SEARCH="get_data_search"
