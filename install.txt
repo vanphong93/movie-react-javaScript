@@ -1,2 +1,0 @@
-merge Phat complete
-merge Phong complete
