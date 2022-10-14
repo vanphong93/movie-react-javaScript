@@ -1,16 +1,1 @@
-npx create-react-app file_name
-cd file_name
-
-npm i redux-thunk
-npm i lottie-react
-npm i react-spinners
-npm i react-router-dom
-npm i redux
-npm i react-redux
-npm i antd
-npm i momen
-npm i axios
-install tailwind https://tailwindcss.com/docs/guides/create-react-app
-copy file .prettierrc move to src
-
-task report  https://docs.google.com/spreadsheets/d/1O1_sLUlDeya-2rr7OOTITgdn984Yxg5TNio8L7jULik/edit?usp=sharing
+merge Phat complete
