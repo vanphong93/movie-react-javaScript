@@ -21,6 +21,7 @@ import {
   TheaterIcon,
 } from "../../Utilities/Icon";
 export default function Header() {
+  // let isAdmin=
   const location = useLocation();
   let checkLink = location.pathname;
 
@@ -80,6 +81,16 @@ export default function Header() {
           ),
           key: "0",
         },
+        newUser?.maLoaiNguoiDung == "QuanTri"
+          ? {
+              label: (
+                <Link to={"/admin"}>
+                  <span className="text-red-700 font-medium"> Admin Page</span>
+                </Link>
+              ),
+              key: "2",
+            }
+          : "",
 
         {
           label: <Link to={"/user#info"}>Thông tin</Link>,
@@ -94,13 +105,13 @@ export default function Header() {
               <LogOutIcon />
             </a>
           ),
-          key: "2",
+          key: "3",
         },
       ]}
     />
   );
 
-  const content=(<p>Dành cho Admin</p>)
+  // const content=(<p>Dành cho Admin</p>)
 
   return (
     <header className="px-4 scr bg-opacity-5 fixed z-20 w-full bg-slate-50  shadow">
@@ -176,7 +187,7 @@ export default function Header() {
               >
                 <LoginIcon />
               </button>
-              <Popover content={content}>
+              {/* <Popover content={content}>
                 {" "}
                 <button
                   onClick={adminLogin}
@@ -184,7 +195,7 @@ export default function Header() {
                 >
                 <AdminIcon/>
                 </button>
-              </Popover>
+              </Popover> */}
             </>
           )}
         </div>

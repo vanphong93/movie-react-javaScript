@@ -91,6 +91,7 @@ export default function EditFilm() {
           navigate("/admin/FilmsManage");
         })
         .catch((err) => {
+          alert(err.response.data.content);
           // console.log("err", err);
         });
     },

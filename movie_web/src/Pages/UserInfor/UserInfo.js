@@ -113,18 +113,6 @@ export default function UserInfo() {
           <p>Hạng:{maNhom == "GP00" ? "Bạc" : "Đồng"}</p>
 
           <ModalUpdateUser data={dataTicket} />
-          {maLoaiNguoiDung == "QuanTri" ? (
-            <button
-              onClick={() => {
-                navigate("/login");
-              }}
-              className="p-2 bg-red-500 hover:bg-red-700 duration-300"
-            >
-              Admin Movie
-            </button>
-          ) : (
-            ""
-          )}
         </>
       );
     }

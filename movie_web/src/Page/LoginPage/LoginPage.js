@@ -20,6 +20,7 @@ const LoginPage = () => {
         localServ.user.set(res.data.content);
         message.success(res.data.message);
         navigate("/admin");
+        window.location.reload();
       })
       .catch((err) => {
         message.error(err.response.data.content);
