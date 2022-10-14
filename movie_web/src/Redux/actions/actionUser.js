@@ -1,6 +1,7 @@
 import { userServ } from "../../Services/userService";
 import { SET_USER } from "../constant/constantUser";
 import { localServ } from "../../Services/localService";
+
 const setUserSuccess = (successValue) => {
   return {
     type: SET_USER,
@@ -26,9 +27,8 @@ export const setRegister = (dataRegister, onSuccess, onFailed) => {
   return (dispatch) => {
     userServ
       .postRegister(dataRegister)
-      .then((res) => {
-        onSuccess();
-        dispatch(setUserSuccess(res.data.content));
+      .then(() => {
+        dispatch(setLogin(dataRegister, onSuccess, onFailed));
       })
       .catch((err) => {
         onFailed();
