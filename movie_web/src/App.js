@@ -1,4 +1,6 @@
 import "./App.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LayoutLogin from "./HOC/LayoutLogin";
 import LayoutAdmin from "./HOC/LayoutAdmin";
@@ -12,10 +14,16 @@ import ShowTimeFilm from "./Page/MoviePage/ShowTimeFilm";
 import QuanLyUserPage from "./Page/UserPage/QuanLyUserPage";
 import AddUser from "./Page/UserPage/AddUser";
 import EditUser from "./Page/UserPage/EditUser";
-
+import Detail from "./Pages/DetailMovies/Detail";
+import HomePage from "./Pages/HomaPage/HomePage";
+import Layout from "./HOC/Layout";
+import Spiner from "./Components/Spiner/Spiner";
+import BookTicket from "./Pages/BuyTicket/BookTicket";
+import UserInfo from "./Pages/UserInfor/UserInfo";
 function App() {
   return (
-    <div className="App">
+    <div>
+      <Spiner />
       <BrowserRouter>
         <Routes>
           <Route
@@ -87,6 +95,43 @@ function App() {
               <SecureView>
                 <LayoutAdmin Component={ShowTimeFilm} />
               </SecureView>
+            }
+          />
+        </Routes>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Layout>
+                <HomePage />
+              </Layout>
+            }
+          />
+          <Route
+            exact
+            path="/detail/:id"
+            element={
+              <Layout>
+                <Detail />
+              </Layout>
+            }
+          />
+          <Route
+            exact
+            path="/book/:id"
+            element={
+              <Layout>
+                <BookTicket />
+              </Layout>
+            }
+          />
+          <Route
+            exact
+            path="/user"
+            element={
+              <Layout>
+                <UserInfo />
+              </Layout>
             }
           />
         </Routes>

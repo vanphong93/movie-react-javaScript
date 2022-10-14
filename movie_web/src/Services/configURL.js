@@ -12,3 +12,10 @@ export let https = axios.create({
     Authorization: "bearer " + localServ.user.get()?.accessToken,
   },
 });
+export let https_client = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    TokenCybersoft: TOKEN,
+    Authorization: "Bearer " + localServ.user.get()?.accessToken,
+  },
+});

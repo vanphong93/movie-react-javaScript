@@ -1,4 +1,4 @@
-import { https } from "./configURL";
+import { https,https_client } from "./configURL";
 import { localServ } from "./localService";
 
 export const userServ = {
@@ -28,6 +28,13 @@ export const userServ = {
     let uri = `/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`;
     return https.delete(uri);
   },
+  editUser: (data) => {
+    return https_client.put(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, data);
+  },
+  postUserInfo: () => {
+    return https_client.post("/api/QuanLyNguoiDung/ThongTinTaiKhoan");
+  },
+
   // chưa
   layThongTinNguoiDungEdit: (taikhoan) => {
     let uri = `/api/QuanLyNguoiDung/LayThongTinNguoiDung?taiKhoan=${taikhoan}`;
