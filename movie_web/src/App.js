@@ -6,20 +6,20 @@ import LayoutLogin from "./HOC/LayoutLogin";
 import LayoutAdmin from "./HOC/LayoutAdmin";
 import SecureView from "./HOC/SecureView";
 import "antd/dist/antd.css";
-import LoginPage from "./Page/LoginPage/LoginPage";
-import QuanLyPhimPage from "./Page/MoviePage/QuanLyPhimPage";
-import AddFilm from "./Page/MoviePage/AddFilm";
-import EditFilm from "./Page/MoviePage/EditFilm";
-import ShowTimeFilm from "./Page/MoviePage/ShowTimeFilm";
-import QuanLyUserPage from "./Page/UserPage/QuanLyUserPage";
-import AddUser from "./Page/UserPage/AddUser";
-import EditUser from "./Page/UserPage/EditUser";
-import Detail from "./Pages/DetailMovies/Detail";
-import HomePage from "./Pages/HomaPage/HomePage";
+import LoginPage from "./PagesAdmin/LoginPage/LoginPage";
+import QuanLyPhimPage from "./PagesAdmin/MoviePage/QuanLyPhimPage";
+import AddFilm from "./PagesAdmin/MoviePage/AddFilm";
+import EditFilm from "./PagesAdmin/MoviePage/EditFilm";
+import ShowTimeFilm from "./PagesAdmin/MoviePage/ShowTimeFilm";
+import QuanLyUserPage from "./PagesAdmin/UserPage/QuanLyUserPage";
+import AddUser from "./PagesAdmin/UserPage/AddUser";
+import EditUser from "./PagesAdmin/UserPage/EditUser";
+import Detail from "./PagesMovie/DetailMovies/Detail";
+import HomePage from "./PagesMovie/HomePage/HomePage";
 import Layout from "./HOC/Layout";
 import Spiner from "./Components/Spiner/Spiner";
-import BookTicket from "./Pages/BuyTicket/BookTicket";
-import UserInfo from "./Pages/UserInfor/UserInfo";
+import BookTicket from "./PagesMovie/BuyTicket/BookTicket";
+import UserInfo from "./PagesMovie/UserInfor/UserInfo";
 function App() {
   return (
     <div>

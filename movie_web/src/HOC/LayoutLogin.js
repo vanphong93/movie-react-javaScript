@@ -1,4 +1,4 @@
-import HeaderPage from "../Page/HeaderPage/HeaderPage";
+import HeaderPage from "../PagesAdmin/HeaderPage/HeaderPage";
 
 export default function LayoutLogin({ Component }) {
   return (

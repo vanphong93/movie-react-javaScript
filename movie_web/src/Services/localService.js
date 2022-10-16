@@ -1,6 +1,5 @@
 const USER = "USER";
 const FILM = "FILM";
-
 export const localServ = {
   user: {
     set: (data) => {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { DownOutlined } from "@ant-design/icons";
 import { HashLink } from "react-router-hash-link";
-import { Modal, message, Dropdown, Menu, Space, Popover } from "antd";
+import { Modal, message, Dropdown, Menu, Space } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "../../Redux/actions/actionUser";
@@ -11,7 +11,6 @@ import { localServ } from "../../Services/localService";
 import SearchMovies from "./Search";
 import { useLocation } from "react-router-dom";
 import {
-  AdminIcon,
   CalendarIcon,
   HomeIcon,
   LoginIcon,
@@ -21,7 +20,6 @@ import {
   TheaterIcon,
 } from "../../Utilities/Icon";
 export default function Header() {
-  // let isAdmin=
   const location = useLocation();
   let checkLink = location.pathname;
 
@@ -61,9 +59,7 @@ export default function Header() {
     setFromLogin(false);
     showModal();
   };
-  let adminLogin = () => {
-    navigate("/login");
-  };
+
   let handleLogout = () => {
     localServ.user.remove();
     window.location.href = "/";
@@ -81,17 +77,14 @@ export default function Header() {
           ),
           key: "0",
         },
-        newUser?.maLoaiNguoiDung == "QuanTri"
-          ? {
-              label: (
-                <Link to={"/admin"}>
-                  <span className="text-red-700 font-medium"> Admin Page</span>
-                </Link>
-              ),
-              key: "2",
-            }
-          : "",
-
+        newUser?.maLoaiNguoiDung == "QuanTri" && {
+          label: (
+            <Link to={"/admin"}>
+              <span className="text-red-700 font-medium"> Admin Page</span>
+            </Link>
+          ),
+          key: "2",
+        },
         {
           label: <Link to={"/user#info"}>Thông tin</Link>,
           key: "1",
@@ -110,8 +103,6 @@ export default function Header() {
       ]}
     />
   );
-
-  // const content=(<p>Dành cho Admin</p>)
 
   return (
     <header className="px-4 scr bg-opacity-5 fixed z-20 w-full bg-slate-50  shadow">
@@ -187,15 +178,6 @@ export default function Header() {
               >
                 <LoginIcon />
               </button>
-              {/* <Popover content={content}>
-                {" "}
-                <button
-                  onClick={adminLogin}
-                  className="self-center duration-300  bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                >
-                <AdminIcon/>
-                </button>
-              </Popover> */}
             </>
           )}
         </div>

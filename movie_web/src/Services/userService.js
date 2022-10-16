@@ -1,6 +1,5 @@
 import { https,https_client } from "./configURL";
 import { localServ } from "./localService";
-
 export const userServ = {
   postLogin: (data) => {
     return https.post("/api/QuanLyNguoiDung/DangNhap", data);
@@ -35,7 +34,7 @@ export const userServ = {
     return https_client.post("/api/QuanLyNguoiDung/ThongTinTaiKhoan");
   },
 
-  // chưa
+
   layThongTinNguoiDungEdit: (taikhoan) => {
     let uri = `/api/QuanLyNguoiDung/LayThongTinNguoiDung?taiKhoan=${taikhoan}`;
     return https.post(uri);

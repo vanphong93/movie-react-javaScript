@@ -5,7 +5,7 @@ import ScrollButton from "../Components/ScrollTop/ScrollBtn";
 
 export default function Layout({ children }) {
   return (
-    <div className="">
+    <div>
       <Header />
       {children}
       <ScrollButton/>

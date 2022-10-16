@@ -1,5 +1,4 @@
 import { https_client } from "./configURL";
-
 export const movieSer = {
   getListMovie: () => {
     return https_client.get("/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP03");
