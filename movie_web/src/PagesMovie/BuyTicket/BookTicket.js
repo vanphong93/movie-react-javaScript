@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { movieSer } from "../../Services/movieService";
 import { useDispatch } from "react-redux";
 import Table from "./Table";
-import { moneyFormat } from "../../Utilities/Icon";
+import { moneyFormat } from "../../Utilities/TextMoney";
 import { getDataTicket } from "../../Redux/actions/actionBookTicket";
 export default function BookTicket() {
   const { id } = useParams();
@@ -54,12 +54,12 @@ export default function BookTicket() {
   };
 
   let renderTotal = () => {
-    let moneyTotal = 0;
-    let tenGheChon = "";
-    totalMoney.forEach((item) => {
-      moneyTotal += item.giaVe;
-      tenGheChon += " " + item.tenGhe + ",";
-    });
+    let moneyTotal = totalMoney.reduce((total, item) => {
+      return (total += item.giaVe);
+    }, 0);
+    let tenGheChon = totalMoney.reduce((total, item) => {
+      return (total += "" + item.tenGhe + ",");
+    },"");
 
     return (
       <div className="p-5 text-gray-50 md:w-96">

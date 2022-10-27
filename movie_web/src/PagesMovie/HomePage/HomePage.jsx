@@ -13,7 +13,7 @@ import {
   getMovieTheater,
 } from "../../Redux/actions/actionGetMovie";
 import moment from "moment";
-import TextSplice from "../../Utilities/Icon";
+import TextSplice from "../../Utilities/TextMoney";
 import News from "./News/News";
 export default function HomePage() {
   let { dataMovie, dataBaner, dataTheater } = useSelector((state) => {

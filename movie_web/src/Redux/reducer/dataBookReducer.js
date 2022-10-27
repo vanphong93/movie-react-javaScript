@@ -1,16 +1,12 @@
 import { CLEAR_TOTAL, FIX_DATA, TOTAL_MONEY } from "../constant/constantTicket";
-
+import _ from "lodash";
 const initialState = { data: "", total: [] };
 
 export let dataBookReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case FIX_DATA:
       //chia so luong ghe thanh hang 16
-      let newData = [];
-      for (let i = 0; i < payload.length; i += 16) {
-        const element = payload.slice(i, i + 16);
-        newData.push(element);
-      }
+      let newData=_.chunk(payload,16)
       return { ...state, data: newData };
     case TOTAL_MONEY:
       let cloneTotal = [...state.total];

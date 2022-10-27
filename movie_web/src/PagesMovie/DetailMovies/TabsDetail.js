@@ -2,7 +2,7 @@ import { Popover, Rate, Tabs } from "antd";
 import moment from "moment";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import TextSplice, { moneyFormat } from "../../Utilities/Icon";
+import TextSplice, { moneyFormat } from "../../Utilities/TextMoney";
 
 export const TabsDetail = ({ data }) => {
   let { heThongRapChieu } = data;

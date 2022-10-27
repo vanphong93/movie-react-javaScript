@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import ModalUpdateUser from "./ModalUpdateUser";
 import { userServ } from "../../Services/userService";
 import TabsUser from "./TabsUser";
-import { moneyFormat, TicketIconInfo } from "../../Utilities/Icon";
+import { moneyFormat } from "../../Utilities/TextMoney";
+import {TicketIconInfo} from '../../Utilities/Icon'
 import { useNavigate } from "react-router-dom";
 import { setLoadingOff, setLoadingOn } from "../../Redux/actions/actionsSpiner";
 import { Input, Space, message } from "antd";

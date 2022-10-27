@@ -3,11 +3,8 @@ import {
   SET_TT_LIST_USER_EDIT,
   SET_USER,
 } from "../constant/constantUser";
-
 import { userServ } from "../../Services/userService";
-// import { SET_USER } from "../constant/constantUser";
 import { localServ } from "../../Services/localService";
-
 export const setUserLogin = (successValue) => {
   return {
     type: SET_USER,
@@ -33,15 +30,12 @@ const setUserSuccess = (successValue) => {
     payload: successValue,
   };
 };
-export const setLogin = (dataLogin, onSuccess, onFailed, navigate) => {
+export const setLogin = (dataLogin, onSuccess, onFailed) => {
   return (dispatch) => {
     userServ
       .postLogin(dataLogin)
       .then((res) => {
         localServ.user.set(res.data.content);
-        // if (res.data.content.maLoaiNguoiDung == "QuanTri") {
-        //   navigate("/login");
-        // }
         dispatch(setUserSuccess(res.data.content));
         onSuccess();
       })

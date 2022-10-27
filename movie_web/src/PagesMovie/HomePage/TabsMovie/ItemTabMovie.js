@@ -3,7 +3,7 @@ import moment from "moment";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { moneyFormat } from "../../../Utilities/Icon";
+import { moneyFormat } from "../../../Utilities/TextMoney";
 import { dataToModal } from "../../../Redux/actions/actionModel";
 export default function ItemTabMovie({ data, showModal }) {
   let dispatch = useDispatch();
