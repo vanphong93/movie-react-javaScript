@@ -15,7 +15,7 @@ export default function ItemChair({ data }) {
             dispatch(addOrRemoveChair(props, i, selectChair, setSelectChair));
           };
           return (
-            <td key={i}>
+            <td className="text-xs sm:text-sm" key={i}>
               {item.daDat ? (
                 <button className="bg-red-700 p-2 sm:p-3  text-white md:m-1 md:p-4 rounded opacity-50 cursor-not-allowed"></button>
               ) : item.isSelect ? (

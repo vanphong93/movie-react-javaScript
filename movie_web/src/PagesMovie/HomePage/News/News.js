@@ -26,9 +26,13 @@ function News() {
           />
           <div className="px-3  py-2">
             <h1 className="dark:text-gray-200">{item.title}</h1>
-            <p>
+            <p className="text-xs sm:text-sm">
               {item.detail}...
-              <a target={"_blank"} href={item.url} className="mx-2 hover:text-violet-500">
+              <a
+                target={"_blank"}
+                href={item.url}
+                className="mx-2 hover:text-violet-500"
+              >
                 Chi tiết
               </a>
             </p>
