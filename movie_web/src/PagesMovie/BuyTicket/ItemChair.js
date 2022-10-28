@@ -17,7 +17,7 @@ export default function ItemChair({ data }) {
           return (
             <td key={i}>
               {item.daDat ? (
-                <button className="bg-red-700 p-3  text-white md:m-1 md:p-4 rounded opacity-50 cursor-not-allowed"></button>
+                <button className="bg-red-700 p-2 sm:p-3  text-white md:m-1 md:p-4 rounded opacity-50 cursor-not-allowed"></button>
               ) : item.isSelect ? (
                 <button
                   onClick={() => {
@@ -34,8 +34,8 @@ export default function ItemChair({ data }) {
                   }}
                   className={
                     item.loaiGhe == "Vip"
-                      ? " hover:bg-yellow-500 bg-yellow-300 m-0.5 text-gray-700 hover:text-white sm:p-1 md:p-2 md:border border-yellow-500 hover:border-transparent rounded"
-                      : " hover:bg-blue-500 bg-blue-300 m-0.5 text-gray-700  hover:text-white sm:p-1 md:p-2 md:border border-blue-500 hover:border-transparent rounded"
+                      ? " hover:bg-yellow-500 bg-yellow-300 sm:m-0.5 text-gray-700 hover:text-white sm:p-1 md:p-2  sm:border-yellow-500 hover:border-transparent rounded"
+                      : " hover:bg-blue-500 bg-blue-300 sm:m-0.5 text-gray-700  hover:text-white sm:p-1 md:p-2  sm:border-blue-500 hover:border-transparent rounded"
                   }
                 >
                   {item.tenGhe}
