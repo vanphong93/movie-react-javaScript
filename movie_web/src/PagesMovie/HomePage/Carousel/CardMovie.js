@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { MediaCardIcon } from "../../../Utilities/Icon";
 import { OPEN_MODAL } from "../../../Redux/constant/constantModal";
 import { FixUrl } from "../../../Utilities/FixUrlEmbed";
+
 const { Meta } = Card;
 export default function Movie({ data, showModal }) {
   let dispatch = useDispatch();
@@ -19,12 +20,9 @@ export default function Movie({ data, showModal }) {
 
   return (
     <Card
-      className="hover:shadow-md group duration-300 transition ease-in-out hover:-translate-y-1 hover:scale-105 "
-      style={{
-        border: "none",
-      }}
+      className=" dark:shadow-white shadow-md  group duration-300 transition ease-in-out hover:-translate-y-1 hover:scale-105 "
       cover={
-        <img className="h-64 object-fill" alt="example" src={data.hinhAnh} />
+        <img className="h-64 object-fill" alt="imageCard" src={data.hinhAnh} />
       }
     >
       <Meta title={<p className="text-red-500 truncate">{data.tenPhim}</p>} />

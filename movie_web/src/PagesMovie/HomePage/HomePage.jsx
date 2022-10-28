@@ -7,6 +7,7 @@ import { AllMovie } from "./Carousel/AllMovie";
 import CarouselMovies from "./Carousel/CarouselMovies";
 import { NavLink } from "react-router-dom";
 import Baner from "./Baner/Baner";
+import "./HomePage.css";
 import {
   getBaner,
   getMovie,
@@ -48,6 +49,7 @@ export default function HomePage() {
   const renderModal = () => {
     return (
       <Modal
+
         transitionName=""
         destroyOnClose={true}
         style={{ top: 20 }}
@@ -67,7 +69,7 @@ export default function HomePage() {
             src={data.trailer}
           ></iframe>
         ) : (
-          <div className="container md:flex">
+          <div className="container  md:flex">
             <iframe
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen={true}
@@ -131,7 +133,7 @@ export default function HomePage() {
     });
   };
   return (
-    <div className="space-y-10 mb-10 ">
+    <div className="space-y-10 dark:bg-neutral-900  ">
       <section className="mb-15">
         <Baner showModal={showModal} banerMovie={banerMovie} />
       </section>

@@ -31,10 +31,10 @@ export default function ({ showModal, dataMovie }) {
               return (
                 <Tabs.TabPane
                   tab={
-                    <div className="w-24 md:w-48 text-left">
+                    <div className="w-24 md:w-48 text-left dark:text-gray-300">
                       <Popover placement="rightTop" content={content}>
                         {" "}
-                        <p className="truncate">{cumRap.tenCumRap}</p>
+                        <p className="truncate">{cumRap.tenCumRap}</p> 
                         <hr className="" />
                       </Popover>
                     </div>
@@ -62,7 +62,7 @@ export default function ({ showModal, dataMovie }) {
   };
   return (
     <Tabs
-      className="shadow-xl font-semibold"
+      className="shadow-lg dark:shadow-white font-semibold"
       tabPosition={matches ? "left" : "top"}
       defaultActiveKey="1"
     >

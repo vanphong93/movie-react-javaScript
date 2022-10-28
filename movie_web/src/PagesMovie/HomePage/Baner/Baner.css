@@ -1,3 +1,15 @@
 .baner-dots li button:before {
-    font-size:15px;
+  font-size: 15px;
+}
+.dark .baner-dots li button:before {
+  color: white;
+}
+.banerImage {
+  width: 100vw;
+  height: 75vh;
+}
+@media screen and (max-width: 768px) {
+  .banerImage {
+    height: 50vh;
+  }
 }

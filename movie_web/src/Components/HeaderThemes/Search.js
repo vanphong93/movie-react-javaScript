@@ -28,10 +28,6 @@ const SearchMovies = () => {
       allFilm.push({ value: item.tenPhim, maPhim: item.maPhim });
     });
   }
-
-  let onSelect = (value, options) => {
-    navigate(`/detail/${options.maPhim}`);
-  };
   let fixDataFilm = _.unionBy(allFilm, "value");
   useEffect(() => {
     dispatch({
@@ -39,6 +35,9 @@ const SearchMovies = () => {
       payload: fixDataFilm,
     });
   }, [dataBaner]);
+  let onSelect = (value, options) => {
+    navigate(`/detail/${options.maPhim}`);
+  };
   return (
     <>
       <AutoComplete

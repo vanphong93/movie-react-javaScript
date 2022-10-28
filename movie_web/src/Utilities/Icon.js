@@ -1,5 +1,39 @@
-
-
+export const LampIcon = () => (
+  <svg
+    className="w-8 h-8"
+    fill="currentColor"
+    viewBox="0 0 20 20"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z" />
+  </svg>
+);
+export const MoonIcon = () => (
+  <svg
+    className="w-8 h-8"
+    fill="currentColor"
+    viewBox="0 0 20 20"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+  </svg>
+);
+export const MenuHidden = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    className="w-6 h-6 text-gray-50 hover:text-gray-500 duration-300 ml-3"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M4 6h16M4 12h16M4 18h16"
+    ></path>
+  </svg>
+);
 export const HomeIcon = () => (
   <svg
     className="w-8 h-8"
@@ -66,7 +100,7 @@ export const RegisterIcon = () => (
 export const BanerMediaIcon = ({ openModalBaner }) => (
   <svg
     onClick={openModalBaner}
-    className="w-16 absolute opacity-0 bottom-1 z-10 text-yellow-50 group-hover:opacity-70 group-hover:animate-spin duration-1000 hover:cursor-pointer"
+    className="w-10 md:w-16  absolute opacity-0 bottom-1 z-10 text-yellow-50 group-hover:opacity-70 group-hover:animate-spin duration-1000 hover:cursor-pointer"
     fill="currentColor"
     viewBox="0 0 20 20"
     xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +129,7 @@ export const MediaCardIcon = ({ openModal }) => (
 );
 export const TicketIcon = () => (
   <svg
-    className="absolute z-10 w-16 opacity-0 group-hover:opacity-70 duration-1000 bottom-16 text-yellow-50 hover:cursor-pointer"
+    className="absolute z-10 w-10 md:w-16 opacity-0 group-hover:opacity-70 duration-1000 md:bottom-16 bottom-10 text-yellow-50 hover:cursor-pointer"
     fill="currentColor"
     viewBox="0 0 20 20"
     xmlns="http://www.w3.org/2000/svg"
@@ -103,8 +137,9 @@ export const TicketIcon = () => (
     <path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 100 4v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2a2 2 0 100-4V6z" />
   </svg>
 );
-export const TicketIconInfo = ({addTicket}) => (
-  <svg  onClick={addTicket}
+export const TicketIconInfo = ({ addTicket }) => (
+  <svg
+    onClick={addTicket}
     className="w-12 absolute top duration-300 opacity-10 group-hover:opacity-90  text-yellow-100 hover:cursor-pointer"
     fill="currentColor"
     viewBox="0 0 20 20"
@@ -265,16 +300,17 @@ export const ToTopIcon = () => (
   </svg>
 );
 
-
-export const AdminIcon=() =>    <svg
-className="w-6 h-6"
-fill="currentColor"
-viewBox="0 0 20 20"
-xmlns="http://www.w3.org/2000/svg"
->
-<path
-  fillRule="evenodd"
-  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
-  clipRule="evenodd"
-/>
-</svg> 
+export const AdminIcon = () => (
+  <svg
+    className="w-6 h-6"
+    fill="currentColor"
+    viewBox="0 0 20 20"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fillRule="evenodd"
+      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+      clipRule="evenodd"
+    />
+  </svg>
+);

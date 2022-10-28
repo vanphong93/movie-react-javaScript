@@ -10,7 +10,7 @@ function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return <div style={{ ...style, display: "none" }} onClick={onClick} />;
 }
-export default function SimpleSlider({ data }) {
+export default function   SimpleSlider({ data }) {
   const settings = {
     dots: true,
     slidesToShow: 5,
@@ -60,7 +60,7 @@ export default function SimpleSlider({ data }) {
     appendDots: (dots) => {
       return (
         <div className="m-5">
-          <ul className="baner-dots" style={{ padding: "0" }}>
+          <ul className="baner-dots dark" style={{ padding: "0" }}>
             {" "}
             {dots}{" "}
           </ul>

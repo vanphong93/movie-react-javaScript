@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { DownOutlined } from "@ant-design/icons";
 import { HashLink } from "react-router-hash-link";
 import { Modal, message, Dropdown, Menu, Space } from "antd";
@@ -13,13 +13,16 @@ import { useLocation } from "react-router-dom";
 import {
   CalendarIcon,
   HomeIcon,
+  LampIcon,
   LoginIcon,
   LogOutIcon,
+  MenuHidden,
+  MoonIcon,
   NewsIcon,
   RegisterIcon,
   TheaterIcon,
 } from "../../Utilities/Icon";
-export default function Header() {
+export default function Header({ changeTheme }) {
   const location = useLocation();
   let checkLink = location.pathname;
 
@@ -103,18 +106,64 @@ export default function Header() {
       ]}
     />
   );
+  const menuHidden = (
+    <Menu
+      items={[
+        {
+          label: (
+            <span
+              onClick={handleRegister}
+              className=" font-medium hover:text-blue-500 duration-300 "
+            >
+              Đăng kí
+            </span>
+          ),
+          key: "0",
+        },
+        {
+          label: (
+            <span
+              onClick={handleLogin}
+              className="font-medium hover:text-green-500 duration-300 "
+            >
+              {" "}
+              Đăng nhập
+            </span>
+          ),
+          key: "2",
+        },
+      ]}
+    />
+  );
 
   return (
-    <header className="px-4 scr bg-opacity-5 fixed z-20 w-full bg-slate-50  shadow">
+    <header className="px-4 scroll-m-32 scr bg-opacity-5 fixed z-20 w-full bg-slate-50  shadow">
       <div className="container opacity-10 duration-300 hover:opacity-100 flex justify-between h-12 mx-auto">
         <div className="flex">
           {checkLink == "/" ? (
             <>
+              <button
+                onClick={() => {
+                  changeTheme();
+                }}
+                className="p-2 text-blue-500 hidden dark:block  hover:text-white duration-300"
+              >
+                <LampIcon />
+              </button>
+              <button
+                onClick={() => {
+                  changeTheme();
+                }}
+                className="p-2 text-blue-500 dark:hidden hover:text-blue-900   duration-300"
+              >
+                <MoonIcon />
+              </button>
+
               <HashLink
                 rel="noopener noreferrer"
                 smooth
                 to={"#filmHot"}
-                className="flex items-center p-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400"
+                className="flex items-center p-2   text-blue-500 hover:text-blue-700 duration-300 "
               >
                 <TheaterIcon />
               </HashLink>
@@ -122,7 +171,7 @@ export default function Header() {
                 smooth
                 to={"#cinemax"}
                 rel="noopener noreferrer"
-                className="flex items-center p-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400"
+                className="flex items-center p-2   text-blue-500 hover:text-blue-700 duration-300 "
               >
                 <CalendarIcon />
               </HashLink>
@@ -130,7 +179,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 smooth
                 to={"#news"}
-                className="flex items-center p-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400"
+                className="flex items-center p-2   text-blue-500 hover:text-blue-700 duration-300 "
               >
                 <NewsIcon />
               </HashLink>
@@ -139,7 +188,7 @@ export default function Header() {
             <Link
               rel="noopener noreferrer"
               to={"/"}
-              className="flex items-center p-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400"
+              className="flex items-center p-2   text-blue-500 hover:text-blue-700 duration-300 "
             >
               <HomeIcon />
             </Link>
@@ -168,16 +217,26 @@ export default function Header() {
               {" "}
               <button
                 onClick={handleRegister}
-                className="self-center ml-1 bg-transparent  hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded duration-300"
+                className="self-center hidden md:block ml-1 bg-transparent  hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded duration-300"
               >
                 <RegisterIcon />
               </button>
               <button
                 onClick={handleLogin}
-                className="self-center duration-300 mx-1  bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                className="self-center hidden md:block duration-300 mx-1  bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
               >
                 <LoginIcon />
               </button>
+              <div className="md:hidden">
+                {" "}
+                <Dropdown trigger={["hover"]} overlay={menuHidden}>
+                  <a onClick={(e) => e.preventDefault()}>
+                    <Space>
+                      <MenuHidden />
+                    </Space>
+                  </a>
+                </Dropdown>
+              </div>
             </>
           )}
         </div>

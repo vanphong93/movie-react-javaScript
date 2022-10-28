@@ -58,17 +58,17 @@ export const TabsDetail = ({ data }) => {
   const renderCardDetail = () => {
     return (
       <div
-        className="mx-auto mt-10 flex rounded-lg  shadow-md md:flex-row md:max-w-xl
+        className="mx-auto mt-10 flex rounded-lg bg-gray-50  shadow-md md:flex-row md:max-w-xl
 "
       >
         <img
-          className="w-1/3 h-min md:rounded-l-lg"
+          className="w-1/3 h-min md:rounded-l-lg" 
           src={data.hinhAnh}
           alt={`image_${data.tenPhim}`}
         />
 
         <div className="flex flex-col  p-4 leading-normal">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight hover:text-black duration-500 text-gray-100">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight  text-black">
             {data.tenPhim}
           </h5>
           <Tabs
@@ -78,7 +78,7 @@ export const TabsDetail = ({ data }) => {
                 label: <span className=" font-semibold ">Nội dung</span>,
                 key: "1",
                 children: (
-                  <p className="mb-3 font-normal text-gray-100 hover:text-black duration-500">
+                  <p className="mb-3 font-normal text-black ">
                     <TextSplice
                       data={data.moTa ? data.moTa : "Đang cập nhật"}
                     />
@@ -99,12 +99,12 @@ export const TabsDetail = ({ data }) => {
                       />
                     )}
                     <br />
-                    <span className="text-gray-100 hover:text-black duration-500">
+                    <span className="text-black ">
                       {" "}
                       Thời gian: {(Math.floor(Math.random() * 5) + 2) * 30} phút
                     </span>
                     <br />
-                    <span className="text-gray-100 hover:text-black duration-500">
+                    <span className="text-black ">
                       Ngày khởi chiếu:{" "}
                       {moment(data.ngayKhoiChieu).format("DD-MM-YY h:mm:ss a")}
                     </span>

@@ -1,11 +1,11 @@
 import "./App.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "antd/dist/antd.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LayoutLogin from "./HOC/LayoutLogin";
 import LayoutAdmin from "./HOC/LayoutAdmin";
 import SecureView from "./HOC/SecureView";
-import "antd/dist/antd.css";
 import LoginPage from "./PagesAdmin/LoginPage/LoginPage";
 import QuanLyPhimPage from "./PagesAdmin/MoviePage/QuanLyPhimPage";
 import AddFilm from "./PagesAdmin/MoviePage/AddFilm";
@@ -20,6 +20,7 @@ import Layout from "./HOC/Layout";
 import Spiner from "./Components/Spiner/Spiner";
 import BookTicket from "./PagesMovie/BuyTicket/BookTicket";
 import UserInfo from "./PagesMovie/UserInfor/UserInfo";
+
 function App() {
   return (
     <div>

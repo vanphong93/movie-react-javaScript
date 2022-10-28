@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { BanerMediaIcon, TicketIcon } from "../../../Utilities/Icon";
 import { OPEN_MODAL } from "../../../Redux/constant/constantModal";
 export default function Baner({ showModal, banerMovie }) {
+  let dispatch = useDispatch();
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -26,7 +27,7 @@ export default function Baner({ showModal, banerMovie }) {
       />
     );
   }
-  let dispatch = useDispatch();
+
   const settings = {
     fade: true,
     dots: true,
@@ -69,8 +70,7 @@ export default function Baner({ showModal, banerMovie }) {
           </NavLink>
 
           <img
-            className="active:cursor-grabbing"
-            style={{ height: "75vh", width: "100vw" }}
+            className="banerImage active:cursor-grabbing"
             src={item.hinhAnh}
             alt={`baner-${index}`}
           />

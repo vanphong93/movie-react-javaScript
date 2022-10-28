@@ -17,18 +17,18 @@ function News() {
       return (
         <section
           key={i}
-          className="flex h-36 hover:-translate-y-1 duration-300 rounded-lg shadow-md"
+          className="flex h-36 hover:-translate-y-1 duration-300 dark:text-gray-200 rounded-lg dark:shadow-white shadow"
         >
           <img
             className="w-1/4 rounded-t-lg md:rounded-none md:rounded-l-lg"
             src={item.img}
             alt="image"
           />
-          <div className="px-3 py-2">
-            <h1>{item.title}</h1>
+          <div className="px-3  py-2">
+            <h1 className="dark:text-gray-200">{item.title}</h1>
             <p>
               {item.detail}...
-              <a target={"_blank"} href={item.url} className="mx-2">
+              <a target={"_blank"} href={item.url} className="mx-2 hover:text-violet-500">
                 Chi tiết
               </a>
             </p>
@@ -39,8 +39,8 @@ function News() {
   };
 
   return (
-    <div className="space-y-10 my-20">
-      <h1 className="text-center text-purple-500 text-6xl mb-12 hover:animate-pulse ">
+    <div className="space-y-10 mt-20">
+      <h1 className="text-center dark:text-purple-400 text-purple-500 text-6xl mb-12 hover:animate-pulse ">
         Tin Hot
       </h1>
       <div className="grid lg:grid-cols-2 gap-10">{renderContent()}</div>
@@ -70,7 +70,7 @@ function News() {
           </button>
         )}
       </section>
-      <hr />
+      <br />
     </div>
   );
 }

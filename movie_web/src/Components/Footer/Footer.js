@@ -10,7 +10,7 @@ import {
 } from "../../Utilities/Icon";
 export default function Footer() {
   return (
-    <footer className="px-4 divide-y bg-white text-gray-800">
+    <footer className="px-4 divide-y bg-white  text-gray-800 dark:bg-neutral-900  ">
       <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
         <div className="lg:w-1/3">
           <img
@@ -21,7 +21,7 @@ export default function Footer() {
         </div>
         <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
           <div className="space-y-3">
-            <h3 className="tracking-wide uppercase text-gray-900">Liên hệ</h3>
+            <h3 className="tracking-wide dark:text-gray-300 uppercase text-gray-900">Liên hệ</h3>
             <ul className="space-y-1">
               <li>
                 <Link
@@ -29,7 +29,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   href="#"
                 >
-                  Phone 09333742
+                  Phone 0961051014
                 </Link>
               </li>
               <li>
@@ -38,7 +38,7 @@ export default function Footer() {
                   className="hover:text-purple-500 duration-300"
                   href="#"
                 >
-                  Địa chỉ 123 Nguyễn Hữu Trang,quận 1 tp.Hồ Chí Minh
+                  Địa chỉ 112 Cao Thắng,quận 3 tp.Hồ Chí Minh
                 </Link>
               </li>
               <li>
@@ -47,13 +47,13 @@ export default function Footer() {
                   className="hover:text-purple-500 duration-300"
                   href="#"
                 >
-                  Gmail movieSevirce@mgail.com
+                  Gmail movieSevirce@gmail.com
                 </Link>
               </li>
             </ul>
           </div>
           <div className="space-y-3">
-            <h3 className="tracking-wide uppercase text-gray-900">Dịch vụ</h3>
+            <h3 className="tracking-wide dark:text-gray-300 uppercase text-gray-900">Dịch vụ</h3>
             <ul className="space-y-1">
               <li>
                 <Link
@@ -76,7 +76,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="space-y-3">
-            <h3 className="uppercase text-gray-900">Ứng dụng</h3>
+            <h3 className="uppercase dark:text-gray-300 text-gray-900">Ứng dụng</h3>
             <div className="flex space-x-3 ">
               <Link rel="noopener noreferrer" href="#">
                 <GooglePlayIcon />
@@ -87,7 +87,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="space-y-3">
-            <div className="uppercase text-gray-900 font-semibold">
+            <div className="uppercase dark:text-gray-300 text-gray-900 font-semibold">
               Social media
             </div>
             <div className="flex justify-start space-x-3">
@@ -119,7 +119,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="py-6 text-sm text-center text-gray-600">
+      <div className="py-6 text-sm text-center dark:text-gray-400 text-gray-600">
         © 2022 Company Co. All rights reserved.
       </div>
     </footer>

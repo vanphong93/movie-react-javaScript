@@ -1,5 +1,6 @@
 import { Tabs } from "antd";
 import React from "react";
+
 export const AllMovie = ({ dataMovieCurrent, dataMovieNext }) => {
   return (
     <Tabs
