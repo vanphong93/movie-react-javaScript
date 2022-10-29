@@ -133,7 +133,7 @@ export default function HomePage() {
     });
   };
   return (
-    <div className="space-y-10 dark:bg-neutral-900  ">
+    <div className="space-y-10 ">
       <section className="mb-15">
         <Baner showModal={showModal} banerMovie={banerMovie} />
       </section>

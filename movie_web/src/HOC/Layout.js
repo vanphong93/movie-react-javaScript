@@ -21,7 +21,7 @@ export default function Layout({ children }) {
     return setTheme(!theme);
   };
   return (
-    <div className={theme ? "dark" : ""}>
+    <div className={theme ? "dark bg-neutral-900 " : ""}>
       <Header changeTheme={changeTheme} />
       {children}
       <ScrollButton />

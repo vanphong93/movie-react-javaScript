@@ -185,13 +185,32 @@ export default function Header({ changeTheme }) {
               </HashLink>
             </>
           ) : (
-            <Link
-              rel="noopener noreferrer"
-              to={"/"}
-              className="flex items-center p-2   text-blue-500 hover:text-blue-700 duration-300 "
-            >
-              <HomeIcon />
-            </Link>
+            <>
+              {" "}
+              <button
+                onClick={() => {
+                  changeTheme();
+                }}
+                className="p-2 text-blue-500 hidden dark:block  hover:text-white duration-300"
+              >
+                <LampIcon />
+              </button>
+              <button
+                onClick={() => {
+                  changeTheme();
+                }}
+                className="p-2 text-blue-500 dark:hidden hover:text-blue-900   duration-300"
+              >
+                <MoonIcon />
+              </button>
+              <Link
+                rel="noopener noreferrer"
+                to={"/"}
+                className="flex items-center p-2   text-blue-500 hover:text-blue-700 duration-300 "
+              >
+                <HomeIcon />
+              </Link>
+            </>
           )}
         </div>
 

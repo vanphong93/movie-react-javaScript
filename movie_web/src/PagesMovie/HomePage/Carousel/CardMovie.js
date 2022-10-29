@@ -22,7 +22,11 @@ export default function Movie({ data, showModal }) {
     <Card
       className=" dark:shadow-white shadow-md  group duration-300 transition ease-in-out hover:-translate-y-1 hover:scale-105 "
       cover={
-        <img className="h-64 object-fill" alt="imageCard" src={data.hinhAnh} />
+        <img
+          className="h-52 w-28 object-fill sm:h-60 sm:w-32"
+          alt="imageCard"
+          src={data.hinhAnh}
+        />
       }
     >
       <Meta title={<p className="text-red-500 truncate">{data.tenPhim}</p>} />

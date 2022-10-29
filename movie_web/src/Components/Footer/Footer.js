@@ -21,7 +21,9 @@ export default function Footer() {
         </div>
         <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
           <div className="space-y-3">
-            <h3 className="tracking-wide dark:text-gray-300 uppercase text-gray-900">Liên hệ</h3>
+            <h3 className="tracking-wide dark:text-gray-300 uppercase text-gray-900">
+              Liên hệ
+            </h3>
             <ul className="space-y-1">
               <li>
                 <Link
@@ -53,7 +55,9 @@ export default function Footer() {
             </ul>
           </div>
           <div className="space-y-3">
-            <h3 className="tracking-wide dark:text-gray-300 uppercase text-gray-900">Dịch vụ</h3>
+            <h3 className="tracking-wide dark:text-gray-300 uppercase text-gray-900">
+              Dịch vụ
+            </h3>
             <ul className="space-y-1">
               <li>
                 <Link
@@ -76,7 +80,9 @@ export default function Footer() {
             </ul>
           </div>
           <div className="space-y-3">
-            <h3 className="uppercase dark:text-gray-300 text-gray-900">Ứng dụng</h3>
+            <h3 className="uppercase dark:text-gray-300 text-gray-900">
+              Ứng dụng
+            </h3>
             <div className="flex space-x-3 ">
               <Link rel="noopener noreferrer" href="#">
                 <GooglePlayIcon />

@@ -58,27 +58,27 @@ export const TabsDetail = ({ data }) => {
   const renderCardDetail = () => {
     return (
       <div
-        className="mx-auto mt-10 flex rounded-lg bg-gray-50  shadow-md md:flex-row md:max-w-xl
+        className="mx-auto mt-10 flex rounded-lg bg-gray-50 dark:bg-gray-900  shadow-md md:flex-row md:max-w-xl
 "
       >
         <img
-          className="w-1/3 h-min md:rounded-l-lg" 
+          className="w-1/3 h-min md:rounded-l-lg"
           src={data.hinhAnh}
           alt={`image_${data.tenPhim}`}
         />
 
         <div className="flex flex-col  p-4 leading-normal">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight  text-black">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight dark:text-gray-300  text-black">
             {data.tenPhim}
           </h5>
           <Tabs
             defaultActiveKey="1"
             items={[
               {
-                label: <span className=" font-semibold ">Nội dung</span>,
+                label: <span className=" font-semibold">Nội dung</span>,
                 key: "1",
                 children: (
-                  <p className="mb-3 font-normal text-black ">
+                  <p className="mb-3 font-normal dark:text-gray-300 text-black ">
                     <TextSplice
                       data={data.moTa ? data.moTa : "Đang cập nhật"}
                     />
@@ -99,12 +99,12 @@ export const TabsDetail = ({ data }) => {
                       />
                     )}
                     <br />
-                    <span className="text-black ">
+                    <span className="text-black dark:text-gray-300 ">
                       {" "}
                       Thời gian: {(Math.floor(Math.random() * 5) + 2) * 30} phút
                     </span>
                     <br />
-                    <span className="text-black ">
+                    <span className="text-black dark:text-gray-300 ">
                       Ngày khởi chiếu:{" "}
                       {moment(data.ngayKhoiChieu).format("DD-MM-YY h:mm:ss a")}
                     </span>
@@ -134,7 +134,6 @@ export const TabsDetail = ({ data }) => {
                 label: (
                   <img
                     className="w-10 h-10 md:w-16 md:h-16"
-
                     src={item.logo}
                     alt="image"
                   />

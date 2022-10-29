@@ -56,7 +56,7 @@ export default function UserInfo() {
       return (
         <div
           key={i}
-          className="flex h-56 shadow-lg group hover:-translate-y-2 duration-300 rounded"
+          className="flex h-56 dark:text-gray-300 dark:shadow-md shadow-lg dark:shadow-white group hover:-translate-y-1 duration-300 rounded"
         >
           <img
             className="w-1/3 rounded"
@@ -98,7 +98,8 @@ export default function UserInfo() {
         dataTicket;
       return (
         <>
-          <p>Tên: {hoTen}</p>
+         <section className="dark:text-gray-300">
+         <p>Tên: {hoTen}</p>
           <p>
             Tài khoản: <span className="text-red-500">{taiKhoan}</span>
           </p>
@@ -112,6 +113,7 @@ export default function UserInfo() {
             {maLoaiNguoiDung == "KhachHang" ? "Khách Hàng" : "Quản Trị"}
           </p>
           <p>Hạng:{maNhom == "GP00" ? "Bạc" : "Đồng"}</p>
+         </section>
 
           <ModalUpdateUser data={dataTicket} />
         </>
