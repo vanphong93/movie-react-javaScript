@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { DownOutlined } from "@ant-design/icons";
 import { HashLink } from "react-router-hash-link";
 import { Modal, message, Dropdown, Menu, Space } from "antd";
@@ -24,8 +24,7 @@ import {
 } from "../../Utilities/Icon";
 export default function Header({ changeTheme }) {
   const location = useLocation();
-  let checkLink = location.pathname;
-
+  let isHomePage = location.pathname;
   let newUser = useSelector((state) => {
     return state.userReducer.user;
   });
@@ -34,6 +33,19 @@ export default function Header({ changeTheme }) {
   const showModal = () => {
     setIsModalOpen(true);
   };
+  const [visible, setVisible] = useState(true);
+  let prevScrollpos = window.pageYOffset;
+  const toggleVisible = () => {
+    let currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+    prevScrollpos = currentScrollPos;
+  };
+
+  window.addEventListener("scroll", toggleVisible);
   const handleCancel = () => {
     setIsModalOpen(false);
   };
@@ -106,6 +118,7 @@ export default function Header({ changeTheme }) {
       ]}
     />
   );
+
   const menuHidden = (
     <Menu
       items={[
@@ -137,10 +150,13 @@ export default function Header({ changeTheme }) {
   );
 
   return (
-    <header className="px-4 scroll-m-32 scr bg-opacity-5 fixed z-20 w-full bg-slate-50  shadow">
+    <header
+      style={{ display: visible ? "inline" : "none" }}
+      className="px-4 scroll-m-32 scr bg-opacity-5 fixed z-20 w-full bg-slate-50  shadow"
+    >
       <div className="container opacity-10 duration-300 hover:opacity-100 flex justify-between h-12 mx-auto">
         <div className="flex">
-          {checkLink == "/" ? (
+          {isHomePage == "/" ? (
             <>
               <button
                 onClick={() => {
