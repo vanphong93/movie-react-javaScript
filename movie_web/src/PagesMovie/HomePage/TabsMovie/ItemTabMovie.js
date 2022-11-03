@@ -3,7 +3,7 @@ import moment from "moment";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { moneyFormat } from "../../../Utilities/TextMoney";
+import { moneyFormat } from "../../../Utilities/Format";
 import { dataToModal } from "../../../Redux/actions/actionModel";
 export default function ItemTabMovie({ data, showModal }) {
   let dispatch = useDispatch();
@@ -16,6 +16,7 @@ export default function ItemTabMovie({ data, showModal }) {
         onClick={() => {
           handleTrailer(data.maPhim);
         }}
+        alt="anhPhim"
         src={data.hinhAnh}
         className="w-28 h-36 sm:w-40 sm:h-52 object-fill hover:shadow-lg duration-300 transition ease-in-out hover:scale-105 hover:-translate-y-1 hover:cursor-pointer"
       />

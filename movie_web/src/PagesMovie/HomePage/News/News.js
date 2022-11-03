@@ -12,35 +12,33 @@ function News() {
     let newNumber = item - 4;
     setItem(newNumber);
   };
-  let renderContent = () => {
-    return newData.map((item, i) => {
-      return (
-        <section
-          key={i}
-          className="flex h-36 hover:-translate-y-1 duration-300 dark:text-gray-200 rounded-lg dark:shadow-white shadow"
-        >
-          <img
-            className="w-1/4 rounded-t-lg md:rounded-none md:rounded-l-lg"
-            src={item.img}
-            alt="image"
-          />
-          <div className="px-3  py-2">
-            <h1 className="dark:text-gray-200">{item.title}</h1>
-            <p className="text-xs sm:text-sm">
-              {item.detail}...
-              <a
-                target={"_blank"}
-                href={item.url}
-                className="mx-2 hover:text-violet-500"
-              >
-                Chi tiết
-              </a>
-            </p>
-          </div>
-        </section>
-      );
-    });
-  };
+  let renderContent = () =>
+    newData.map((item, i) => (
+      <section
+        key={i}
+        className="flex h-36 hover:-translate-y-1 duration-300 dark:text-gray-200 rounded-lg dark:shadow-white shadow"
+      >
+        <img
+          className="w-1/4 rounded-t-lg md:rounded-none md:rounded-l-lg"
+          src={item.img}
+          alt="imageTitle"
+        />
+        <div className="px-3  py-2">
+          <h1 className="dark:text-gray-200">{item.title}</h1>
+          <p className="text-xs sm:text-sm">
+            {item.detail}...
+            <a
+             rel="noreferrer"
+              target={"_blank"}
+              href={item.url}
+              className="mx-2 hover:text-violet-500"
+            >
+              Chi tiết
+            </a>
+          </p>
+        </div>
+      </section>
+    ));
 
   return (
     <div className="space-y-10 mt-20">

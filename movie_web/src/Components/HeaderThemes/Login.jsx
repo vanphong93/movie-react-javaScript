@@ -1,10 +1,8 @@
 import { Button, Form, Input, message } from "antd";
 import React from "react";
-
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "../../Redux/actions/actionUser";
-
 export const LoginPage = ({ modal }) => {
   let navigate = useNavigate();
   let dispatch = useDispatch();
@@ -15,17 +13,13 @@ export const LoginPage = ({ modal }) => {
       setTimeout(() => {
         navigate("/");
         window.location.reload();
-
       }, 2000);
     };
-
     let onFailed = () => {
       message.error("Đăng nhập thất bại");
     };
-
     dispatch(setLogin(values, onSuccess, onFailed));
   };
-
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };

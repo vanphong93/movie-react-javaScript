@@ -5,47 +5,25 @@ import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { BanerMediaIcon, TicketIcon } from "../../../Utilities/Icon";
 import { OPEN_MODAL } from "../../../Redux/constant/constantModal";
+import { ArrowHidden } from "../../../Utilities/ArrowCarousel";
 export default function Baner({ showModal, banerMovie }) {
   let dispatch = useDispatch();
-  function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "none" }}
-        onClick={onClick}
-      />
-    );
-  }
-  function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "none" }}
-        onClick={onClick}
-      />
-    );
-  }
-
   const settings = {
     fade: true,
     dots: true,
     autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
-    appendDots: (dots) => {
-      return (
-        <div>
-          <ul className="baner-dots" style={{ margin: "0px" }}>
-            {" "}
-            {dots}{" "}
-          </ul>
-        </div>
-      );
-    },
+    nextArrow: <ArrowHidden/>,
+    prevArrow: <ArrowHidden />,
+    appendDots: (dots) => (
+      <div>
+        <ul className="baner-dots" style={{ margin: "0px" }}>
+          {" "}
+          {dots}{" "}
+        </ul>
+      </div>
+    ),
   };
 
   let openModalBaner = (item) => {
@@ -55,29 +33,27 @@ export default function Baner({ showModal, banerMovie }) {
     });
     showModal();
   };
-  let renderBaner = () => {
-    return banerMovie.map((item, index) => {
-      return (
-        <div className="group relative z-10" key={index}>
-          <BanerMediaIcon
-            openModalBaner={() => {
-              openModalBaner(item);
-            }}
-          />
-          <NavLink to={`/detail/${item.maPhim}`}>
-            {" "}
-            <TicketIcon />
-          </NavLink>
+  let renderBaner = () =>
+    banerMovie.map((item, index) => (
+      <div className="group relative z-10" key={index}>
+        <BanerMediaIcon
+          openModalBaner={() => {
+            openModalBaner(item);
+          }}
+        />
+        <NavLink to={`/detail/${item.maPhim}`}>
+          {" "}
+          <TicketIcon />
+        </NavLink>
 
-          <img
-            className="banerImage active:cursor-grabbing"
-            src={item.hinhAnh}
-            alt={`baner-${index}`}
-          />
-        </div>
-      );
-    });
-  };
+        <img
+          className="banerImage active:cursor-grabbing"
+          src={item.hinhAnh}
+          alt={`baner-${index}`}
+        />
+      </div>
+    ));
+
   return (
     <div className="">
       <Slider {...settings}>{renderBaner()}</Slider>

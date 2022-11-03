@@ -7,9 +7,7 @@ export const dataToModal = (showModal, maPhim) => {
     movieSer
       .getInfoMovie(maPhim)
       .then((res) => {
-
         let newData = { ...res.data.content, isSearch: true };
-
         dispatch({
           type: OPEN_MODAL,
           payload: FixUrl(newData),

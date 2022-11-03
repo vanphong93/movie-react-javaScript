@@ -1,16 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
+import { ArrowHidden } from "../../../Utilities/ArrowCarousel";
 
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
-  return <div style={{ ...style, display: "none" }} onClick={onClick} />;
-}
-
-function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
-  return <div style={{ ...style, display: "none" }} onClick={onClick} />;
-}
-export default function   SimpleSlider({ data }) {
+export default function SimpleSlider({ data }) {
   const settings = {
     dots: true,
     slidesToShow: 5,
@@ -55,8 +47,8 @@ export default function   SimpleSlider({ data }) {
         },
       },
     ],
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    nextArrow: <ArrowHidden />,
+    prevArrow: <ArrowHidden />,
     appendDots: (dots) => {
       return (
         <div className="m-5">

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
-import FormUpdateUser from "./FormUser";
+import FormUser from "./FormUser";
 export default function ModalUpdateUser({ data }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -26,7 +26,7 @@ export default function ModalUpdateUser({ data }) {
         onOk={handleOk}
         onCancel={handleCancel}
       >
- <FormUpdateUser data={data}/>
+        <FormUser data={data} />
       </Modal>
     </>
   );

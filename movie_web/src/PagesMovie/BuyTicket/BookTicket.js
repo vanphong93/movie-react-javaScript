@@ -5,20 +5,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import { movieSer } from "../../Services/movieService";
 import { useDispatch } from "react-redux";
 import Table from "./Table";
-import { moneyFormat } from "../../Utilities/TextMoney";
+import { moneyFormat } from "../../Utilities/Format";
 import { getDataTicket } from "../../Redux/actions/actionBookTicket";
 export default function BookTicket() {
   const { id } = useParams();
-  const [infoTicket, setInfoTicket] = useState([]);
-
+  const [infoTicket, setInfoTicket] = useState(null);
   let navigate = useNavigate();
   let dispatch = useDispatch();
-  let totalMoney = useSelector((state) => {
-    return state.dataBookReducer.total;
-  });
-  let newUser = useSelector((state) => {
-    return state.userReducer.user;
-  });
+  let totalMoney = useSelector((state) => state.dataBookReducer.total);
+  let isLogin = useSelector((state) => state.userReducer.user);
   useEffect(() => {
     dispatch(getDataTicket(id, setInfoTicket, dispatch));
   }, []);
@@ -27,39 +22,37 @@ export default function BookTicket() {
       maLichChieu: idTicket,
       danhSachVe: dataTicket,
     };
-    if (newUser) {
-      if (data.danhSachVe.length == 0) {
-        message.error("Bạn chưa chọn vé, xin kiểm tra");
-      } else {
-        movieSer
-          .postTicket(data)
-          .then((res) => {
-            let text = "Bạn có muốn chuyển sang trang thông tin";
-            onclose = () => {
-              if (window.confirm(text) == true) {
-                navigate("/user");
-              } else {
-                window.location.reload();
-              }
-            };
-            message.success("Chúc mừng bạn đặt vé thành công", 1, onclose);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
+    if (isLogin) {
+      data.danhSachVe.length == 0
+        ? message.error("Bạn chưa chọn vé, xin kiểm tra")
+        : movieSer
+            .postTicket(data)
+            .then((res) => {
+              let text = "Bạn có muốn chuyển sang trang thông tin";
+              onclose = () => {
+                window.confirm(text)
+                  ? navigate("/user")
+                  : window.location.reload();
+              };
+              message.success("Chúc mừng bạn đặt vé thành công", 1, onclose);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
     } else {
       message.error("Bạn cần đăng nhập để mua vé");
     }
   };
 
   let renderTotal = () => {
-    let moneyTotal = totalMoney.reduce((total, item) => {
-      return (total += item.giaVe);
-    }, 0);
-    let tenGheChon = totalMoney.reduce((total, item) => {
-      return (total += "" + item.tenGhe + ",");
-    },"");
+    let moneyTotal = totalMoney.reduce(
+      (total, item) => (total += item.giaVe),
+      0
+    );
+    let tenGheChon = totalMoney.reduce(
+      (total, item) => (total += "" + item.tenGhe + ","),
+      ""
+    );
 
     return (
       <div className="p-5 text-gray-50 md:w-96">
@@ -100,53 +93,50 @@ export default function BookTicket() {
       </div>
     );
   };
-  let renderContent = () => {
-    if (infoTicket == "") {
-      return <></>;
-    } else {
-      let { hinhAnh, tenCumRap, tenRap, diaChi, tenPhim, ngayChieu, gioChieu } =
-        infoTicket.thongTinPhim;
 
-      return (
-        <div className="container mx-auto py-10">
-          <div className="flex justify-center mx-auto my-10">
-            <div className="flex flex-row rounded-lg bg-gray-100 shadow-md shadow-white">
-              <img
-                className="w-44 h-52 rounded-t-lg md:rounded-none md:rounded-l-lg"
-                src={hinhAnh}
-                alt="image"
-              />
-              <div className="p-6 flex flex-col justify-start">
-                <h5 className="text-gray-900 text-2xl font-bold mb-2">
-                  {tenPhim}
-                </h5>
-                <p className="text-gray-700 text-base mb-4">
-                  <span className="font-medium">Ngày chiếu:</span>
-                  {ngayChieu}
-                  <br />
-                  <span className="font-medium">Giờ chiếu:</span>
-                  {gioChieu}
-                  <br />
-                  <span className="font-medium">Địa chỉ:</span>
-                  {diaChi},{tenCumRap},{tenRap}
-                  <br />
-                </p>
-              </div>
+  let renderContent = () => {
+    let { hinhAnh, tenCumRap, tenRap, diaChi, tenPhim, ngayChieu, gioChieu } =
+      infoTicket.thongTinPhim;
+    return (
+      <div className="container mx-auto py-10">
+        <div className="flex justify-center mx-auto my-10">
+          <div className="flex flex-row rounded-lg bg-gray-100 shadow-md shadow-white">
+            <img
+              className="w-44 h-52 rounded-t-lg md:rounded-none md:rounded-l-lg"
+              src={hinhAnh}
+              alt="anhPhim"
+            />
+            <div className="p-6 flex flex-col justify-start">
+              <h5 className="text-gray-900 text-2xl font-bold mb-2">
+                {tenPhim}
+              </h5>
+              <p className="text-gray-700 text-base mb-4">
+                <span className="font-medium">Ngày chiếu:</span>
+                {ngayChieu}
+                <br />
+                <span className="font-medium">Giờ chiếu:</span>
+                {gioChieu}
+                <br />
+                <span className="font-medium">Địa chỉ:</span>
+                {diaChi},{tenCumRap},{tenRap}
+                <br />
+              </p>
             </div>
           </div>
-
-          <section className="lg:flex">
-            <table className="mx-auto">
-              <tbody>
-                <Table />
-              </tbody>
-            </table>
-            {renderTotal()}
-          </section>
         </div>
-      );
-    }
+
+        <section className="lg:flex">
+          <table className="mx-auto">
+            <tbody>
+              <Table />
+            </tbody>
+          </table>
+          {renderTotal()}
+        </section>
+      </div>
+    );
   };
+
   return (
     <div
       style={{
@@ -154,8 +144,7 @@ export default function BookTicket() {
         backgroundImage: `url(https://static.mservice.io/img/momo-upload-api-210701105436-637607336767432408.jpg)`,
       }}
     >
-      {" "}
-      {renderContent()}
+      {infoTicket && renderContent()}
     </div>
   );
 }

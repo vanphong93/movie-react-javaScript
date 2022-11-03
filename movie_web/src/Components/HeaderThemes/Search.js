@@ -8,11 +8,10 @@ import { GET_DATA_SEARCH } from "../../Redux/constant/constantSearch";
 const SearchMovies = () => {
   let dispatch = useDispatch();
   let navigate = useNavigate();
-
   let allFilm = [];
-  let { dataTheater, dataMovie, dataBaner } = useSelector((state) => {
-    return state.movieReducer;
-  });
+  let { dataTheater, dataMovie, dataBaner } = useSelector((state) => 
+     state.movieReducer
+  );
   if (dataMovie && dataTheater && dataBaner) {
     dataMovie.forEach((item) => {
       allFilm.push({ value: item.tenPhim, maPhim: item.maPhim });

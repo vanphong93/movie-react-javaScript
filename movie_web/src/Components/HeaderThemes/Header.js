@@ -25,9 +25,7 @@ import {
 export default function Header({ changeTheme }) {
   const location = useLocation();
   let isHomePage = location.pathname;
-  let newUser = useSelector((state) => {
-    return state.userReducer.user;
-  });
+  let newUser = useSelector((state) => state.userReducer.user);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [fromLogin, setFromLogin] = useState(false);
   const showModal = () => {
@@ -63,7 +61,7 @@ export default function Header({ changeTheme }) {
       message.error("Đăng nhập thất bại");
     };
 
-    dispatch(setLogin(values, onSuccess, onFailed, navigate));
+    dispatch(setLogin(values, onSuccess, onFailed));
   };
 
   let handleLogin = () => {
@@ -235,16 +233,14 @@ export default function Header({ changeTheme }) {
           {newUser ? (
             <>
               <Dropdown trigger={["hover"]} overlay={menu}>
-                <a onClick={(e) => e.preventDefault()}>
-                  <Space>
-                    <img
-                      className="w-10 h-12 rounded-full"
-                      src="https://i.pravatar.cc/100"
-                      alt="avatar"
-                    />
-                    <DownOutlined />
-                  </Space>
-                </a>
+                <Space>
+                  <img
+                    className="w-10 h-12 rounded-full"
+                    src="https://i.pravatar.cc/100"
+                    alt="avatar"
+                  />
+                  <DownOutlined />
+                </Space>
               </Dropdown>
             </>
           ) : (
@@ -265,11 +261,9 @@ export default function Header({ changeTheme }) {
               <div className="md:hidden">
                 {" "}
                 <Dropdown trigger={["hover"]} overlay={menuHidden}>
-                  <a onClick={(e) => e.preventDefault()}>
-                    <Space>
-                      <MenuHidden />
-                    </Space>
-                  </a>
+                  <Space>
+                    <MenuHidden />
+                  </Space>
                 </Dropdown>
               </div>
             </>

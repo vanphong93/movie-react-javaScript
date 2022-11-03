@@ -3,13 +3,8 @@ import { DoubleRightOutlined, DoubleLeftOutlined } from "@ant-design/icons";
 export default function TextSplice({ data }) {
   const [lorem, setLorem] = useState(250);
   const addRemoveLorem = (action) => {
-    if (action == "add") {
-      setLorem(data.split("").length);
-    } else {
-      setLorem(250);
-    }
+    action == "add" ? setLorem(data.split("").length) : setLorem(250);
   };
-
   let arrayData = data.split("");
   return (
     <span>

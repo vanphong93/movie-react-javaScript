@@ -12,61 +12,49 @@ export default function ({ showModal, dataMovie }) {
       .matchMedia("(min-width: 640px)")
       .addEventListener("change", (e) => setMatches(e.matches));
   }, []);
-  let renderContent = () => {
-    return dataMovie.map((item, index) => {
-      return (
-        <Tabs.TabPane
-          tab={<img className="w-10 h-10 md:w-16 md:h-16" src={item.logo} />}
-          key={index}
-        >
-          {" "}
-          <Tabs
-            className="p-0"
-            defaultActiveKey="0"
-            style={{ height: 520 }}
-            tabPosition="left"
-          >
-            {item.lstCumRap.map((cumRap, index) => {
-              const content = <span>{cumRap.diaChi}</span>;
-              return (
-                <Tabs.TabPane
-                  tab={
-                    <div className="w-24 md:w-48 text-left dark:text-gray-300">
-                      <Popover placement="rightTop" content={content}>
-                        {" "}
-                        <p className="truncate">{cumRap.tenCumRap}</p> 
-                        <hr className="" />
-                      </Popover>
-                    </div>
-                  }
-                  key={index}
-                >
-                  <div style={{ height: 510, overflowY: "auto" }}>
-                    {cumRap.danhSachPhim.map((phim, index) => {
-                      return (
-                        <ItemTabMovie
-                          showModal={showModal}
-                          key={index}
-                          data={phim}
-                        />
-                      );
-                    })}
-                  </div>
-                </Tabs.TabPane>
-              );
-            })}
-          </Tabs>
-        </Tabs.TabPane>
-      );
-    });
-  };
+  let renderDetail = (item) => (
+    <Tabs
+      className="p-0"
+      defaultActiveKey="0"
+      style={{ height: 520 }}
+      tabPosition="left"
+      items={item.lstCumRap.map((cumRap, index) => {
+        const content = <span>{cumRap.diaChi}</span>;
+        return {
+          label: (
+            <div className="w-24 md:w-48 text-left dark:text-gray-300">
+              <Popover placement="rightTop" content={content}>
+                {" "}
+                <p className="truncate">{cumRap.tenCumRap}</p>
+                <hr className="" />
+              </Popover>
+            </div>
+          ),
+          key: index,
+          children: (
+            <div style={{ height: 510, overflowY: "auto" }}>
+              {cumRap.danhSachPhim.map((phim, index) => (
+                <ItemTabMovie showModal={showModal} key={index} data={phim} />
+              ))}
+            </div>
+          ),
+        };
+      })}
+    ></Tabs>
+  );
+
   return (
     <Tabs
       className="shadow-lg dark:shadow-white font-semibold"
       tabPosition={matches ? "left" : "top"}
       defaultActiveKey="1"
-    >
-      {renderContent()}
-    </Tabs>
+      items={dataMovie.map((item, index) => {
+        return {
+          label: <img className="w-10 h-10 md:w-16 md:h-16" alt="logoTheater" src={item.logo} />,
+          key: index,
+          children: renderDetail(item),
+        };
+      })}
+    ></Tabs>
   );
 }

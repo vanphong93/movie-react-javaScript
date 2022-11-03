@@ -12,12 +12,8 @@ export default function Detail() {
   }, []);
   let dispatch = useDispatch();
   const { id } = useParams();
-
-  const [detail, setDetail] = useState([]);
+  const [detail, setDetail] = useState(null);
   useEffect(() => {
-    if (id == 1) {
-      return;
-    }
     dispatch(setLoadingOn());
     movieSer
       .getInfoMovieTheater(id)
@@ -33,14 +29,16 @@ export default function Detail() {
   }, [id]);
 
   return (
-    <div
-      className={styled.main}
-      style={{
-        backgroundImage: `url(${detail.hinhAnh})`,
-        backgroundSize: "cover",
-      }}
-    >
-      <TabsDetail data={detail} />
-    </div>
+    detail && (
+      <div
+        className={styled.main}
+        style={{
+          backgroundImage: `url(${detail.hinhAnh})`,
+          backgroundSize: "cover",
+        }}
+      >
+        <TabsDetail data={detail} />
+      </div>
+    )
   );
 }

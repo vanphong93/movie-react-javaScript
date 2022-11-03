@@ -1,0 +1,1 @@
+export let ArrowHidden = () => <div style={{ display: "none" }} />;

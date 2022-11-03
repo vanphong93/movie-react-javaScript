@@ -1,6 +1,36 @@
 import { Button, Form, Input, message } from "antd";
 import React from "react";
 import { userServ } from "../../Services/userService";
+const formItemLayout = {
+  labelCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 6,
+    },
+  },
+  wrapperCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 12,
+    },
+  },
+};
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0,
+    },
+    sm: {
+      span: 16,
+      offset: 8,
+    },
+  },
+};
 const App = ({ data }) => {
   const onFinish = (values) => {
     let newdata = { ...values, maLoaiNguoiDung: "KhachHang", maNhom: "GP00" };
@@ -19,7 +49,7 @@ const App = ({ data }) => {
       });
   };
   const [form] = Form.useForm();
-  if (data != undefined) {
+  data &&
     form.setFieldsValue({
       taiKhoan: data.taiKhoan,
       matKhau: data.matKhau,
@@ -29,38 +59,7 @@ const App = ({ data }) => {
       maNhom: "GP00",
       soDt: data.soDT,
     });
-  }
 
-  const formItemLayout = {
-    labelCol: {
-      xs: {
-        span: 24,
-      },
-      sm: {
-        span: 6,
-      },
-    },
-    wrapperCol: {
-      xs: {
-        span: 24,
-      },
-      sm: {
-        span: 12,
-      },
-    },
-  };
-  const tailFormItemLayout = {
-    wrapperCol: {
-      xs: {
-        span: 24,
-        offset: 0,
-      },
-      sm: {
-        span: 16,
-        offset: 8,
-      },
-    },
-  };
   return (
     <div className="p-9">
       {" "}

@@ -3,22 +3,18 @@ import { useSelector } from "react-redux";
 import ItemChair from "./ItemChair";
 
 export default function Table() {
-  const [infoBooking, setInfoBooking] = useState([]);
-  let { data } = useSelector((state) => {
-    return state.dataBookReducer;
-  });
+  const [infoBooking, setInfoBooking] = useState(null);
+  let { data } = useSelector((state) => state.dataBookReducer);
   useEffect(() => {
     setInfoBooking(data);
   }, []);
 
-  let renderContent = () => {
-    return infoBooking.map((item, i) => {
-      return (
-        <tr key={i}>
-          <ItemChair data={item} />
-        </tr>
-      );
-    });
-  };
+  let renderContent = () =>
+    infoBooking?.map((item, i) => (
+      <tr key={i}>
+        <ItemChair data={item} />
+      </tr>
+    ));
+
   return <>{renderContent()}</>;
 }
