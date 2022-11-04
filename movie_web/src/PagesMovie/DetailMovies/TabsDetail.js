@@ -3,7 +3,7 @@ import moment from "moment";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import TextSplice, { moneyFormat } from "../../Utilities/Format";
-
+import "./TabsDetail.css"
 export const TabsDetail = ({ data }) => {
   let { heThongRapChieu } = data;
   const renderTimeMovie = (time) => {
@@ -56,7 +56,7 @@ export const TabsDetail = ({ data }) => {
 
   const renderCardDetail = () => (
     <div
-      className="mx-auto mt-10 flex rounded-lg bg-gray-50 dark:bg-gray-900  shadow-md md:flex-row md:max-w-xl
+      className="datailCard mx-auto mt-10 flex rounded-lg bg-gray-50 dark:bg-gray-900  shadow-md md:flex-row md:max-w-xl
 "
     >
       <img
@@ -73,7 +73,7 @@ export const TabsDetail = ({ data }) => {
           defaultActiveKey="1"
           items={[
             {
-              label: <span className=" font-semibold">Nội dung</span>,
+              label: <span className="font-semibold">Nội dung</span>,
               key: "1",
               children: (
                 <p className="mb-3 font-normal dark:text-gray-300 text-black ">
@@ -82,7 +82,7 @@ export const TabsDetail = ({ data }) => {
               ),
             },
             {
-              label: <span className=" font-semibold ">Thông tin</span>,
+              label: <span className="font-semibold">Thông tin</span>,
               key: "2",
               children: (
                 <>

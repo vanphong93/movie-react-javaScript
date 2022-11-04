@@ -1,37 +1,34 @@
 import { AutoComplete } from "antd";
 import React, { useEffect } from "react";
-import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { GET_DATA_SEARCH } from "../../Redux/constant/constantSearch";
-
+const RemoveDulicatePush = (Array, newArray) => {
+  Array.forEach((item) => {
+    newArray.findIndex((newItem) => newItem.maPhim === item.maPhim) === -1 &&
+      newArray.push({ value: item.tenPhim, maPhim: item.maPhim });
+  });
+};
 const SearchMovies = () => {
   let dispatch = useDispatch();
   let navigate = useNavigate();
   let allFilm = [];
-  let { dataTheater, dataMovie, dataBaner } = useSelector((state) => 
-     state.movieReducer
+  let { dataTheater, dataMovie, dataBaner } = useSelector(
+    (state) => state.movieReducer
   );
   if (dataMovie && dataTheater && dataBaner) {
-    dataMovie.forEach((item) => {
-      allFilm.push({ value: item.tenPhim, maPhim: item.maPhim });
-    });
+    RemoveDulicatePush(dataMovie, allFilm);
     dataTheater.map((item) => {
       return item.lstCumRap.map((item) => {
-        return item.danhSachPhim.forEach((item) => {
-          allFilm.push({ value: item.tenPhim, maPhim: item.maPhim });
-        });
+        return RemoveDulicatePush(item.danhSachPhim, allFilm);
       });
     });
-    dataBaner.forEach((item) => {
-      allFilm.push({ value: item.tenPhim, maPhim: item.maPhim });
-    });
+    RemoveDulicatePush(dataBaner, allFilm);
   }
-  let fixDataFilm = _.unionBy(allFilm, "value");
   useEffect(() => {
     dispatch({
       type: GET_DATA_SEARCH,
-      payload: fixDataFilm,
+      payload: allFilm,
     });
   }, [dataBaner]);
   let onSelect = (value, options) => {
@@ -43,11 +40,9 @@ const SearchMovies = () => {
         className="w-40 md:w-64"
         allowClear={true}
         onSelect={onSelect}
-        options={fixDataFilm}
+        options={allFilm}
         placeholder={
-          fixDataFilm.length
-            ? "Nhập tên phim"
-            : "Xin quay về trang chủ cập nhật"
+          allFilm.length ? "Nhập tên phim" : "Xin quay về trang chủ cập nhật"
         }
         filterOption={(inputValue, option) =>
           option.value.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1

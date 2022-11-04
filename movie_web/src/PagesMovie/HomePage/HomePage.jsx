@@ -87,7 +87,7 @@ export default function HomePage() {
             <p className="font-semibold">
               Ngày chiếu {moment(data.ngayChieuGioChieu).format("DD-MM-YYYY")}
               <br />
-              Time: {(Math.floor(Math.random() * 5) + 2) * 30} phút
+              Time: {(~~(Math.random() * 5) + 2) * 30} phút
             </p>
 
             <Rate disabled allowHalf defaultValue={data.danhGia / 2} />
