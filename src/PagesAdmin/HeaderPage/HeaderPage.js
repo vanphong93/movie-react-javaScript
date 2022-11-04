@@ -10,7 +10,7 @@ export default function HeaderPage() {
 
   let headerPages = () => {
     return (
-      <header className="p-4 dark:bg-gray-800 dark:text-gray-100">
+      <header className="p-4 bg-gray-800 text-gray-100">
         <div className="container flex justify-between h-16 mx-auto">
           <a
             rel="noopener noreferrer"
@@ -38,7 +38,7 @@ export default function HeaderPage() {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="w-6 h-6 dark:text-gray-100"
+              className="w-6 h-6 text-gray-100"
             >
               <path
                 strokeLinecap="round"
@@ -65,7 +65,7 @@ export default function HeaderPage() {
             </span>
             <button
               onClick={handleLogout}
-              className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900"
+              className="self-center px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900"
             >
               Đăng Xuất
             </button>
@@ -83,7 +83,7 @@ export default function HeaderPage() {
             </NavLink>
             <button
               onClick={handleLogout}
-              className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900"
+              className="self-center px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900"
             >
               Đăng Xuất
             </button>
@@ -106,7 +106,7 @@ export default function HeaderPage() {
             <div className="block">
               <button
                 onClick={handleLogout}
-                className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900"
+                className="self-center px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900"
               >
                 Đăng Xuất
               </button>
@@ -128,7 +128,7 @@ export default function HeaderPage() {
             <div className="block">
               <button
                 onClick={handleLogout}
-                className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900"
+                className="self-center px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900"
               >
                 Đăng Xuất
               </button>

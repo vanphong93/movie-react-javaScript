@@ -1,6 +1,0 @@
-Bảng phân công nhiệm vụ :
-https://docs.google.com/spreadsheets/d/1dh5HAVg43sEXvlipIRlmFeuqyNWF7rrrCjb9wZQEn7A/edit#gid=0
-
-Link deploy https://my-movie-web.vercel.app/
-Link wireFrames https://drive.google.com/drive/folders/1UrpPa--LO8qIP8SY8YnGJXckikhGwpEd?usp=sharing
-

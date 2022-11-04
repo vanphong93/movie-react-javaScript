@@ -1,5 +1,0 @@
-
-
-
-Welcome to the Movie website. This is a project programmed by two web developers. First of all, I would like to introduce web developer Ho Van Phong, who made the Layout part of the Website and included some functions such as login, registration, or movie ticket booking. And the other is Huynh Duc Phat who built the AdminPage function for the website.
-Thank for watching !
