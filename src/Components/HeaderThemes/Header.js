@@ -99,7 +99,11 @@ export default function Header({ changeTheme }) {
           key: "2",
         },
         {
-          label: <Link to={"/user#info"}>Thông tin</Link>,
+          label: (
+            <Link target={"_blank"} to={"/user#info"}>
+              Thông tin
+            </Link>
+          ),
           key: "1",
         },
         {
