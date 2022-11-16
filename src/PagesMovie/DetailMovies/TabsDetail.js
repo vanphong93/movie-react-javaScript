@@ -3,7 +3,8 @@ import moment from "moment";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import TextSplice, { moneyFormat } from "../../Utilities/Format";
-import "./TabsDetail.css"
+import { devideNumber } from "../../Utilities/randomNumber";
+import "./TabsDetail.css";
 export const TabsDetail = ({ data }) => {
   let { heThongRapChieu } = data;
   const renderTimeMovie = (time) => {
@@ -93,7 +94,7 @@ export const TabsDetail = ({ data }) => {
                   <br />
                   <span className="text-black dark:text-gray-300 ">
                     {" "}
-                    Thời gian: {(~~(Math.random() * 5) + 2) * 30} phút
+                    Thời gian: {devideNumber(data.maPhim)} phút
                   </span>
                   <br />
                   <span className="text-black dark:text-gray-300 ">

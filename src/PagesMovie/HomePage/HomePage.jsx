@@ -16,10 +16,12 @@ import {
 import moment from "moment";
 import TextSplice from "../../Utilities/Format";
 import News from "./News/News";
+import { devideNumber, randomNumber } from "../../Utilities/randomNumber";
 export default function HomePage() {
   let { dataMovie, dataBaner, dataTheater } = useSelector(
     (state) => state.movieReducer
   );
+
   const [movies, setMovies] = useState([]);
   let dispatch = useDispatch();
   useEffect(() => {
@@ -39,7 +41,6 @@ export default function HomePage() {
       : dispatch(getMovieTheater(setMovieTheater));
   }, []);
   let { data } = useSelector((state) => state.modalReducer);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -87,11 +88,9 @@ export default function HomePage() {
             <p className="font-semibold">
               Ngày chiếu {moment(data.ngayChieuGioChieu).format("DD-MM-YYYY")}
               <br />
-              Time: {(~~(Math.random() * 5) + 2) * 30} phút
+              Time: {devideNumber(data.maPhim)} phút
             </p>
-
             <Rate disabled allowHalf defaultValue={data.danhGia / 2} />
-
             <NavLink to={`/detail/${data.maPhim}`}>
               {" "}
               <button className="bg-transparent hover:bg-yellow-500 text-yellow-700 font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded">

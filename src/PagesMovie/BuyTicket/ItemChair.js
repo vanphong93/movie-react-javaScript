@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import {message} from 'antd'
 import { useDispatch } from "react-redux";
 import { addOrRemoveChair } from "../../Redux/actions/actionBookTicket";
-export default function ItemChair({ data }) {
+export default function ItemChair({ data,user }) {
   let dispatch = useDispatch();
   const [selectChair, setSelectChair] = useState(null);
   useEffect(() => {
@@ -11,6 +12,9 @@ export default function ItemChair({ data }) {
     <>
       {selectChair?.map((item, i) => {
         let handleSelect = (props, i) => {
+          if (!user) {message.error("Please login")
+            return
+          }
           dispatch(addOrRemoveChair(props, i, selectChair, setSelectChair));
         };
         return (

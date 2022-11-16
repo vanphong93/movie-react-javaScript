@@ -100,7 +100,7 @@ export default function Header({ changeTheme }) {
         },
         {
           label: (
-            <Link target={"_blank"} to={"/user#info"}>
+            <Link  to={"/user#info"}>
               Thông tin
             </Link>
           ),
