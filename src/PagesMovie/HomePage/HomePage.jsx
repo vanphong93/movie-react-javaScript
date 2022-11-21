@@ -16,7 +16,7 @@ import {
 import moment from "moment";
 import TextSplice from "../../Utilities/Format";
 import News from "./News/News";
-import { devideNumber, randomNumber } from "../../Utilities/randomNumber";
+import { devideNumber } from "../../Utilities/randomNumber";
 export default function HomePage() {
   let { dataMovie, dataBaner, dataTheater } = useSelector(
     (state) => state.movieReducer
@@ -24,9 +24,6 @@ export default function HomePage() {
 
   const [movies, setMovies] = useState([]);
   let dispatch = useDispatch();
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, []);
   useEffect(() => {
     dataMovie ? setMovies(dataMovie) : dispatch(getMovie(setMovies, dispatch));
   }, []);

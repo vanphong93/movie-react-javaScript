@@ -7,9 +7,6 @@ import { useDispatch } from "react-redux";
 import { setLoadingOff, setLoadingOn } from "../../Redux/actions/actionsSpiner";
 import { message } from "antd";
 export default function Detail() {
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, []);
   let dispatch = useDispatch();
   const { id } = useParams();
   const [detail, setDetail] = useState(null);

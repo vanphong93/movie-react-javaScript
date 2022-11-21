@@ -20,11 +20,11 @@ export default function QuanLyUserPage() {
         let dataUser = res.data.content.map((item) => {
           return { ...item, action: <UserAction item={item} /> };
         });
-        // console.log("data", dataUser);
+
         dispatch(setListUser(dataUser));
       })
       .catch((err) => {
-        // console.log("err", err);
+        console.log("err", err);
       });
   }, []);
 
@@ -90,20 +90,20 @@ export default function QuanLyUserPage() {
   ];
 
   const onSearch = (value) => {
-    // console.log(value);
+
     if (value != "") {
       userServ
         .UserSreach(value)
         .then((res) => {
-          // console.log("Thanh cong", res.data.content);
+
           let dataUser = res.data.content.map((item) => {
             return { ...item, action: <UserAction item={item} /> };
           });
-          // console.log("data", dataUser);
+
           dispatch(setListUser(dataUser));
         })
         .catch((err) => {
-          // console.log("err", err);
+          console.log("err", err);
         });
     } else {
       userServ
@@ -112,11 +112,11 @@ export default function QuanLyUserPage() {
           let dataUser = res.data.content.map((item) => {
             return { ...item, action: <UserAction item={item} /> };
           });
-          // console.log("data", dataUser);
+
           dispatch(setListUser(dataUser));
         })
         .catch((err) => {
-          // console.log("err", err);
+          console.log("err", err);
         });
     }
   };
@@ -124,7 +124,7 @@ export default function QuanLyUserPage() {
   const data = arrUsers;
 
   const onChange = (pagination, filters, sorter, extra) => {
-    console.log("params onChange Table", pagination, filters, sorter, extra);
+
   };
 
   return (
