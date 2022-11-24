@@ -65,7 +65,6 @@ export default function HomePage() {
       ) : (
         <div className="container  md:flex">
           <iframe
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen={true}
             title="myFrame"
             className="w-full md:w-1/2"
