@@ -133,7 +133,7 @@ export default function Header({ changeTheme }) {
               Đăng kí
             </span>
           ),
-          key: "0",
+          key: "1",
         },
         {
           label: (
@@ -156,7 +156,7 @@ export default function Header({ changeTheme }) {
       style={{ display: visible ? "inline" : "none" }}
       className="px-4 scroll-m-32 scr bg-opacity-5 fixed z-20 w-full bg-slate-50  shadow"
     >
-      <div className="container opacity-10 duration-300 hover:opacity-100 flex justify-between h-12 mx-auto">
+      <div className="container duration-300 hover:opacity-100 flex justify-between h-12 mx-auto">
         <div className="flex">
           {isHomePage == "/" ? (
             <>
@@ -164,7 +164,7 @@ export default function Header({ changeTheme }) {
                 onClick={() => {
                   changeTheme();
                 }}
-                className="p-2 text-blue-500 hidden dark:block  hover:text-white duration-300"
+                className="p-2 hidden dark:block  text-white "
               >
                 <LampIcon />
               </button>
@@ -172,7 +172,7 @@ export default function Header({ changeTheme }) {
                 onClick={() => {
                   changeTheme();
                 }}
-                className="p-2 text-blue-500 dark:hidden hover:text-blue-900   duration-300"
+                className="p-2 text-black dark:hidden"
               >
                 <MoonIcon />
               </button>
@@ -181,25 +181,28 @@ export default function Header({ changeTheme }) {
                 rel="noopener noreferrer"
                 smooth
                 to={"#filmHot"}
-                className="flex items-center p-2   text-blue-500 hover:text-blue-700 duration-300 "
+                className="flex items-center p-2 text-white text-xs md:text-lg font-semibold hover:text-red-500  duration-300 "
               >
-                <TheaterIcon />
+
+                Phim hot
               </HashLink>
               <HashLink
                 smooth
                 to={"#cinemax"}
                 rel="noopener noreferrer"
-                className="flex items-center p-2   text-blue-500 hover:text-blue-700 duration-300 "
+                className="flex items-center p-2 text-white text-xs md:text-lg font-semibold hover:text-red-500  duration-300 "
               >
-                <CalendarIcon />
+
+                Lịch chiếu
               </HashLink>
               <HashLink
                 rel="noopener noreferrer"
                 smooth
                 to={"#news"}
-                className="flex items-center p-2   text-blue-500 hover:text-blue-700 duration-300 "
+                className="flex items-center p-2 text-white text-xs md:text-lg font-semibold hover:text-red-500  duration-300 "
               >
-                <NewsIcon />
+
+                Tin tức
               </HashLink>
             </>
           ) : (
@@ -209,7 +212,7 @@ export default function Header({ changeTheme }) {
                 onClick={() => {
                   changeTheme();
                 }}
-                className="p-2 text-blue-500 hidden dark:block  hover:text-white duration-300"
+                className="p-2  hidden dark:block  text-white"
               >
                 <LampIcon />
               </button>
@@ -217,17 +220,10 @@ export default function Header({ changeTheme }) {
                 onClick={() => {
                   changeTheme();
                 }}
-                className="p-2 text-blue-500 dark:hidden hover:text-blue-900   duration-300"
+                className="p-2 text-black dark:hidden"
               >
                 <MoonIcon />
               </button>
-              <Link
-                rel="noopener noreferrer"
-                to={"/"}
-                className="flex items-center p-2   text-blue-500 hover:text-blue-700 duration-300 "
-              >
-                <HomeIcon />
-              </Link>
             </>
           )}
         </div>
