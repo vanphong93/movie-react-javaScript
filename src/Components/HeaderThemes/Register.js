@@ -35,8 +35,8 @@ const tailFormItemLayout = {
 };
 
 const Register = ({ modal }) => {
-  let navigate = useNavigate();
-  let dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [form] = Form.useForm();
 
   const onFinish = (values) => {

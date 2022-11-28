@@ -1,5 +1,5 @@
 
- export let dataBaner=[
+ export const dataBaner=[
     {
         "maBanner": 1,
         "maPhim": 1282,

@@ -1,4 +1,4 @@
-export let dataZing = [
+export const dataZing = [
     {
         "url": "https://www.zingnews.vn//taylor-swift-lac-long-chet-yeu-trong-kich-ban-phim-tham-hoa-post1363581.html",
         "title": "Taylor Swift lạc lõng, 'chết yểu' trong kịch bản phim thảm họa",

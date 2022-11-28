@@ -18,12 +18,11 @@ import TextSplice from "../../Utilities/Format";
 import News from "./News/News";
 import { devideNumber } from "../../Utilities/randomNumber";
 export default function HomePage() {
-  let { dataMovie, dataBaner, dataTheater } = useSelector(
+  const { dataMovie, dataBaner, dataTheater } = useSelector(
     (state) => state.movieReducer
   );
-
   const [movies, setMovies] = useState([]);
-  let dispatch = useDispatch();
+  const dispatch = useDispatch();
   useEffect(() => {
     dataMovie ? setMovies(dataMovie) : dispatch(getMovie(setMovies, dispatch));
   }, []);
@@ -37,7 +36,7 @@ export default function HomePage() {
       ? setMovieTheater(dataTheater)
       : dispatch(getMovieTheater(setMovieTheater));
   }, []);
-  let { data } = useSelector((state) => state.modalReducer);
+  const { data } = useSelector((state) => state.modalReducer);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -120,7 +119,6 @@ export default function HomePage() {
       <section className="mb-15">
         <Baner showModal={showModal} banerMovie={banerMovie} />
       </section>
-
       <div className="container mx-auto" id="filmHot">
         {renderModal()}
         <section className="mb-14">

@@ -8,9 +8,9 @@ import { FixUrl } from "../../../Utilities/FixUrlEmbed";
 
 const { Meta } = Card;
 export default function Movie({ data, showModal }) {
-  let dispatch = useDispatch();
-  let openModal = () => {
-    let newData = { ...data, isSearch: true };
+  const dispatch = useDispatch();
+  const openModal = () => {
+    const newData = { ...data, isSearch: true };
     dispatch({
       type: OPEN_MODAL,
       payload: FixUrl(newData),

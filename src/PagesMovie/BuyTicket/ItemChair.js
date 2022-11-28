@@ -3,16 +3,16 @@ import {message} from 'antd'
 import { useDispatch } from "react-redux";
 import { addOrRemoveChair } from "../../Redux/actions/actionBookTicket";
 export default function ItemChair({ data,user }) {
-  let dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [selectChair, setSelectChair] = useState(null);
   useEffect(() => {
     setSelectChair(data);
   }, []);
-  let renderContent = () => (
+  const renderContent = () => (
     <>
       {selectChair?.map((item, i) => {
-        let handleSelect = (props, i) => {
-          if (!user) {message.error("Please login")
+        const handleSelect = (props, i) => {
+          if (!user) {message.error("Xin hãy đăng nhập")
             return
           }
           dispatch(addOrRemoveChair(props, i, selectChair, setSelectChair));
@@ -49,6 +49,5 @@ export default function ItemChair({ data,user }) {
       })}
     </>
   );
-
   return <>{renderContent()}</>;
 }

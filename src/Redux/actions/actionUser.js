@@ -23,7 +23,6 @@ export const setThongTinListUserEdit = (Value) => {
     payload: Value,
   };
 };
-
 const setUserSuccess = (successValue) => {
   return {
     type: SET_USER,

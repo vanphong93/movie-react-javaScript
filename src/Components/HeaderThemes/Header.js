@@ -11,28 +11,25 @@ import { localServ } from "../../Services/localService";
 import SearchMovies from "./Search";
 import { useLocation } from "react-router-dom";
 import {
-  CalendarIcon,
   HomeIcon,
   LampIcon,
   LoginIcon,
   LogOutIcon,
   MenuHidden,
   MoonIcon,
-  NewsIcon,
   RegisterIcon,
-  TheaterIcon,
 } from "../../Utilities/Icon";
 export default function Header({ changeTheme }) {
   const location = useLocation();
-  let isHomePage = location.pathname;
-  let newUser = useSelector((state) => state.userReducer.user);
+  const isHomePage = location.pathname;
+  const newUser = useSelector((state) => state.userReducer.user);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [fromLogin, setFromLogin] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
   };
   const [visible, setVisible] = useState(true);
-  let prevScrollpos = window.pageYOffset;
+  const prevScrollpos = window.pageYOffset;
   const toggleVisible = () => {
     let currentScrollPos = window.pageYOffset;
     if (prevScrollpos > currentScrollPos) {
@@ -42,13 +39,12 @@ export default function Header({ changeTheme }) {
     }
     prevScrollpos = currentScrollPos;
   };
-
   window.addEventListener("scroll", toggleVisible);
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  let navigate = useNavigate();
-  let dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const onFinish = (values) => {
     let onSuccess = () => {
       message.success("Đăng nhập thành công");
@@ -56,24 +52,21 @@ export default function Header({ changeTheme }) {
         navigate("/");
       }, 2000);
     };
-
     let onFailed = () => {
       message.error("Đăng nhập thất bại");
     };
 
     dispatch(setLogin(values, onSuccess, onFailed));
   };
-
-  let handleLogin = () => {
+  const handleLogin = () => {
     setFromLogin(true);
     showModal();
   };
-  let handleRegister = () => {
+  const handleRegister = () => {
     setFromLogin(false);
     showModal();
   };
-
-  let handleLogout = () => {
+  const handleLogout = () => {
     localServ.user.remove();
     window.location.href = "/";
   };
@@ -120,7 +113,6 @@ export default function Header({ changeTheme }) {
       ]}
     />
   );
-
   const menuHidden = (
     <Menu
       items={[
@@ -150,7 +142,6 @@ export default function Header({ changeTheme }) {
       ]}
     />
   );
-
   return (
     <header
       style={{ display: visible ? "inline" : "none" }}
@@ -172,36 +163,32 @@ export default function Header({ changeTheme }) {
                 onClick={() => {
                   changeTheme();
                 }}
-                className="p-2 text-black dark:hidden"
+                className="p-2 text-white dark:hidden"
               >
                 <MoonIcon />
               </button>
-
               <HashLink
                 rel="noopener noreferrer"
                 smooth
                 to={"#filmHot"}
-                className="flex items-center p-2 text-white text-xs md:text-lg font-semibold hover:text-red-500  duration-300 "
+                className="flex items-center p-2 text-red-300 dark:hover:text-red-500 dark:text-white text-xs md:text-lg font-semibold hover:text-red-500  duration-300 "
               >
-
                 Phim hot
               </HashLink>
               <HashLink
                 smooth
                 to={"#cinemax"}
                 rel="noopener noreferrer"
-                className="flex items-center p-2 text-white text-xs md:text-lg font-semibold hover:text-red-500  duration-300 "
+                className="flex items-center p-2 text-red-300 dark:hover:text-red-500 dark:text-white text-xs md:text-lg font-semibold hover:text-red-500  duration-300 "
               >
-
                 Lịch chiếu
               </HashLink>
               <HashLink
                 rel="noopener noreferrer"
                 smooth
                 to={"#news"}
-                className="flex items-center p-2 text-white text-xs md:text-lg font-semibold hover:text-red-500  duration-300 "
+                className="flex items-center p-2 text-red-300 dark:hover:text-red-500 dark:text-white text-xs md:text-lg font-semibold hover:text-red-500  duration-300 "
               >
-
                 Tin tức
               </HashLink>
             </>
@@ -220,14 +207,20 @@ export default function Header({ changeTheme }) {
                 onClick={() => {
                   changeTheme();
                 }}
-                className="p-2 text-black dark:hidden"
+                className="p-2 text-white dark:hidden"
               >
                 <MoonIcon />
               </button>
+              <Link
+                rel="noopener noreferrer"
+                to={"/"}
+                className="flex items-center p-2   text-white hover:text-blue-500 duration-300 "
+              >
+                <HomeIcon/>
+              </Link>
             </>
           )}
         </div>
-
         <div className="items-center flex-shrink-0 flex">
           <SearchMovies />
           {newUser ? (
@@ -272,7 +265,7 @@ export default function Header({ changeTheme }) {
       </div>
       <Modal
         destroyOnClose={true}
-        title="Đăng nhập"
+        title={fromLogin?"Đăng nhập":"Đăng kí"}
         style={{ top: 20 }}
         footer={null}
         open={isModalOpen}

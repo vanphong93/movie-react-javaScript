@@ -33,8 +33,6 @@ export const userServ = {
   postUserInfo: () => {
     return https_client.post("/api/QuanLyNguoiDung/ThongTinTaiKhoan");
   },
-
-
   layThongTinNguoiDungEdit: (taikhoan) => {
     let uri = `/api/QuanLyNguoiDung/LayThongTinNguoiDung?taiKhoan=${taikhoan}`;
     return https.post(uri);

@@ -1,7 +1,6 @@
 import { movieSer } from "../../Services/movieService";
 import { CLEAR_TOTAL, FIX_DATA, TOTAL_MONEY } from "../constant/constantTicket";
 import { setLoadingOff, setLoadingOn } from "./actionsSpiner";
-
 export const getDataTicket = (id, setData, dispatch) => {
   dispatch(setLoadingOn());
   dispatch({

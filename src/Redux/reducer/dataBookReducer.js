@@ -1,6 +1,5 @@
 import { CLEAR_TOTAL, FIX_DATA, TOTAL_MONEY } from "../constant/constantTicket";
 const initialState = { data: "", total: [] };
-
 export let dataBookReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case FIX_DATA:

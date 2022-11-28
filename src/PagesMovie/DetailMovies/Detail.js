@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { setLoadingOff, setLoadingOn } from "../../Redux/actions/actionsSpiner";
 import { message } from "antd";
 export default function Detail() {
-  let dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { id } = useParams();
   const [detail, setDetail] = useState(null);
   useEffect(() => {

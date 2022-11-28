@@ -33,7 +33,7 @@ const tailFormItemLayout = {
 };
 const App = ({ data }) => {
   const onFinish = (values) => {
-    let newdata = { ...values, maLoaiNguoiDung: "KhachHang", maNhom: "GP00" };
+    const newdata = { ...values, maLoaiNguoiDung: "KhachHang", maNhom: "GP00" };
     userServ
       .editUser(newdata)
       .then((res) => {

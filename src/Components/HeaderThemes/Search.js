@@ -10,10 +10,10 @@ const RemoveDulicatePush = (Array, newArray) => {
   });
 };
 const SearchMovies = () => {
-  let dispatch = useDispatch();
-  let navigate = useNavigate();
-  let allFilm = [];
-  let { dataTheater, dataMovie, dataBaner } = useSelector(
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const allFilm = [];
+  const { dataTheater, dataMovie, dataBaner } = useSelector(
     (state) => state.movieReducer
   );
   if (dataMovie && dataTheater && dataBaner) {
@@ -31,7 +31,7 @@ const SearchMovies = () => {
       payload: allFilm,
     });
   }, [dataBaner]);
-  let onSelect = (value, options) => {
+  const onSelect = (value, options) => {
     navigate(`/detail/${options.maPhim}`);
   };
   return (

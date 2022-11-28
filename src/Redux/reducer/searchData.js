@@ -1,5 +1,4 @@
 import { GET_DATA_SEARCH } from "../constant/constantSearch";
-
 const initialState = {
   dataSearch: "",
 };

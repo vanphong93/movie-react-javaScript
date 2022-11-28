@@ -3,16 +3,16 @@ import { dataZing } from "../../../assets/dataZing";
 import { BackIcon, NextIcon } from "../../../Utilities/Icon";
 function News() {
   const [item, setItem] = useState(0);
-  let newData = dataZing.slice(item, item + 4);
-  let handleNext = () => {
+  const newData = dataZing.slice(item, item + 4);
+  const handleNext = () => {
     let newNumber = item + 4;
     setItem(newNumber);
   };
-  let handleBack = () => {
+  const handleBack = () => {
     let newNumber = item - 4;
     setItem(newNumber);
   };
-  let renderContent = () =>
+  const renderContent = () =>
     newData.map((item, i) => (
       <section
         key={i}

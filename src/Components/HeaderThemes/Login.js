@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "../../Redux/actions/actionUser";
 export const LoginPage = ({ modal }) => {
-  let navigate = useNavigate();
-  let dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const onFinish = (values) => {
     let onSuccess = () => {
       message.success("Đăng nhập thành công");

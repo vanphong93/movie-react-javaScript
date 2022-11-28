@@ -3,7 +3,6 @@ import "./TabsMovies.css";
 import React, { useEffect, useState } from "react";
 import ItemTabMovie from "./ItemTabMovie";
 export default function ({ showModal, dataMovie }) {
-  //Chỉnh tab reponsive của ant dùng event
   const [matches, setMatches] = useState(
     window.matchMedia("(min-width: 640px)").matches
   );
@@ -12,7 +11,7 @@ export default function ({ showModal, dataMovie }) {
       .matchMedia("(min-width: 640px)")
       .addEventListener("change", (e) => setMatches(e.matches));
   }, []);
-  let renderDetail = (item) => (
+  const renderDetail = (item) => (
     <Tabs
       className="p-0"
       defaultActiveKey="0"
@@ -42,7 +41,6 @@ export default function ({ showModal, dataMovie }) {
       })}
     ></Tabs>
   );
-
   return (
     <Tabs
       className="shadow-lg dark:shadow-white font-semibold"

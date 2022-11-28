@@ -10,10 +10,10 @@ import { getDataTicket } from "../../Redux/actions/actionBookTicket";
 export default function BookTicket() {
   const { id } = useParams();
   const [infoTicket, setInfoTicket] = useState(null);
-  let navigate = useNavigate();
-  let dispatch = useDispatch();
-  let totalMoney = useSelector((state) => state.dataBookReducer.total);
-  let isLogin = useSelector((state) => state.userReducer.user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const totalMoney = useSelector((state) => state.dataBookReducer.total);
+  const isLogin = useSelector((state) => state.userReducer.user);
   useEffect(() => {
     dispatch(getDataTicket(id, setInfoTicket, dispatch));
   }, []);
@@ -44,12 +44,12 @@ export default function BookTicket() {
     }
   };
 
-  let renderTotal = () => {
-    let moneyTotal = totalMoney.reduce(
+  const renderTotal = () => {
+    const moneyTotal = totalMoney.reduce(
       (total, item) => (total += item.giaVe),
       0
     );
-    let tenGheChon = totalMoney.reduce(
+    const tenGheChon = totalMoney.reduce(
       (total, item) => (total += "" + item.tenGhe + ","),
       ""
     );
@@ -94,8 +94,8 @@ export default function BookTicket() {
     );
   };
 
-  let renderContent = () => {
-    let { hinhAnh, tenCumRap, tenRap, diaChi, tenPhim, ngayChieu, gioChieu } =
+  const renderContent = () => {
+    const { hinhAnh, tenCumRap, tenRap, diaChi, tenPhim, ngayChieu, gioChieu } =
       infoTicket.thongTinPhim;
     return (
       <div className="container mx-auto py-10">

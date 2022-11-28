@@ -4,13 +4,13 @@ import ItemChair from "./ItemChair";
 
 export default function Table() {
   const [infoBooking, setInfoBooking] = useState(null);
-  let { data } = useSelector((state) => state.dataBookReducer);
-  let {user}=useSelector((state) =>  state.userReducer )
+  const { data } = useSelector((state) => state.dataBookReducer);
+  const {user}=useSelector((state) =>  state.userReducer )
   useEffect(() => {
     setInfoBooking(data);
   }, []);
 
-  let renderContent = () =>
+  const renderContent = () =>
     infoBooking?.map((item, i) => (
       <tr key={i}>
         <ItemChair user={user} data={item} />

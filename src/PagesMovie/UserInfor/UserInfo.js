@@ -10,10 +10,10 @@ import { useNavigate } from "react-router-dom";
 import { setLoadingOff, setLoadingOn } from "../../Redux/actions/actionsSpiner";
 import { Input, Space, message } from "antd";
 export default function UserInfo() {
-  let dispatch = useDispatch();
-  let navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [dataTicket, setDataTicket] = useState(null);
-  let { dataSearch } = useSelector((state) => state.searchData);
+  const { dataSearch } = useSelector((state) => state.searchData);
   useEffect(() => {
     dispatch(setLoadingOn());
     userServ
@@ -28,7 +28,7 @@ export default function UserInfo() {
         message.error("Kiểm tra lại kết nối");
       });
   }, []);
-  let addTicket = (data) => {
+  const addTicket = (data) => {
     let index = dataSearch.findIndex((item) => item.value == data);
     if (index == -1) {
       message.error("Phim đã cũ không có trong hệ thống");
@@ -37,7 +37,7 @@ export default function UserInfo() {
       navigate(`/detail/${result}`);
     }
   };
-  let renderChairInfo = (item) => {
+  const renderChairInfo = (item) => {
     let newItem = [...item.danhSachGhe];
     return newItem.splice(-10).map((item, i) => (
       <span className="bg-green-500 p-0.5 mx-1 rounded" key={i}>
@@ -45,7 +45,7 @@ export default function UserInfo() {
       </span>
     ));
   };
-  let renderContent = () =>
+  const renderContent = () =>
     dataTicket.thongTinDatVe.map((item, i) => (
       <div
         key={i}
@@ -80,8 +80,8 @@ export default function UserInfo() {
       </div>
     ));
 
-  let renderUser = () => {
-    let { email, hoTen, matKhau, soDT, taiKhoan, maLoaiNguoiDung, maNhom } =
+  const renderUser = () => {
+    const { email, hoTen, matKhau, soDT, taiKhoan, maLoaiNguoiDung, maNhom } =
       dataTicket;
     return (
       <>

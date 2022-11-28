@@ -1,5 +1,4 @@
 import { OPEN_MODAL } from "../constant/constantModal";
-
 let initalState = {
   data: "",
   isOpen: "",

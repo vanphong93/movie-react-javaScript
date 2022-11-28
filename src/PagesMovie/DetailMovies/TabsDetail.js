@@ -1,12 +1,20 @@
 import { Popover, Rate, Tabs } from "antd";
 import moment from "moment";
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { Link, NavLink } from "react-router-dom";
 import TextSplice, { moneyFormat } from "../../Utilities/Format";
 import { devideNumber } from "../../Utilities/randomNumber";
 import "./TabsDetail.css";
 export const TabsDetail = ({ data }) => {
-  let { heThongRapChieu } = data;
+  const [matches, setMatches] = useState(
+    window.matchMedia("(min-width: 640px)").matches
+  );
+  useEffect(() => {
+    window
+      .matchMedia("(min-width: 640px)")
+      .addEventListener("change", (e) => setMatches(e.matches));
+  }, []);
+  const { heThongRapChieu } = data;
   const renderTimeMovie = (time) => {
     let content = <span>{moneyFormat(time.lichChieuPhim[0].giaVe)}</span>;
     return (
@@ -25,12 +33,11 @@ export const TabsDetail = ({ data }) => {
       </div>
     );
   };
-
   const renderTabChildren = (cumRapChieu) => (
     <div>
       <Tabs
         defaultActiveKey="1"
-        tabPosition={"left"}
+       tabPosition="left"
         style={{
           height: 420,
         }}
@@ -54,7 +61,6 @@ export const TabsDetail = ({ data }) => {
       />
     </div>
   );
-
   const renderCardDetail = () => (
     <div
       className="datailCard mx-auto mt-10 flex rounded-lg bg-gray-50 dark:bg-gray-900  shadow-md md:flex-row md:max-w-xl
@@ -109,7 +115,6 @@ export const TabsDetail = ({ data }) => {
       </div>
     </div>
   );
-
   return (
     <div className="container mx-auto py-10">
       {renderCardDetail()}
@@ -118,7 +123,7 @@ export const TabsDetail = ({ data }) => {
           <Tabs
             className="shadow-xl font-semibold"
             defaultActiveKey="1"
-            tabPosition={"left"}
+            tabPosition={matches ? "left" : "top"}
             style={{
               height: "auto",
             }}

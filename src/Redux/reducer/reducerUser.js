@@ -4,13 +4,11 @@ import {
   SET_TT_LIST_USER_EDIT,
   SET_USER,
 } from "../constant/constantUser";
-
 let initialState = {
   user: localServ.user.get(),
   arrUsers: [],
   ThongTinEditUser: [],
 };
-
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:

@@ -1,5 +1,4 @@
 import { SET_FILM, SET_TT_FILM_EDIT } from "../constant/constantFilm";
-
 export const setFilm = (successValue) => {
   return {
     type: SET_FILM,

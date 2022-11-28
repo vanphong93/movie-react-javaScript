@@ -7,7 +7,7 @@ import { BanerMediaIcon, TicketIcon } from "../../../Utilities/Icon";
 import { OPEN_MODAL } from "../../../Redux/constant/constantModal";
 import { ArrowHidden } from "../../../Utilities/ArrowCarousel";
 export default function Baner({ showModal, banerMovie }) {
-  let dispatch = useDispatch();
+  const dispatch = useDispatch();
   const settings = {
     fade: true,
     dots: true,
@@ -26,14 +26,14 @@ export default function Baner({ showModal, banerMovie }) {
     ),
   };
 
-  let openModalBaner = (item) => {
+  const openModalBaner = (item) => {
     dispatch({
       type: OPEN_MODAL,
       payload: item,
     });
     showModal();
   };
-  let renderBaner = () =>
+  const renderBaner = () =>
     banerMovie.map((item, index) => (
       <div className="group relative z-10" key={index}>
         <BanerMediaIcon

@@ -1,5 +1,4 @@
 import { combineReducers } from "redux";
-
 import { userReducer } from "./reducerUser";
 import { spinerReducer } from "./reducerSpiner";
 import { movieReducer } from "./movieReducer";
