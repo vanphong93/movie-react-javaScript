@@ -87,7 +87,7 @@ const Register = ({ modal }) => {
           rules={[
             {
               required: true,
-              message: "Hãy nhập pass",
+              message: "Hãy nhập mật khẩu",
             },
           ]}
           hasFeedback
@@ -97,7 +97,7 @@ const Register = ({ modal }) => {
 
         <Form.Item
           name="confirm"
-          label="Confirm"
+          label="Xác nhận mật khẩu"
           dependencies={["password"]}
           hasFeedback
           rules={[
@@ -121,7 +121,7 @@ const Register = ({ modal }) => {
 
         <Form.Item
           name="taiKhoan"
-          label="Username"
+          label="Tên đăng nhập"
           tooltip="Tên đăng nhập của bạn"
           rules={[
             {
@@ -135,7 +135,7 @@ const Register = ({ modal }) => {
         </Form.Item>
         <Form.Item
           name="hoTen"
-          label="Full name"
+          label="Họ và tên"
           rules={[
             {
               required: true,

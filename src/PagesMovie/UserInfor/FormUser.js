@@ -89,7 +89,7 @@ const App = ({ data }) => {
 
         <Form.Item
           name="matKhau"
-          label="Password"
+          label="Mật khẩu"
           rules={[
             {
               required: true,
@@ -103,7 +103,7 @@ const App = ({ data }) => {
 
         <Form.Item
           name="taiKhoan"
-          label="Username"
+          label="Tài khoản"
           tooltip="Tên đăng nhập của bạn"
           rules={[
             {
@@ -117,7 +117,7 @@ const App = ({ data }) => {
         </Form.Item>
         <Form.Item
           name="hoTen"
-          label="Full name"
+          label="Tên"
           rules={[
             {
               required: true,
@@ -131,7 +131,7 @@ const App = ({ data }) => {
 
         <Form.Item
           name="soDt"
-          label="Phone"
+          label="Số điện thoại"
           rules={[
             {
               required: true,
@@ -148,7 +148,7 @@ const App = ({ data }) => {
 
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
-            Update
+            Cập nhật
           </Button>
         </Form.Item>
       </Form>{" "}

@@ -163,7 +163,7 @@ export default function Header({ changeTheme }) {
                 onClick={() => {
                   changeTheme();
                 }}
-                className="p-2 text-white dark:hidden"
+                className="p-2 text-blue-500 dark:hidden"
               >
                 <MoonIcon />
               </button>
@@ -207,14 +207,14 @@ export default function Header({ changeTheme }) {
                 onClick={() => {
                   changeTheme();
                 }}
-                className="p-2 text-white dark:hidden"
+                className="p-2 text-blue-500 dark:hidden"
               >
                 <MoonIcon />
               </button>
               <Link
                 rel="noopener noreferrer"
                 to={"/"}
-                className="flex items-center p-2   text-white hover:text-blue-500 duration-300 "
+                className="flex items-center p-2   text-white hover:text-red-500 duration-300 "
               >
                 <HomeIcon/>
               </Link>

@@ -43,12 +43,12 @@ export const LoginPage = ({ modal }) => {
       autoComplete="off"
     >
       <Form.Item
-        label="Username"
+        label="Tên đăng nhập"
         name="taiKhoan"
         rules={[
           {
             required: true,
-            message: "Please input your username!",
+            message: "Xin điền tên đăng nhập",
           },
         ]}
       >
@@ -56,12 +56,12 @@ export const LoginPage = ({ modal }) => {
       </Form.Item>
 
       <Form.Item
-        label="Password"
+        label="Mật Khẩu"
         name="matKhau"
         rules={[
           {
             required: true,
-            message: "Please input your password!",
+            message: "Xin hãy điền mật khẩu",
           },
         ]}
       >
@@ -77,7 +77,7 @@ export const LoginPage = ({ modal }) => {
         }}
       >
         <Button type="primary" htmlType="submit">
-          Submit
+          Đăng nhập
         </Button>
       </Form.Item>
     </Form>
