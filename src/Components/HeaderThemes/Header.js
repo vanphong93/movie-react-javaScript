@@ -29,7 +29,7 @@ export default function Header({ changeTheme }) {
     setIsModalOpen(true);
   };
   const [visible, setVisible] = useState(true);
-  const prevScrollpos = window.pageYOffset;
+  let prevScrollpos = window.pageYOffset;
   const toggleVisible = () => {
     let currentScrollPos = window.pageYOffset;
     if (prevScrollpos > currentScrollPos) {
